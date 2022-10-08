@@ -1,0 +1,154 @@
+import 'package:flutter/material.dart';
+import 'package:thirumathikart_app/widgets/button/login_button.dart';
+
+class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    double deviceHeight = MediaQuery.of(context).size.height;
+    return Scaffold(
+        body: SingleChildScrollView(
+            child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: deviceHeight,
+                ),
+                child: Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: const BoxDecoration(
+                      color: Color.fromRGBO(251, 242, 207, 1),
+                    ),
+                    child: Center(
+                        child: Card(
+                            elevation: 12,
+                            shape: RoundedRectangleBorder(
+                              side: const BorderSide(
+                                color: Colors.black12,
+                              ),
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Column(children: <Widget>[
+                                  const SizedBox(
+                                    height: 30,
+                                  ),
+                                  Center(
+                                    child: Image.asset(
+                                      'assets/tklogo.jpeg',
+                                      height: 200,
+                                    ),
+                                  ),
+                                  Container(
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 10),
+                                      child: Column(children: <Widget>[
+                                        Container(
+                                            margin:
+                                                const EdgeInsets.only(top: 15),
+                                            child: Material(
+                                                color: Colors.white,
+                                                shadowColor: Colors.black,
+                                                borderRadius:
+                                                    const BorderRadius.all(
+                                                        Radius.circular(20)),
+                                                elevation: 2,
+                                                child: AspectRatio(
+                                                    aspectRatio: 7 / 1,
+                                                    child: Center(
+                                                        child: TextFormField(
+                                                      decoration:
+                                                          const InputDecoration(
+                                                        hintText:
+                                                            'Enter Number',
+                                                        border:
+                                                            InputBorder.none,
+                                                        contentPadding:
+                                                            EdgeInsets.only(
+                                                                left: 10.0,
+                                                                bottom: 15),
+                                                      ),
+                                                      keyboardType:
+                                                          TextInputType.number,
+                                                    ))))),
+                                        Container(
+                                            margin:
+                                                const EdgeInsets.only(top: 16),
+                                            child: Material(
+                                                color: Colors.white,
+                                                shadowColor: Colors.black,
+                                                borderRadius:
+                                                    const BorderRadius.all(
+                                                  Radius.circular(20),
+                                                ),
+                                                elevation: 2,
+                                                child: Row(children: <Widget>[
+                                                  Expanded(
+                                                      child: AspectRatio(
+                                                          aspectRatio: 7 / 1,
+                                                          child: Center(
+                                                              child:
+                                                                  TextFormField(
+                                                            decoration:
+                                                                const InputDecoration(
+                                                              hintText:
+                                                                  'Enter Password',
+                                                              border:
+                                                                  InputBorder
+                                                                      .none,
+                                                              contentPadding:
+                                                                  EdgeInsets.only(
+                                                                      left:
+                                                                          10.0,
+                                                                      bottom:
+                                                                          15),
+                                                            ),
+                                                            keyboardType:
+                                                                TextInputType
+                                                                    .visiblePassword,
+                                                          ))))
+                                                ]))),
+                                        const LoginButton(),
+                                      ])),
+                                  const SizedBox(
+                                    height: 70,
+                                  ),
+                                  Container(
+                                      margin: const EdgeInsets.only(bottom: 40),
+                                      child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            InkWell(
+                                              onTap: () {},
+                                              child: const Text(
+                                                'Register Now',
+                                                style: TextStyle(
+                                                    fontSize: 15,
+                                                    color: Colors.black87,
+                                                    fontFamily: 'Avenir',
+                                                    fontWeight: FontWeight.w500,
+                                                    fontStyle:
+                                                        FontStyle.normal),
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            InkWell(
+                                                onTap: () {},
+                                                child: const Text(
+                                                  'Forgot Password',
+                                                  style: TextStyle(
+                                                      fontSize: 15,
+                                                      color: Colors.black87,
+                                                      fontFamily: 'Avenir',
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontStyle:
+                                                          FontStyle.normal),
+                                                ))
+                                          ]))
+                                ]))))))));
+  }
+}
