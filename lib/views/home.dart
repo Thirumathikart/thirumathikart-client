@@ -8,7 +8,7 @@ class HomePage extends GetView<HomeController> {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) =>const Scaffold(
+  Widget build(BuildContext context) => const Scaffold(
         appBar: BuildAppBar(),
         body: Body(),
       );

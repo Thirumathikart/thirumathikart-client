@@ -8,29 +8,29 @@ class ItemListBuild extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SizedBox(
-      child: Expanded(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: GridView.builder(
-            shrinkWrap: true,
-            itemCount: products.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 5,
-              crossAxisSpacing: 30,
-              childAspectRatio: 0.8,
-            ),
-            physics: const NeverScrollableScrollPhysics(),
-            itemBuilder: (context, index) => GestureDetector(
-              onTap: () {
-                Get.toNamed('/details/$index');
-              },
-              child: ItemCard(
-                product: products[index],
+        child: Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: GridView.builder(
+              shrinkWrap: true,
+              itemCount: products.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 5,
+                crossAxisSpacing: 30,
+                childAspectRatio: 0.8,
+              ),
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) => GestureDetector(
+                onTap: () {
+                  Get.toNamed('/details/$index');
+                },
+                child: ItemCard(
+                  product: products[index],
+                ),
               ),
             ),
           ),
         ),
-      ),
-    );
+      );
 }

@@ -9,22 +9,22 @@ class Body extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) => SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: const <Widget>[
-            SizedBox(
-              height: 10,
-              width: double.infinity,
-            ),
-            SlideBanner(),
-            SizedBox(
-              height: 10,
-              width: double.infinity,
-            ),
-            ItemListBuild(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: const <Widget>[
+              SizedBox(
+                height: 10,
+                width: double.infinity,
+              ),
+              SlideBanner(),
+              SizedBox(
+                height: 10,
+                width: double.infinity,
+              ),
+              ItemListBuild(),
+            ],
+          ),
         ),
-      ),
-    );
+      );
 }

@@ -4,5 +4,4 @@ class NavigationRoutes {
   static String splashRoute = '/';
   static String loginRoute = '/login';
   static String registerRoute = '/register';
-
 }

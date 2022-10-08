@@ -9,7 +9,7 @@ class RegisterButton extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         child: MaterialButton(
           onPressed: () {
-             // Validation
+            // Validation
           },
           color: const Color.fromRGBO(161, 194, 152, 1),
           shape: const RoundedRectangleBorder(
