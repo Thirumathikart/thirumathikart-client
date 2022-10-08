@@ -31,7 +31,7 @@ class RegisterPage extends StatelessWidget {
                         const Text(
                           'Thirumathikart',
                           style: TextStyle(
-                              fontSize: 34,
+                              fontSize: 36,
                               color: Colors.black54,
                               fontFamily: 'Avenir',
                               fontWeight: FontWeight.bold,
@@ -46,103 +46,124 @@ class RegisterPage extends StatelessWidget {
                             children: <Widget>[
                               Container(
                                 margin: const EdgeInsets.only(top: 16),
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.black,
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(20)),
                                 child: Material(
                                   color: Colors.white,
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(20)),
                                   elevation: 2,
-                                  child: AspectRatio(
-                                    aspectRatio: 7 / 1,
-                                    child: Center(
-                                      child: TextFormField(
-                                        style: const TextStyle(
-                                            // fontSize: 19,
-                                            ),
-                                        decoration: const InputDecoration(
-                                          hintText: 'First Number',
-                                          border: InputBorder.none,
-                                          contentPadding: EdgeInsets.only(
-                                              left: 10.0, bottom: 12),
+                                  child: Center(
+                                    child: TextFormField(
+                                      style: const TextStyle(
+                                          // fontSize: 19,
+                                          ),
+                                      decoration: const InputDecoration(
+                                        hintText: 'First Number',
+                                        border: InputBorder.none,
+                                        contentPadding: EdgeInsets.only(
+                                          left: 30.0,
                                         ),
-                                        keyboardType: TextInputType.name,
                                       ),
+                                      keyboardType: TextInputType.name,
                                     ),
                                   ),
                                 ),
                               ),
                               Container(
                                 margin: const EdgeInsets.only(top: 16),
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.black,
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(20)),
                                 child: Material(
                                   color: Colors.white,
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(20)),
                                   elevation: 2,
-                                  child: AspectRatio(
-                                    aspectRatio: 7 / 1,
-                                    child: Center(
-                                      child: TextFormField(
-                                        decoration: const InputDecoration(
-                                          hintText: 'Last Name',
-                                          border: InputBorder.none,
-                                          contentPadding: EdgeInsets.only(
-                                              left: 10.0, bottom: 12),
+                                  child: Center(
+                                    child: TextFormField(
+                                      decoration: const InputDecoration(
+                                        hintText: 'Last Name',
+                                        border: InputBorder.none,
+                                        contentPadding: EdgeInsets.only(
+                                          left: 30.0,
                                         ),
-                                        keyboardType: TextInputType.name,
                                       ),
+                                      keyboardType: TextInputType.name,
                                     ),
                                   ),
                                 ),
                               ),
                               Container(
                                 margin: const EdgeInsets.only(top: 16),
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.black,
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(20)),
                                 child: Material(
                                   color: Colors.white,
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(20)),
                                   elevation: 2,
-                                  child: AspectRatio(
-                                    aspectRatio: 7 / 1,
-                                    child: Center(
-                                      child: TextFormField(
-                                        decoration: const InputDecoration(
-                                          hintText: 'Enter Email',
-                                          border: InputBorder.none,
-                                          contentPadding: EdgeInsets.only(
-                                              left: 10.0, bottom: 12),
+                                  child: Center(
+                                    child: TextFormField(
+                                      decoration: const InputDecoration(
+                                        hintText: 'Enter Email',
+                                        border: InputBorder.none,
+                                        contentPadding: EdgeInsets.only(
+                                          left: 30.0,
                                         ),
-                                        keyboardType:
-                                            TextInputType.emailAddress,
                                       ),
+                                      keyboardType: TextInputType.emailAddress,
                                     ),
                                   ),
                                 ),
                               ),
                               Container(
                                 margin: const EdgeInsets.only(top: 16),
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.black,
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(20)),
                                 child: Material(
                                   color: Colors.white,
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(20)),
                                   elevation: 2,
-                                  child: AspectRatio(
-                                    aspectRatio: 7 / 1,
-                                    child: Center(
-                                      child: TextFormField(
-                                        decoration: const InputDecoration(
-                                          hintText: 'Enter Password',
-                                          border: InputBorder.none,
-                                          contentPadding: EdgeInsets.only(
-                                              left: 10.0, bottom: 12),
+                                  child: Center(
+                                    child: TextFormField(
+                                      decoration: const InputDecoration(
+                                        hintText: 'Enter Password',
+                                        border: InputBorder.none,
+                                        contentPadding: EdgeInsets.only(
+                                          left: 30.0,
                                         ),
-                                        keyboardType:
-                                            TextInputType.visiblePassword,
                                       ),
+                                      keyboardType:
+                                          TextInputType.visiblePassword,
                                     ),
                                   ),
                                 ),
                               ),
                               Container(
                                 margin: const EdgeInsets.only(top: 16),
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.black,
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(20)),
                                 child: Material(
                                   color: Colors.white,
                                   borderRadius: const BorderRadius.all(
@@ -152,19 +173,17 @@ class RegisterPage extends StatelessWidget {
                                   child: Row(
                                     children: <Widget>[
                                       Expanded(
-                                        child: AspectRatio(
-                                          aspectRatio: 7 / 1,
-                                          child: Center(
-                                            child: TextFormField(
-                                              decoration: const InputDecoration(
-                                                hintText: 'Reenter Password',
-                                                border: InputBorder.none,
-                                                contentPadding: EdgeInsets.only(
-                                                    left: 10.0, bottom: 12),
+                                        child: Center(
+                                          child: TextFormField(
+                                            decoration: const InputDecoration(
+                                              hintText: 'Reenter Password',
+                                              border: InputBorder.none,
+                                              contentPadding: EdgeInsets.only(
+                                                left: 30.0,
                                               ),
-                                              keyboardType:
-                                                  TextInputType.visiblePassword,
                                             ),
+                                            keyboardType:
+                                                TextInputType.visiblePassword,
                                           ),
                                         ),
                                       ),

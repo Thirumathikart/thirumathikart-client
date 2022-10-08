@@ -46,6 +46,13 @@ class LoginPage extends StatelessWidget {
                                         Container(
                                             margin:
                                                 const EdgeInsets.only(top: 15),
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                  color: Colors.black,
+                                                  width: 1,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(20)),
                                             child: Material(
                                                 color: Colors.white,
                                                 shadowColor: Colors.black,
@@ -53,27 +60,30 @@ class LoginPage extends StatelessWidget {
                                                     const BorderRadius.all(
                                                         Radius.circular(20)),
                                                 elevation: 2,
-                                                child: AspectRatio(
-                                                    aspectRatio: 7 / 1,
-                                                    child: Center(
-                                                        child: TextFormField(
-                                                      decoration:
-                                                          const InputDecoration(
-                                                        hintText:
-                                                            'Enter Number',
-                                                        border:
-                                                            InputBorder.none,
-                                                        contentPadding:
-                                                            EdgeInsets.only(
-                                                                left: 10.0,
-                                                                bottom: 15),
-                                                      ),
-                                                      keyboardType:
-                                                          TextInputType.number,
-                                                    ))))),
+                                                child: Center(
+                                                    child: TextFormField(
+                                                  decoration:
+                                                      const InputDecoration(
+                                                    hintText: 'Enter Number',
+                                                    border: InputBorder.none,
+                                                    contentPadding:
+                                                        EdgeInsets.only(
+                                                      left: 30.0,
+                                                    ),
+                                                  ),
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                )))),
                                         Container(
                                             margin:
                                                 const EdgeInsets.only(top: 16),
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                  color: Colors.black,
+                                                  width: 1,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(20)),
                                             child: Material(
                                                 color: Colors.white,
                                                 shadowColor: Colors.black,
@@ -84,29 +94,20 @@ class LoginPage extends StatelessWidget {
                                                 elevation: 2,
                                                 child: Row(children: <Widget>[
                                                   Expanded(
-                                                      child: AspectRatio(
-                                                          aspectRatio: 7 / 1,
-                                                          child: Center(
-                                                              child:
-                                                                  TextFormField(
-                                                            decoration:
-                                                                const InputDecoration(
-                                                              hintText:
-                                                                  'Enter Password',
-                                                              border:
-                                                                  InputBorder
-                                                                      .none,
-                                                              contentPadding:
-                                                                  EdgeInsets.only(
-                                                                      left:
-                                                                          10.0,
-                                                                      bottom:
-                                                                          15),
-                                                            ),
-                                                            keyboardType:
-                                                                TextInputType
-                                                                    .visiblePassword,
-                                                          ))))
+                                                      child: Center(
+                                                          child: TextFormField(
+                                                    decoration:
+                                                        const InputDecoration(
+                                                      hintText:
+                                                          'Enter Password',
+                                                      border: InputBorder.none,
+                                                      contentPadding:
+                                                          EdgeInsets.only(
+                                                              left: 30.0),
+                                                    ),
+                                                    keyboardType: TextInputType
+                                                        .visiblePassword,
+                                                  )))
                                                 ]))),
                                         const LoginButton(),
                                       ])),

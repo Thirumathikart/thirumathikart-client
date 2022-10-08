@@ -11,4 +11,5 @@ class AppTheme {
   static Color chakra = const Color.fromARGB(255, 13, 13, 173);
   static Color navColor = const Color(0xFFF8BBD0);
   static Color navHighlight = const Color(0xFFFCE4EC);
+  static Color subtle = const Color.fromRGBO(251, 242, 207, 1);
 }
