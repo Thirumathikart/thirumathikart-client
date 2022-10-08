@@ -32,8 +32,8 @@ class ItemCard extends StatelessWidget {
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 7.5),
+        SizedBox(
+          height: 45,
           child: Center(
             child: Text(
               product.title!,

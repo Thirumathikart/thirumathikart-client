@@ -10,14 +10,14 @@ class ItemListBuild extends StatelessWidget {
   Widget build(BuildContext context) => SizedBox(
         child: Expanded(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: GridView.builder(
               shrinkWrap: true,
               itemCount: products.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 5,
-                crossAxisSpacing: 30,
+                crossAxisSpacing: 20,
                 childAspectRatio: 0.8,
               ),
               physics: const NeverScrollableScrollPhysics(),
