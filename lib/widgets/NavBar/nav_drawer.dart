@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thirumathikart_app/widgets/NavBar/nav_item.dart';
+import 'package:thirumathikart_app/widgets/NavBar/nav_list.dart';
+import 'package:thirumathikart_app/config/themes.dart';
 
 class NavWidget extends StatelessWidget {
   const NavWidget({super.key});
@@ -11,7 +13,7 @@ class NavWidget extends StatelessWidget {
           children: <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.pink[100],
+                color: AppTheme.navColor,
               ),
               child: Column(
                 children: [
@@ -27,62 +29,29 @@ class NavWidget extends StatelessWidget {
                       shape: BoxShape.circle,
                     ),
                   ),
-                  const Text(
+                  Text(
                     'User Name',
                     style: TextStyle(
-                      color: Colors.black,
+                      color: AppTheme.textPrimary,
                       fontSize: 24,
                     ),
                   ),
                 ],
               ),
             ),
-            const NavItemWidget(
-                title: 'Home',
-                icon: Icon(Icons.house_outlined),
-                toRoute: '/auth'),
-            const NavItemWidget(
-                title: 'Profile',
-                icon: Icon(Icons.person_outline),
-                toRoute: '/main'),
-            const NavItemWidget(
-                title: 'Wishlist',
-                icon: Icon(Icons.favorite_border_outlined),
-                toRoute: '/main'),
-            const NavItemWidget(
-                title: 'My Orders',
-                icon: Icon(Icons.fire_truck_outlined),
-                toRoute: '/main'),
-            const NavItemWidget(
-                title: 'Login',
-                icon: Icon(Icons.login_outlined),
-                toRoute: '/main'),
-            const Divider(),
-            const NavItemWidget(
-                title: 'Offers',
-                icon: Icon(Icons.local_offer_outlined),
-                toRoute: '/main'),
-            const NavItemWidget(
-                title: 'About App',
-                icon: Icon(Icons.info_outline_rounded),
-                toRoute: '/main'),
-            const NavItemWidget(
-                title: 'Feedback',
-                icon: Icon(Icons.feedback_outlined),
-                toRoute: '/main'),
-            const NavItemWidget(
-                title: 'Help Center',
-                icon: Icon(Icons.help_center_outlined),
-                toRoute: '/main'),
-            const Divider(),
-            const NavItemWidget(
-                title: 'App Tour',
-                icon: Icon(Icons.touch_app_outlined),
-                toRoute: '/main'),
-            const NavItemWidget(
-                title: 'Explore',
-                icon: Icon(Icons.explore_outlined),
-                toRoute: '/main'),
+            for (var item in navList)
+              Column(
+                children: [
+                  NavItemWidget(
+                    title: item['title'].toString(),
+                    icon: item['icon'] as Icon,
+                    toRoute: item['toRoute'].toString(),
+                  ),
+                  if (item['title'].toString() == 'Login' ||
+                      item['title'].toString() == 'Help Center')
+                    const Divider()
+                ],
+              )
           ],
         ),
       );

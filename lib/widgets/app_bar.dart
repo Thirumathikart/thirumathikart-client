@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 PreferredSizeWidget appBar(String label) => AppBar(
     backgroundColor: Colors.transparent,
     elevation: 0,
-    iconTheme: const IconThemeData(color: Colors.black),
+    iconTheme: IconThemeData(color: AppTheme.textPrimary),
     title: Text(
       label,
       style: TextStyle(
