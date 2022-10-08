@@ -13,5 +13,4 @@ class NavigationRoutes {
   static String exploreRoute = '/explore';
   static String loginRoute = '/login';
   static String registerRoute = '/register';
-
 }
