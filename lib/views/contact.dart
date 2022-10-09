@@ -3,14 +3,15 @@ import 'package:lottie/lottie.dart';
 import 'package:thirumathikart_app/views/home.dart';
 
 class ContactPage extends StatefulWidget {
-  const ContactPage({super.key});
   @override
-  ContactPageX createState() => ContactPageX();
+  _ContactPage createState() => _ContactPage();
 }
 
-class ContactPageX extends State<ContactPage> {
+class _ContactPage extends State<ContactPage> {
   @override
-  Widget build(BuildContext context) => Scaffold(
+  // ignore: prefer_expression_function_bodies
+  Widget build(BuildContext context) {
+    return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
@@ -64,4 +65,5 @@ class ContactPageX extends State<ContactPage> {
         ),
       ),
     );
+  }
 }

@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_null_comparison
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -7,18 +5,18 @@ import 'package:thirumathikart_app/config/themes.dart';
 import 'package:thirumathikart_app/views/home.dart';
 
 class FeedbackPage extends StatefulWidget {
-  const FeedbackPage({super.key});
   @override
-  FeedbackPageX createState() => FeedbackPageX();
+  _FeedbackPage createState() => _FeedbackPage();
 }
 
-class FeedbackPageX extends State<FeedbackPage> {
+class _FeedbackPage extends State<FeedbackPage> {
   late String name;
   late String message;
   XFile? image;
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
+  Widget build(BuildContext context) {
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'ThirumathiKart',
       home: Scaffold(
@@ -60,7 +58,7 @@ class FeedbackPageX extends State<FeedbackPage> {
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: TextField(
                     onChanged: (val) {
-                      if (val != null || val.isNotEmpty) name = val;
+                      if (val != null || val.length > 0) name = val;
                     },
                     decoration: InputDecoration(
                       fillColor: Color(0xffe6e6e6),
@@ -94,7 +92,7 @@ class FeedbackPageX extends State<FeedbackPage> {
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   child: TextField(
                     onChanged: (val) {
-                      if (val != null || val.isNotEmpty) message = val;
+                      if (val != null || val.length > 0) message = val;
                     },
                     textAlign: TextAlign.start,
                     decoration: InputDecoration(
@@ -129,11 +127,11 @@ class FeedbackPageX extends State<FeedbackPage> {
                   children: [
                     ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: AppTheme.chakra,
+                        primary: AppTheme.chakra,
                       ),
                       onPressed: () async {
-                        final ImagePicker picker = ImagePicker();
-                        final img = await picker.pickImage(
+                        final ImagePicker _picker = ImagePicker();
+                        final img = await _picker.pickImage(
                             source: ImageSource.gallery);
                         setState(() {
                           image = img;
@@ -211,4 +209,5 @@ class FeedbackPageX extends State<FeedbackPage> {
         ),
       ),
     );
+  }
 }
