@@ -1,7 +1,5 @@
 import 'package:thirumathikart_app/config/themes.dart';
 import 'package:thirumathikart_app/widgets/app_bar.dart';
-import 'package:thirumathikart_app/config/themes.dart';
-import 'package:thirumathikart_app/widgets/app_bar.dart';
 import 'package:thirumathikart_app/widgets/auth/carousel.dart';
 import 'package:thirumathikart_app/widgets/auth/sign_in_button.dart';
 import 'package:flutter/material.dart';
