@@ -24,5 +24,51 @@ class NavigationPages {
           page: () => const SplashPage(),
           binding: SplashBindings(),
         ),
+        // Replace with correspondings bindings and pages
+        GetPage(
+          name: NavigationRoutes.profileRoute,
+          page: () => const HomePage(),
+          binding: HomeBindings(),
+        ),
+        GetPage(
+          name: NavigationRoutes.wishlistRoute,
+          page: () => const HomePage(),
+          binding: HomeBindings(),
+        ),
+        GetPage(
+          name: NavigationRoutes.ordersRoute,
+          page: () => const HomePage(),
+          binding: HomeBindings(),
+        ),
+        GetPage(
+          name: NavigationRoutes.offersRoute,
+          page: () => const HomePage(),
+          binding: HomeBindings(),
+        ),
+        GetPage(
+          name: NavigationRoutes.aboutRoute,
+          page: () => const HomePage(),
+          binding: HomeBindings(),
+        ),
+        GetPage(
+          name: NavigationRoutes.feedbackRoute,
+          page: () => const HomePage(),
+          binding: HomeBindings(),
+        ),
+        GetPage(
+          name: NavigationRoutes.helpRoute,
+          page: () => const HomePage(),
+          binding: HomeBindings(),
+        ),
+        GetPage(
+          name: NavigationRoutes.tourRoute,
+          page: () => const HomePage(),
+          binding: HomeBindings(),
+        ),
+        GetPage(
+          name: NavigationRoutes.exploreRoute,
+          page: () => const HomePage(),
+          binding: HomeBindings(),
+        ),
       ];
 }

@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 PreferredSizeWidget appBar(String label) => AppBar(
     backgroundColor: Colors.transparent,
     elevation: 0,
+    iconTheme: IconThemeData(color: AppTheme.textPrimary),
     title: Text(
-      'Sign-In',
+      label,
       style: TextStyle(
           fontWeight: FontWeight.bold,
           color: AppTheme.textPrimary,

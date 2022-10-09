@@ -9,4 +9,6 @@ class AppTheme {
   static Color google = const Color(0xFFFF7722);
   static Color facebook = const Color(0xFF138808);
   static Color chakra = const Color.fromARGB(255, 13, 13, 173);
+  static Color navColor = const Color(0xFFF8BBD0);
+  static Color navHighlight = const Color(0xFFFCE4EC);
 }

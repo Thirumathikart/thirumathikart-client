@@ -5,6 +5,7 @@ import 'package:thirumathikart_app/widgets/auth/sign_in_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:thirumathikart_app/controllers/auth_controller.dart';
+import 'package:thirumathikart_app/widgets/NavBar/nav_drawer.dart';
 
 class AuthPage extends GetView<AuthController> {
   const AuthPage({Key? key}) : super(key: key);
@@ -12,6 +13,7 @@ class AuthPage extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: AppTheme.bg,
+        drawer: const NavWidget(),
         appBar: appBar('Sign-In'),
         body: SafeArea(
           child: Column(
