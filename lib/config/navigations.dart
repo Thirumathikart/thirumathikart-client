@@ -59,12 +59,17 @@ class NavigationPages {
         ),
         GetPage(
           name: NavigationRoutes.feedbackRoute,
-          page: () => FeedbackPage(),
+          page: FeedbackPage.new,
           binding: HomeBindings(),
         ),
         GetPage(
           name: NavigationRoutes.helpRoute,
-          page: () => ContactPage(),
+          page: ContactPage.new,
+          binding: HomeBindings(),
+        ),
+        GetPage(
+          name: NavigationRoutes.exploreRoute,
+          page: () => const HomePage(),
           binding: HomeBindings(),
         ),
         GetPage(

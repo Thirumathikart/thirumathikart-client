@@ -13,10 +13,8 @@ class _FeedbackPage extends State<FeedbackPage> {
   late String name;
   late String message;
   XFile? image;
-  // ignore: prefer_expression_function_bodies
 
   @override
-  // ignore: prefer_expression_function_bodies
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
