@@ -10,7 +10,7 @@ class HomePage extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      appBar:  const BuildAppBar(),
+      appBar: const BuildAppBar(),
       drawer: const NavWidget(),
       body: Center(
         child: Column(
