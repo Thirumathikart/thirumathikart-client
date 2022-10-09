@@ -83,29 +83,27 @@ class AboutPage extends GetView<HomeController> {
                 );
               }),
           ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Color.fromARGB(255, 211, 211, 211),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(0),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromARGB(255, 211, 211, 211),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(0),
+                  ),
                 ),
               ),
-            ),
-            child: Text('Changelog',
-                style: TextStyle(
-                  color: Colors.black,
-                )),
-            onPressed: () {
-              showDialog(
-                context: context,
+              child: Text('Changelog',
+                  style: TextStyle(
+                    color: Colors.black,
+                  )),
+              onPressed: () {
+                showDialog(
+                  context: context,
                   builder: (BuildContext context) => AlertDialog(
-                  content: Text('Lorem Ipsum'),
-                ),
-              );
-            }
-          ),
-        ]
-    );
+                    content: Text('Lorem Ipsum'),
+                  ),
+                );
+              }),
+        ]);
 
     Widget linebreak = const Padding(
       padding: EdgeInsets.all(8),
@@ -132,7 +130,7 @@ class AboutPage extends GetView<HomeController> {
     Widget cardWidget1 = Container(
       padding: const EdgeInsets.fromLTRB(32, 32, 32, 8),
       child: InkWell(
-        onTap: () => launch('https://github.com/mikepenz/AboutLibraries'),
+        onTap: () => launchUrl(Uri.https('https://github.com/mikepenz/AboutLibraries')),
         child: Row(
           children: [
             Expanded(
@@ -168,8 +166,7 @@ class AboutPage extends GetView<HomeController> {
                           text:
                               ' is a library to offer you all the information you need of your libraries!',
                         ),
-                      ])
-                  ),
+                      ])),
                   SizedBox(height: 20),
                   Text(
                     'Most modern apps feature a Used Library section, which requires infromation about those respective libs. As it gets annoying to always copy those strings to your app, I have developed this small helper library to provide the required infromation',
@@ -194,7 +191,7 @@ class AboutPage extends GetView<HomeController> {
     Widget cardWidget2 = Container(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
-        onTap: () => launch('https://github.com/mikepenz/Android-Iconics'),
+        onTap: () => launchUrl(Uri.https('https://github.com/mikepenz/Android-Iconics')),
         child: Row(
           children: [
             Expanded(
@@ -247,7 +244,7 @@ class AboutPage extends GetView<HomeController> {
       // ignore: unnecessary_new
       child: new InkWell(
         onTap: () =>
-            launch('https://github.com/daimajia/AndroidViewAnimations'),
+            launchUrl(Uri.https('https://github.com/daimajia/AndroidViewAnimations')),
         child: Row(
           children: [
             Expanded(
@@ -297,7 +294,7 @@ class AboutPage extends GetView<HomeController> {
     Widget cardWidget4 = Container(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
-        onTap: () => launch('http://jakewharton.github.io/butterknife/'),
+        onTap: () => launchUrl(Uri.https('http://jakewharton.github.io/butterknife/')),
         child: Row(
           children: [
             Expanded(
@@ -348,7 +345,7 @@ class AboutPage extends GetView<HomeController> {
     Widget cardWidget5 = Container(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
-        onTap: () => launch('https://github.com/hdodenhof/CircleImageView'),
+        onTap: () => launchUrl(Uri.https('https://github.com/hdodenhof/CircleImageView')),
         child: Row(
           children: [
             Expanded(
@@ -398,8 +395,8 @@ class AboutPage extends GetView<HomeController> {
     Widget cardWidget6 = Container(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
-        onTap: () => launch(
-            'https://developer.android.com/reference/android/support/constraint/package-summary.html'),
+        onTap: () => launchUrl(Uri.https(
+            'https://developer.android.com/reference/android/support/constraint/package-summary.html')),
         child: Row(
           children: [
             Expanded(
@@ -451,7 +448,7 @@ class AboutPage extends GetView<HomeController> {
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
         onTap: () =>
-            launch('https://github.com/mikepenz/CrossfadeDrawerLayout'),
+            launchUrl(Uri.https('https://github.com/mikepenz/CrossfadeDrawerLayout')),
         child: Row(
           children: [
             Expanded(
@@ -505,7 +502,7 @@ class AboutPage extends GetView<HomeController> {
     Widget cardWidget8 = Container(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
-        onTap: () => launch('https://github.com/mikepenz/FastAdapter'),
+        onTap: () => launchUrl(Uri.https('https://github.com/mikepenz/FastAdapter')),
         child: Row(
           children: [
             Expanded(
@@ -559,7 +556,7 @@ class AboutPage extends GetView<HomeController> {
     Widget cardWidget9 = Container(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
-        onTap: () => launch('https://github.com/mikepenz/MaterialDrawer'),
+        onTap: () => launchUrl(Uri.https('https://github.com/mikepenz/MaterialDrawer')),
         child: Row(
           children: [
             Expanded(
@@ -613,7 +610,7 @@ class AboutPage extends GetView<HomeController> {
     Widget cardWidget10 = Container(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
-        onTap: () => launch('https://github.com/rengwuxian/MaterialEditText'),
+        onTap: () => launchUrl(Uri.https('https://github.com/rengwuxian/MaterialEditText')),
         child: Row(
           children: [
             Expanded(
@@ -664,7 +661,7 @@ class AboutPage extends GetView<HomeController> {
     Widget cardWidget11 = Container(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
-        onTap: () => launch('https://github.com/mikepenz/Materialize'),
+        onTap: () => launchUrl(Uri.https('https://github.com/mikepenz/Materialize')),
         child: Row(
           children: [
             Expanded(
