@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:thirumathikart_app/controllers/about_controller.dart';
+import 'package:thirumathikart_app/controllers/home_controller.dart';
 import 'package:thirumathikart_app/views/home.dart';
 
-class AboutPage extends GetView<AboutController> {
+class AboutPage extends GetView<HomeController> {
   const AboutPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -712,8 +712,6 @@ class AboutPage extends GetView<AboutController> {
       ),
       ),
     );
-    
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'ThirumathiKart',

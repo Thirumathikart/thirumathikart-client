@@ -65,6 +65,3 @@ class _ContactPage extends State<ContactPage> {
         );
   }
 }
-
-
-
