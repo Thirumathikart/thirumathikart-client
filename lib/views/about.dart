@@ -130,7 +130,8 @@ class AboutPage extends GetView<HomeController> {
     Widget cardWidget1 = Container(
       padding: const EdgeInsets.fromLTRB(32, 32, 32, 8),
       child: InkWell(
-        onTap: () => launchUrl(Uri.https('https://github.com/mikepenz/AboutLibraries')),
+        onTap: () =>
+            launchUrl(Uri.https('https://github.com/mikepenz/AboutLibraries')),
         child: Row(
           children: [
             Expanded(
@@ -191,7 +192,8 @@ class AboutPage extends GetView<HomeController> {
     Widget cardWidget2 = Container(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
-        onTap: () => launchUrl(Uri.https('https://github.com/mikepenz/Android-Iconics')),
+        onTap: () =>
+            launchUrl(Uri.https('https://github.com/mikepenz/Android-Iconics')),
         child: Row(
           children: [
             Expanded(
@@ -243,8 +245,8 @@ class AboutPage extends GetView<HomeController> {
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       // ignore: unnecessary_new
       child: new InkWell(
-        onTap: () =>
-            launchUrl(Uri.https('https://github.com/daimajia/AndroidViewAnimations')),
+        onTap: () => launchUrl(
+            Uri.https('https://github.com/daimajia/AndroidViewAnimations')),
         child: Row(
           children: [
             Expanded(
@@ -294,7 +296,8 @@ class AboutPage extends GetView<HomeController> {
     Widget cardWidget4 = Container(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
-        onTap: () => launchUrl(Uri.https('http://jakewharton.github.io/butterknife/')),
+        onTap: () =>
+            launchUrl(Uri.https('http://jakewharton.github.io/butterknife/')),
         child: Row(
           children: [
             Expanded(
@@ -345,7 +348,8 @@ class AboutPage extends GetView<HomeController> {
     Widget cardWidget5 = Container(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
-        onTap: () => launchUrl(Uri.https('https://github.com/hdodenhof/CircleImageView')),
+        onTap: () => launchUrl(
+            Uri.https('https://github.com/hdodenhof/CircleImageView')),
         child: Row(
           children: [
             Expanded(
@@ -447,8 +451,8 @@ class AboutPage extends GetView<HomeController> {
     Widget cardWidget7 = Container(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
-        onTap: () =>
-            launchUrl(Uri.https('https://github.com/mikepenz/CrossfadeDrawerLayout')),
+        onTap: () => launchUrl(
+            Uri.https('https://github.com/mikepenz/CrossfadeDrawerLayout')),
         child: Row(
           children: [
             Expanded(
@@ -502,7 +506,8 @@ class AboutPage extends GetView<HomeController> {
     Widget cardWidget8 = Container(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
-        onTap: () => launchUrl(Uri.https('https://github.com/mikepenz/FastAdapter')),
+        onTap: () =>
+            launchUrl(Uri.https('https://github.com/mikepenz/FastAdapter')),
         child: Row(
           children: [
             Expanded(
@@ -556,7 +561,8 @@ class AboutPage extends GetView<HomeController> {
     Widget cardWidget9 = Container(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
-        onTap: () => launchUrl(Uri.https('https://github.com/mikepenz/MaterialDrawer')),
+        onTap: () =>
+            launchUrl(Uri.https('https://github.com/mikepenz/MaterialDrawer')),
         child: Row(
           children: [
             Expanded(
@@ -610,7 +616,8 @@ class AboutPage extends GetView<HomeController> {
     Widget cardWidget10 = Container(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
-        onTap: () => launchUrl(Uri.https('https://github.com/rengwuxian/MaterialEditText')),
+        onTap: () => launchUrl(
+            Uri.https('https://github.com/rengwuxian/MaterialEditText')),
         child: Row(
           children: [
             Expanded(
@@ -661,7 +668,8 @@ class AboutPage extends GetView<HomeController> {
     Widget cardWidget11 = Container(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
-        onTap: () => launchUrl(Uri.https('https://github.com/mikepenz/Materialize')),
+        onTap: () =>
+            launchUrl(Uri.https('https://github.com/mikepenz/Materialize')),
         child: Row(
           children: [
             Expanded(
