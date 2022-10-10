@@ -1,5 +1,6 @@
 import 'package:thirumathikart_app/widgets/home/item_card.dart';
 import 'package:thirumathikart_app/constants/homeproduct_list.dart';
+import 'package:thirumathikart_app/models/category.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
