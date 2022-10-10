@@ -1,9 +1,7 @@
 // ignore_for_file: unnecessary_null_comparison
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:thirumathikart_app/config/themes.dart';
 import 'package:thirumathikart_app/views/home.dart';
 
 class FeedbackPage extends StatefulWidget {
@@ -128,9 +126,7 @@ class FeedbackPageX extends State<FeedbackPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppTheme.chakra,
-                        ),
+                        style: ElevatedButton.styleFrom(),
                         onPressed: () async {
                           final ImagePicker picker = ImagePicker();
                           final img = await picker.pickImage(

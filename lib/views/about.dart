@@ -42,7 +42,6 @@ class AboutPage extends GetView<HomeController> {
         children: <Widget>[
           ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 211, 211, 211),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(
                     Radius.circular(0),
@@ -63,7 +62,6 @@ class AboutPage extends GetView<HomeController> {
               }),
           ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 211, 211, 211),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(
                     Radius.circular(0),
@@ -84,7 +82,6 @@ class AboutPage extends GetView<HomeController> {
               }),
           ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 211, 211, 211),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(
                     Radius.circular(0),
@@ -131,7 +128,7 @@ class AboutPage extends GetView<HomeController> {
       padding: const EdgeInsets.fromLTRB(32, 32, 32, 8),
       child: InkWell(
         onTap: () =>
-            launchUrl(Uri.https('https://github.com/mikepenz/AboutLibraries')),
+            launchUrl(Uri.parse('https://github.com/mikepenz/AboutLibraries')),
         child: Row(
           children: [
             Expanded(
@@ -193,7 +190,7 @@ class AboutPage extends GetView<HomeController> {
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
         onTap: () =>
-            launchUrl(Uri.https('https://github.com/mikepenz/Android-Iconics')),
+            launchUrl(Uri.parse('https://github.com/mikepenz/Android-Iconics')),
         child: Row(
           children: [
             Expanded(
@@ -246,7 +243,7 @@ class AboutPage extends GetView<HomeController> {
       // ignore: unnecessary_new
       child: new InkWell(
         onTap: () => launchUrl(
-            Uri.https('https://github.com/daimajia/AndroidViewAnimations')),
+            Uri.parse('https://github.com/daimajia/AndroidViewAnimations')),
         child: Row(
           children: [
             Expanded(
@@ -297,7 +294,7 @@ class AboutPage extends GetView<HomeController> {
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
         onTap: () =>
-            launchUrl(Uri.https('http://jakewharton.github.io/butterknife/')),
+            launchUrl(Uri.parse('http://jakewharton.github.io/butterknife/')),
         child: Row(
           children: [
             Expanded(
@@ -349,7 +346,7 @@ class AboutPage extends GetView<HomeController> {
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
         onTap: () => launchUrl(
-            Uri.https('https://github.com/hdodenhof/CircleImageView')),
+            Uri.parse('https://github.com/hdodenhof/CircleImageView')),
         child: Row(
           children: [
             Expanded(
@@ -399,7 +396,7 @@ class AboutPage extends GetView<HomeController> {
     Widget cardWidget6 = Container(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
-        onTap: () => launchUrl(Uri.https(
+        onTap: () => launchUrl(Uri.parse(
             'https://developer.android.com/reference/android/support/constraint/package-summary.html')),
         child: Row(
           children: [
@@ -452,7 +449,7 @@ class AboutPage extends GetView<HomeController> {
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
         onTap: () => launchUrl(
-            Uri.https('https://github.com/mikepenz/CrossfadeDrawerLayout')),
+            Uri.parse('https://github.com/mikepenz/CrossfadeDrawerLayout')),
         child: Row(
           children: [
             Expanded(
@@ -507,7 +504,7 @@ class AboutPage extends GetView<HomeController> {
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
         onTap: () =>
-            launchUrl(Uri.https('https://github.com/mikepenz/FastAdapter')),
+            launchUrl(Uri.parse('https://github.com/mikepenz/FastAdapter')),
         child: Row(
           children: [
             Expanded(
@@ -562,7 +559,7 @@ class AboutPage extends GetView<HomeController> {
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
         onTap: () =>
-            launchUrl(Uri.https('https://github.com/mikepenz/MaterialDrawer')),
+            launchUrl(Uri.parse('https://github.com/mikepenz/MaterialDrawer')),
         child: Row(
           children: [
             Expanded(
@@ -617,7 +614,7 @@ class AboutPage extends GetView<HomeController> {
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
         onTap: () => launchUrl(
-            Uri.https('https://github.com/rengwuxian/MaterialEditText')),
+            Uri.parse('https://github.com/rengwuxian/MaterialEditText')),
         child: Row(
           children: [
             Expanded(
@@ -669,7 +666,7 @@ class AboutPage extends GetView<HomeController> {
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: InkWell(
         onTap: () =>
-            launchUrl(Uri.https('https://github.com/mikepenz/Materialize')),
+            launchUrl(Uri.parse('https://github.com/mikepenz/Materialize')),
         child: Row(
           children: [
             Expanded(
@@ -735,7 +732,6 @@ class AboutPage extends GetView<HomeController> {
             },
           ),
           title: const Text('About Us'),
-          backgroundColor: Color.fromARGB(255, 65, 178, 69),
         ),
         body: ListView(
           children: [

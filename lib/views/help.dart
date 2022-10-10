@@ -22,7 +22,6 @@ class ContactPageX extends State<ContactPage> {
             },
           ),
           title: const Text('Contact Us'),
-          backgroundColor: Color.fromARGB(255, 65, 178, 69),
         ),
         body: Center(
           child: Column(
