@@ -146,11 +146,13 @@ class _Products extends State<Products> {
                                 }
                                 if (isSelected[0] == false &&
                                     isSelected[1] == true) {
-                                  products_list = products_list.reversed.toList();
+                                  products_list =
+                                      products_list.reversed.toList();
                                 }
                                 if (isSelected[1] == false &&
                                     isSelected[0] == true) {
-                                  products_list = products_list.reversed.toList();
+                                  products_list =
+                                      products_list.reversed.toList();
                                 }
                               });
                             },
@@ -160,14 +162,18 @@ class _Products extends State<Products> {
                                 padding: EdgeInsets.all(5.0),
                                 child: Text(
                                   'Low - High',
-                                  style: TextStyle(fontSize: 14,),
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                  ),
                                 ),
                               ),
                               Padding(
                                 padding: EdgeInsets.all(5.0),
                                 child: Text(
                                   'High - Low',
-                                  style: TextStyle(fontSize: 14,),
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                  ),
                                 ),
                               ),
                             ],

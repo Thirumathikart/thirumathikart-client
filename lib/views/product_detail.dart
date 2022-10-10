@@ -28,11 +28,12 @@ class _Product_Detatil extends State<Product_Detail> {
         backgroundColor: AppTheme.bg,
         appBar: AppBar(
           centerTitle: true,
-          title: Text(product.name!,
+          title: Text(
+            product.name!,
             style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           leading: GestureDetector(
             onTap: () {
@@ -44,8 +45,7 @@ class _Product_Detatil extends State<Product_Detail> {
           ),
         ),
         body: SingleChildScrollView(
-          child: Column(
-            children: [
+          child: Column(children: [
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Image(
@@ -119,43 +119,35 @@ class _Product_Detatil extends State<Product_Detail> {
             Row(
               children: [
                 SizedBox(
-                  width: MediaQuery.of(context).size.width/2,
+                  width: MediaQuery.of(context).size.width / 2,
                   height: 75,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
-                      onPressed: () {
-
-                    },
-                     child: const Text(
-                      'Add to cart',
-                      style: TextStyle(
-                        fontSize: 20,
-
+                      onPressed: () {},
+                      child: const Text(
+                        'Add to cart',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
                       ),
-                     ),
-                     
-                     ),
+                    ),
                   ),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width/2,
+                  width: MediaQuery.of(context).size.width / 2,
                   height: 75,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
-                      onPressed: () {
-
-                    },
-                     child: const Text(
-                      'Buy now',
-                      style: TextStyle(
-                        fontSize: 20,
-                        
+                      onPressed: () {},
+                      child: const Text(
+                        'Buy now',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
                       ),
-                     ),
-                     
-                     ),
+                    ),
                   ),
                 ),
               ],
@@ -229,9 +221,7 @@ class _Product_Detatil extends State<Product_Detail> {
                 )
               ],
             ),
-            
-          ]
-          ),
+          ]),
         ),
       );
 }
