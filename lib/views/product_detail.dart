@@ -3,38 +3,18 @@ import 'package:get/get.dart';
 import 'package:thirumathikart_app/controllers/product_detail_controller.dart';
 import 'package:thirumathikart_app/models/product.dart';
 import 'package:thirumathikart_app/config/themes.dart';
-import 'package:thirumathikart_app/views/products.dart';
+import 'package:thirumathikart_app/widgets/app_bar.dart';
 
 class ProductDetail extends GetView<ProductDetailsController> {
-  final Product product;
-  final List<Product> productList;
-  const ProductDetail(this.product, this.productList, {Key? key})
-      : super(key: key);
+  const ProductDetail({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final productDetailsController = Get.put(ProductDetailsController());
-
+    final productDetailsController = Get.find<ProductDetailsController>();
+    final Product product = Get.arguments[0];
     return Scaffold(
       backgroundColor: AppTheme.bg,
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          product.name!,
-          style: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        leading: GestureDetector(
-          onTap: () {
-            Get.off(Products(productList));
-          },
-          child: const Icon(
-            Icons.arrow_back,
-          ),
-        ),
-      ),
+      appBar: appBar(product.name!),
       body: SingleChildScrollView(
         child: Column(children: [
           Padding(
@@ -75,20 +55,37 @@ class ProductDetail extends GetView<ProductDetailsController> {
               SizedBox(
                 width: 50,
                 child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(product.color!),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10000.0),
+                    )),
+                  ),
                   onPressed: () {
-                    if (productDetailsController.item.value > 0) {
+                    if (productDetailsController.productDynamic.value > 0) {
                       productDetailsController.updateQuantity(
-                          productDetailsController.item.value - 1);
+                          productDetailsController.productDynamic.value - 1);
                     }
                   },
-                  child: const Text('-'),
+                  child: const Padding(
+                    padding: EdgeInsets.only(bottom: 5),
+                    child: Text(
+                      '-',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                      ),
+                    ),
+                  ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Obx(
                   () => Text(
-                    productDetailsController.item.value.toString(),
+                    productDetailsController.productDynamic.value.toString(),
                     style: const TextStyle(
                       fontSize: 20,
                     ),
@@ -98,11 +95,28 @@ class ProductDetail extends GetView<ProductDetailsController> {
               SizedBox(
                 width: 50,
                 child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(product.color!),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10000.0),
+                    )),
+                  ),
                   onPressed: () {
                     productDetailsController.updateQuantity(
-                        productDetailsController.item.value + 1);
+                        productDetailsController.productDynamic.value + 1);
                   },
-                  child: const Text('+'),
+                  child: const Padding(
+                    padding: EdgeInsets.only(bottom: 6, top: 6),
+                    child: Text(
+                      '+',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -124,7 +138,7 @@ class ProductDetail extends GetView<ProductDetailsController> {
                 padding: const EdgeInsets.all(8.0),
                 child: Obx(
                   () => Text(
-                    '₹ ${productDetailsController.item.value * product.price!}',
+                    '₹ ${productDetailsController.productDynamic.value * product.price!}',
                     style: const TextStyle(
                       fontSize: 20,
                     ),
@@ -141,14 +155,29 @@ class ProductDetail extends GetView<ProductDetailsController> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'Add to cart',
-                      style: TextStyle(
-                        fontSize: 20,
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(AppTheme.bg),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(
+                              color: product.color!,
+                              width: 3,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
+                      child: Text(
+                        'ADD TO CART',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: product.color,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )),
                 ),
               ),
               SizedBox(
@@ -158,10 +187,24 @@ class ProductDetail extends GetView<ProductDetailsController> {
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: const Text(
-                      'Buy now',
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(product.color!),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(
+                            color: product.color!,
+                          ),
+                        ),
+                      ),
+                    ),
+                    child: Text(
+                      'BUY NOW',
                       style: TextStyle(
                         fontSize: 20,
+                        color: AppTheme.bg,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),

@@ -4,32 +4,34 @@ import 'package:thirumathikart_app/models/product.dart';
 
 class ProductsController extends GetxController {
   final textController = TextEditingController();
-  final items = [].obs;
-  final c = 0.obs;
+  final productsListDynamic = [].obs;
+  final flag = true
+      .obs; //It is true only when the page is opened for the first time, becomes false henceforth
   final isSelected = [true, false].obs;
+
   void reverse() {
-    items(items.reversed.toList());
+    productsListDynamic(productsListDynamic.reversed.toList());
   }
 
   void add(List productsList, Product item) {
-    items.add(item);
+    productsListDynamic.add(item);
   }
 
   void empty() {
-    items([]);
+    productsListDynamic([]);
   }
 
   void copy(List<Product> productsList) {
-    items(productsList);
+    productsListDynamic(productsList);
   }
 
-  int length() => items.length;
+  int length() => productsListDynamic.length;
 
-  void set(int i, bool a) {
-    isSelected[i] = a;
+  void set(int index, bool boolean) {
+    isSelected[index] = boolean;
   }
 
-  void done() {
-    c(1);
+  void switchFlag() {
+    flag(false);
   }
 }
