@@ -3,6 +3,7 @@ import 'package:thirumathikart_app/bindings/auth_binding.dart';
 import 'package:thirumathikart_app/bindings/home_bindings.dart';
 import 'package:thirumathikart_app/bindings/product_detail_bindings.dart';
 import 'package:thirumathikart_app/bindings/products_binding.dart';
+import 'package:thirumathikart_app/bindings/profile_page_binding.dart';
 import 'package:thirumathikart_app/bindings/splash_binding.dart';
 import 'package:thirumathikart_app/bindings/login_binding.dart';
 import 'package:thirumathikart_app/bindings/register_binding.dart';
@@ -12,6 +13,7 @@ import 'package:thirumathikart_app/views/auth.dart';
 import 'package:thirumathikart_app/views/home.dart';
 import 'package:thirumathikart_app/views/product_detail.dart';
 import 'package:thirumathikart_app/views/products.dart';
+import 'package:thirumathikart_app/views/profile.dart';
 import 'package:thirumathikart_app/views/splash.dart';
 import 'package:thirumathikart_app/views/login.dart';
 import 'package:thirumathikart_app/views/register.dart';
@@ -38,8 +40,8 @@ class NavigationPages {
         // Replace with correspondings bindings and pages
         GetPage(
           name: NavigationRoutes.profileRoute,
-          page: () => const HomePage(),
-          binding: HomeBindings(),
+          page: () => const ProfilePage(),
+          binding: ProfilePageBindings(),
         ),
         GetPage(
           name: NavigationRoutes.wishlistRoute,

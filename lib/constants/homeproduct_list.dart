@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 List<Category> products = [
   Category(
       id: 1,
-      title: 'Fahion and Jewellery',
+      title: 'Fashion and Jewellery',
       image: 'assets/images/bag_1.png',
       color: const Color(0xFF3D82AE)),
   Category(
