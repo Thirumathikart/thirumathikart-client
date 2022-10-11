@@ -14,7 +14,7 @@ class AuthPage extends GetView<AuthController> {
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: AppTheme.bg,
         drawer: const NavWidget(),
-        appBar: appBar('Sign-In'),
+        appBar: appBar('ThirumathiKart'),
         body: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

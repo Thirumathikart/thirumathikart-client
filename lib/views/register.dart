@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thirumathikart_app/widgets/app_bar.dart';
 import 'package:thirumathikart_app/widgets/button/register_button.dart';
 import 'package:thirumathikart_app/constants/textfield_constants.dart';
 
@@ -9,15 +10,16 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
+        appBar: appBar('Register'),
         body: SingleChildScrollView(
             child: ConstrainedBox(
                 constraints: BoxConstraints(
-                  minHeight: deviceHeight,
+                  minHeight: deviceHeight * 0.85,
                 ),
                 child: Container(
                     padding: const EdgeInsets.all(20),
                     decoration: const BoxDecoration(
-                      color: Color.fromRGBO(251, 242, 207, 1),
+                      color: Colors.white,
                     ),
                     child: Center(
                         child: Card(
