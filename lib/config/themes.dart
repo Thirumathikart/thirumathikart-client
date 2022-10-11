@@ -13,7 +13,7 @@ class AppTheme {
   static Color navHighlight = const Color(0xFFFCE4EC);
   static Color subtle = const Color.fromRGBO(251, 242, 207, 1);
   static Color card = const Color.fromARGB(100, 192, 220, 236);
-  static Color bigButton = const Color.fromARGB(255,255, 127, 80);
+  static Color bigButton = const Color.fromARGB(255, 255, 127, 80);
   static Color smallButton = const Color.fromARGB(255, 40, 153, 61);
   static Color searchBar = const Color.fromARGB(255, 236, 208, 192);
 }
