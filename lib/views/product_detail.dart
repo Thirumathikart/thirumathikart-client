@@ -57,7 +57,7 @@ class ProductDetail extends GetView<ProductDetailsController> {
                 child: ElevatedButton(
                   style: ButtonStyle(
                     backgroundColor:
-                        MaterialStateProperty.all<Color>(product.color!),
+                        MaterialStateProperty.all<Color>(AppTheme.smallButton),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10000.0),
@@ -97,7 +97,7 @@ class ProductDetail extends GetView<ProductDetailsController> {
                 child: ElevatedButton(
                   style: ButtonStyle(
                     backgroundColor:
-                        MaterialStateProperty.all<Color>(product.color!),
+                        MaterialStateProperty.all<Color>(AppTheme.smallButton),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10000.0),
@@ -164,7 +164,7 @@ class ProductDetail extends GetView<ProductDetailsController> {
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
                             side: BorderSide(
-                              color: product.color!,
+                              color: AppTheme.bigButton,
                               width: 3,
                             ),
                           ),
@@ -174,7 +174,7 @@ class ProductDetail extends GetView<ProductDetailsController> {
                         'ADD TO CART',
                         style: TextStyle(
                           fontSize: 20,
-                          color: product.color,
+                          color: AppTheme.bigButton,
                           fontWeight: FontWeight.bold,
                         ),
                       )),
@@ -189,12 +189,12 @@ class ProductDetail extends GetView<ProductDetailsController> {
                     onPressed: () {},
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all<Color>(product.color!),
+                          MaterialStateProperty.all<Color>(AppTheme.bigButton),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
                           side: BorderSide(
-                            color: product.color!,
+                            color: AppTheme.bigButton,
                           ),
                         ),
                       ),

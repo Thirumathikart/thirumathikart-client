@@ -10,6 +10,6 @@ PreferredSizeWidget appBar(String label) => AppBar(
       style: TextStyle(
           fontWeight: FontWeight.bold,
           color: AppTheme.textPrimary,
-          fontSize: 25),
+          fontSize: 22),
     ),
     centerTitle: true);
