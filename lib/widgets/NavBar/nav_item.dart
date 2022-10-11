@@ -21,5 +21,5 @@ class NavItemWidget extends StatelessWidget {
             title,
             style: const TextStyle(fontSize: 16),
           ),
-          onTap: () => Get.toNamed(toRoute ?? NavigationRoutes.main)));
+          onTap: () => Get.offAllNamed(toRoute ?? NavigationRoutes.main)));
 }

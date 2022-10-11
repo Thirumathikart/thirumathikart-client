@@ -147,71 +147,6 @@ class ProductDetail extends GetView<ProductDetailsController> {
               ),
             ],
           ),
-          Row(
-            children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 2,
-                height: 75,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ElevatedButton(
-                      onPressed: () {},
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(AppTheme.bg),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(
-                              color: AppTheme.bigButton,
-                              width: 3,
-                            ),
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        'ADD TO CART',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: AppTheme.bigButton,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )),
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 2,
-                height: 75,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(AppTheme.bigButton),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side: BorderSide(
-                            color: AppTheme.bigButton,
-                          ),
-                        ),
-                      ),
-                    ),
-                    child: Text(
-                      'BUY NOW',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: AppTheme.bg,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -279,6 +214,71 @@ class ProductDetail extends GetView<ProductDetailsController> {
                   ),
                 ),
               )
+            ],
+          ),
+          Row(
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 2,
+                height: 75,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(AppTheme.bg),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(
+                              color: AppTheme.facebook,
+                              width: 3,
+                            ),
+                          ),
+                        ),
+                      ),
+                      child: Text(
+                        'ADD TO CART',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: AppTheme.facebook,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )),
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 2,
+                height: 75,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(AppTheme.facebook),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(
+                            color: AppTheme.facebook,
+                          ),
+                        ),
+                      ),
+                    ),
+                    child: Text(
+                      'BUY NOW',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: AppTheme.bg,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ]),

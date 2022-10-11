@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:thirumathikart_app/constants/navigation_routes.dart';
+import 'package:thirumathikart_app/widgets/app_bar.dart';
 import 'package:thirumathikart_app/widgets/button/login_button.dart';
 
 class LoginPage extends StatelessWidget {
@@ -8,10 +11,11 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
+        appBar: appBar('Login'),
         body: SingleChildScrollView(
             child: ConstrainedBox(
                 constraints: BoxConstraints(
-                  minHeight: deviceHeight,
+                  minHeight: deviceHeight * 0.9,
                 ),
                 child: Container(
                     padding: const EdgeInsets.all(20),
@@ -126,7 +130,10 @@ class LoginPage extends StatelessWidget {
                                               MainAxisAlignment.center,
                                           children: [
                                             InkWell(
-                                              onTap: () {},
+                                              onTap: () {
+                                                Get.toNamed(NavigationRoutes
+                                                    .registerRoute);
+                                              },
                                               child: const Text(
                                                 'Register Now',
                                                 style: TextStyle(
