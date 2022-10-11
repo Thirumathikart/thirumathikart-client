@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:lottie/lottie.dart';
 import 'package:thirumathikart_app/views/home.dart';
-
+import 'package:thirumathikart_app/controllers/help_controller.dart';
+/*
 class ContactPage extends StatefulWidget {
   const ContactPage({super.key});
   @override
   ContactPageX createState() => ContactPageX();
 }
+*/
 
-class ContactPageX extends State<ContactPage> {
+class ContactPage extends GetView<HelpController> {
+  const ContactPage({super.key});
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -22,6 +26,7 @@ class ContactPageX extends State<ContactPage> {
             },
           ),
           title: const Text('Contact Us'),
+          backgroundColor: const Color.fromARGB(255, 73, 225, 31),
         ),
         body: Center(
           child: Column(

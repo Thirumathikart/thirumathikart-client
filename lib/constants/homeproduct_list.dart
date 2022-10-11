@@ -1,51 +1,51 @@
-import 'package:thirumathikart_app/models/product.dart';
+import 'package:thirumathikart_app/models/category.dart';
 import 'package:flutter/material.dart';
 
-List<Product> products = [
-  Product(
+List<Category> products = [
+  Category(
       id: 1,
       title: 'Fahion and Jewellery',
       image: 'assets/images/bag_1.png',
       color: const Color(0xFF3D82AE)),
-  Product(
+  Category(
       id: 2,
       title: 'Handicraft',
       image: 'assets/images/bag_2.png',
       color: const Color(0xFFD3A984)),
-  Product(
+  Category(
       id: 3,
       title: 'Beauty and Healthcare',
       image: 'assets/images/bag_3.png',
       color: const Color(0xFF989493)),
-  Product(
+  Category(
       id: 4,
       title: 'Clothing',
       image: 'assets/images/bag_4.png',
       color: const Color(0xFFE6B398)),
-  Product(
+  Category(
       id: 5,
       title: 'Food',
       image: 'assets/images/bag_5.png',
       color: const Color(0xFFFB7883)),
-  Product(
+  Category(
     id: 6,
     title: 'Grocery',
     image: 'assets/images/bag_6.png',
     color: const Color(0xFFAEAEAE),
   ),
-  Product(
+  Category(
     id: 7,
     title: 'Office Code',
     image: 'assets/images/bag_7.png',
     color: const Color.fromARGB(255, 40, 153, 61),
   ),
-  Product(
+  Category(
     id: 8,
     title: 'Organic Fruits & Vegetables',
     image: 'assets/images/bag_8.png',
     color: const Color.fromARGB(255, 98, 46, 130),
   ),
-  Product(
+  Category(
     id: 9,
     title: 'Others',
     image: 'assets/images/bag_9.png',

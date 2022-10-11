@@ -732,6 +732,7 @@ class AboutPage extends GetView<HomeController> {
             },
           ),
           title: const Text('About Us'),
+          backgroundColor: const Color.fromARGB(255, 73, 225, 31),
         ),
         body: ListView(
           children: [

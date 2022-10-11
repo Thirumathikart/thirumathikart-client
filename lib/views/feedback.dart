@@ -1,19 +1,15 @@
-// ignore_for_file: unnecessary_null_comparison
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:thirumathikart_app/controllers/feedback_controller.dart';
 import 'package:thirumathikart_app/views/home.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
-class FeedbackPage extends StatefulWidget {
+class FeedbackPage extends GetView<FeedbackController> {
   const FeedbackPage({super.key});
-  @override
-  FeedbackPageX createState() => FeedbackPageX();
-}
-
-class FeedbackPageX extends State<FeedbackPage> {
-  late String name;
-  late String message;
-  XFile? image;
+  final String name = '';
+  final String message = '';
+  final XFile? image = null;
 
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -31,7 +27,7 @@ class FeedbackPageX extends State<FeedbackPage> {
               },
             ),
             title: const Text('Feedback'),
-            backgroundColor: Color.fromARGB(255, 65, 178, 69),
+            backgroundColor: const Color.fromARGB(255, 73, 225, 31),
           ),
           body: Padding(
             padding: const EdgeInsets.all(10),
@@ -58,7 +54,7 @@ class FeedbackPageX extends State<FeedbackPage> {
                         horizontal: 20, vertical: 10),
                     child: TextField(
                       onChanged: (val) {
-                        if (val != null || val.isNotEmpty) name = val;
+                        //if (val != null || val.isNotEmpty) name = val;
                       },
                       decoration: InputDecoration(
                         fillColor: Color(0xffe6e6e6),
@@ -92,7 +88,7 @@ class FeedbackPageX extends State<FeedbackPage> {
                         horizontal: 20, vertical: 20),
                     child: TextField(
                       onChanged: (val) {
-                        if (val != null || val.isNotEmpty) message = val;
+                        //if (val != null || val.isNotEmpty) message = val;
                       },
                       textAlign: TextAlign.start,
                       decoration: InputDecoration(
@@ -128,12 +124,12 @@ class FeedbackPageX extends State<FeedbackPage> {
                       ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(),
                         onPressed: () async {
-                          final ImagePicker picker = ImagePicker();
+                          /*
+                          ImagePicker picker = ImagePicker();
                           final img = await picker.pickImage(
                               source: ImageSource.gallery);
-                          setState(() {
-                            image = img;
-                          });
+                          image = img;
+                        */
                         },
                         label: const Text(
                           'Choose Image',

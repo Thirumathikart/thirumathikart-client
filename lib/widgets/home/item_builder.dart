@@ -1,3 +1,4 @@
+import 'package:thirumathikart_app/models/product.dart';
 import 'package:thirumathikart_app/widgets/home/item_card.dart';
 import 'package:thirumathikart_app/constants/homeproduct_list.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,22 @@ class ItemListBuild extends StatelessWidget {
               itemBuilder: (context, index) => GestureDetector(
                 onTap: () {
                   Get.toNamed('/details/$index');
+                  List<Product> productList = [];
+                  for (int i = 0; i < 10; i++) {
+                    productList.add(Product(
+                        id: i + 100,
+                        name: 'Tomato',
+                        image: 'assets/tomato.jpg',
+                        parentId: products[index].id,
+                        parentName: products[index].title,
+                        price: i * 10 + 10,
+                        unit: 'kg',
+                        details: 'This is a Tomato.',
+                        sellerDetails: 'This is sold by Thirumathikart.',
+                        color: products[index].color));
+                  }
+                  //Get.toNamed('/products', arguments: productList);
+                  Get.offAndToNamed('/products', arguments: productList);
                 },
                 child: ItemCard(
                   product: products[index],
