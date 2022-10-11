@@ -1,11 +1,16 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:thirumathikart_app/bindings/auth_binding.dart';
 import 'package:thirumathikart_app/bindings/home_bindings.dart';
+import 'package:thirumathikart_app/bindings/product_detail_bindings.dart';
+import 'package:thirumathikart_app/bindings/products_binding.dart';
 import 'package:thirumathikart_app/bindings/splash_binding.dart';
 import 'package:thirumathikart_app/bindings/login_binding.dart';
 import 'package:thirumathikart_app/bindings/register_binding.dart';
+import 'package:thirumathikart_app/models/product.dart';
 import 'package:thirumathikart_app/views/auth.dart';
 import 'package:thirumathikart_app/views/home.dart';
+import 'package:thirumathikart_app/views/product_detail.dart';
+import 'package:thirumathikart_app/views/products.dart';
 import 'package:thirumathikart_app/views/splash.dart';
 import 'package:thirumathikart_app/views/login.dart';
 import 'package:thirumathikart_app/views/register.dart';
@@ -83,6 +88,18 @@ class NavigationPages {
           name: NavigationRoutes.registerRoute,
           page: () => const RegisterPage(),
           binding: RegisterBindings(),
+        ),
+        GetPage(
+          name: NavigationRoutes.productsRoute,
+          page: () => const Products(),
+          arguments: List<Product>,
+          binding: ProductsBindings(),
+        ),
+        GetPage(
+          name: NavigationRoutes.productDetailRoute,
+          page: () => const ProductDetail(),
+          arguments: const [Product, List<Product>],
+          binding: ProductDetialBindings(),
         ),
       ];
 }

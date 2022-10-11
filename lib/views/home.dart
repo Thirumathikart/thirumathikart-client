@@ -16,7 +16,9 @@ class HomePage extends GetView<HomeController> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
-            Body(),
+            Expanded(
+              child: Body(),
+            ),
           ],
         ),
       ));

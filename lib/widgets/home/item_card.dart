@@ -1,8 +1,8 @@
-import 'package:thirumathikart_app/models/product.dart';
+import 'package:thirumathikart_app/models/category.dart';
 import 'package:flutter/material.dart';
 
 class ItemCard extends StatelessWidget {
-  final Product product;
+  final Category product;
 
   const ItemCard({
     Key? key,

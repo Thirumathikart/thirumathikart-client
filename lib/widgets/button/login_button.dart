@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:thirumathikart_app/views/home.dart';
 
 class LoginButton extends StatelessWidget {
   const LoginButton({super.key});
@@ -10,6 +12,7 @@ class LoginButton extends StatelessWidget {
         child: MaterialButton(
           onPressed: () {
             // loginValidation(context);
+            Get.to(const HomePage());
           },
           color: const Color.fromRGBO(161, 194, 152, 1),
           shape: const RoundedRectangleBorder(
