@@ -14,12 +14,12 @@ class RegisterPage extends StatelessWidget {
         body: SingleChildScrollView(
             child: ConstrainedBox(
                 constraints: BoxConstraints(
-                  minHeight: deviceHeight * 0.9,
+                  minHeight: deviceHeight * 0.85,
                 ),
                 child: Container(
                     padding: const EdgeInsets.all(20),
                     decoration: const BoxDecoration(
-                      color: Color.fromRGBO(251, 242, 207, 1),
+                      color: Colors.white,
                     ),
                     child: Center(
                         child: Card(
