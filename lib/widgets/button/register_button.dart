@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thirumathikart_app/config/themes.dart';
 
 class RegisterButton extends StatelessWidget {
   const RegisterButton({super.key});
@@ -11,7 +12,7 @@ class RegisterButton extends StatelessWidget {
           onPressed: () {
             // Validation
           },
-          color: const Color.fromRGBO(161, 194, 152, 1),
+          color: AppTheme.facebook,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(50),
@@ -21,9 +22,7 @@ class RegisterButton extends StatelessWidget {
           child: const Text(
             'Register',
             style: TextStyle(
-                color: Colors.black54,
-                fontWeight: FontWeight.w700,
-                fontSize: 16),
+                color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16),
           ),
         ),
       );
