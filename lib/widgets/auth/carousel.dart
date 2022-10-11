@@ -52,7 +52,7 @@ Widget carouselPage(String title, String body, String img) => Padding(
                 child: Text(
                   body,
                   style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.w500),
+                      fontSize: 10, fontWeight: FontWeight.w500),
                 ),
               ),
             ],

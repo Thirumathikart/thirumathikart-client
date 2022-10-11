@@ -4,6 +4,9 @@ import 'package:thirumathikart_app/bindings/home_bindings.dart';
 import 'package:thirumathikart_app/bindings/product_detail_bindings.dart';
 import 'package:thirumathikart_app/bindings/products_binding.dart';
 import 'package:thirumathikart_app/bindings/splash_binding.dart';
+import 'package:thirumathikart_app/bindings/about_binding.dart';
+import 'package:thirumathikart_app/bindings/feedback_binding.dart';
+import 'package:thirumathikart_app/bindings/help_binding.dart';
 import 'package:thirumathikart_app/bindings/login_binding.dart';
 import 'package:thirumathikart_app/bindings/register_binding.dart';
 import 'package:thirumathikart_app/models/product.dart';
@@ -14,6 +17,9 @@ import 'package:thirumathikart_app/views/products.dart';
 import 'package:thirumathikart_app/views/splash.dart';
 import 'package:thirumathikart_app/views/login.dart';
 import 'package:thirumathikart_app/views/register.dart';
+import 'package:thirumathikart_app/views/about.dart';
+import 'package:thirumathikart_app/views/feedback.dart';
+import 'package:thirumathikart_app/views/help.dart';
 import 'package:thirumathikart_app/constants/navigation_routes.dart';
 
 class NavigationPages {
@@ -33,7 +39,6 @@ class NavigationPages {
           page: () => const SplashPage(),
           binding: SplashBindings(),
         ),
-        // Replace with correspondings bindings and pages
         GetPage(
           name: NavigationRoutes.profileRoute,
           page: () => const HomePage(),
@@ -56,18 +61,18 @@ class NavigationPages {
         ),
         GetPage(
           name: NavigationRoutes.aboutRoute,
-          page: () => const HomePage(),
-          binding: HomeBindings(),
+          page: () => const AboutPage(),
+          binding: AboutBindings(),
         ),
         GetPage(
           name: NavigationRoutes.feedbackRoute,
-          page: () => const HomePage(),
-          binding: HomeBindings(),
+          page: FeedbackPage.new,
+          binding: FeedbackBindings(),
         ),
         GetPage(
           name: NavigationRoutes.helpRoute,
-          page: () => const HomePage(),
-          binding: HomeBindings(),
+          page: ContactPage.new,
+          binding: HelpBindings(),
         ),
         GetPage(
           name: NavigationRoutes.tourRoute,
