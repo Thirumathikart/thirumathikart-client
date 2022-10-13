@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:thirumathikart_app/config/themes.dart';
 import 'package:thirumathikart_app/controllers/products_controller.dart';
@@ -6,10 +7,10 @@ import 'package:thirumathikart_app/widgets/app_bar.dart';
 
 class Products extends GetView<ProductsController> {
   const Products({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final productsController = Get.find<ProductsController>();
+    productsController.getProducts();
     final productsListMain = Get.arguments;
     final FocusNode focusNode = FocusNode();
     if (productsController.flag.value) {
@@ -153,81 +154,88 @@ class Products extends GetView<ProductsController> {
                 ),
               ),
             ),
-            SingleChildScrollView(
-              child: Obx(
-                () => SizedBox(
+            controller.obx(
+              (state) => SingleChildScrollView(
+                child: SizedBox(
                   height: MediaQuery.of(context).size.height,
                   child: ListView.builder(
-                    itemBuilder: (ctx, index) => GestureDetector(
-                      onTap: () {
-                        Get.toNamed('/productDetail', arguments: [
-                          productsController.productsListDynamic[index],
-                          productsListMain
-                        ]);
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          left: 8,
-                          right: 8,
-                          top: 3,
-                          bottom: 3,
-                        ),
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                              color: AppTheme.card,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Container(
-                            alignment: Alignment.center,
-                            height: 100,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Image(
-                                    image: AssetImage(productsController
-                                        .productsListDynamic[index].image!),
-                                    fit: BoxFit.cover,
+                    itemBuilder: (ctx, index) => Column(children: [
+                      Card(
+                        elevation: 0.2,
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed('/productDetail', arguments: [
+                              productsController.productsListDynamic[index],
+                              productsListMain
+                            ]);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              left: 8,
+                              right: 8,
+                            ),
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                  color: AppTheme.card,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: 100,
+                                child: ListTile(
+                                  leading: CachedNetworkImage(
+                                    imageUrl: state![index].productPhoto!,
+                                    progressIndicatorBuilder: (context, url,
+                                            downloadProgress) =>
+                                        CircularProgressIndicator(
+                                            value: downloadProgress.progress),
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
                                   ),
-                                  Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          40.0, 8.0, 8.0, 8.0),
-                                      child: Text(
-                                        productsController
-                                            .productsListDynamic[index].name!,
-                                        style: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w600,
+
+                                  title: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        child: Text(
+                                          state[index].productTitle!,
+                                          style: const TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w600,
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                  Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          40.0, 8.0, 8.0, 8.0),
-                                      child: Text(
-                                        '₹ ${productsController.productsListDynamic[index].price} /${productsController.productsListDynamic[index].unit!}',
-                                        style: const TextStyle(
-                                          fontSize: 18,
+                                  //subtitle: ,
+                                  trailing: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        child: Text(
+                                          '₹ ${state[index].productPrice} /${productsController.productsListDynamic[index].unit!}',
+                                          style: const TextStyle(
+                                            fontSize: 18,
+                                          ),
+                                          maxLines: 100,
                                         ),
-                                        maxLines: 100,
                                       ),
-                                    ),
-                                  )
-                                ],
+                                    ],
+                                  ),
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ),
+                      const Divider(),
+                    ]),
                     itemCount: productsController.length(),
                   ),
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),
