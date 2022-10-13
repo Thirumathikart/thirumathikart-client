@@ -191,7 +191,8 @@ class Products extends GetView<ProductsController> {
                                   ),
                                   Center(
                                     child: Padding(
-                                      padding: const EdgeInsets.fromLTRB(40.0,8.0,8.0,8.0),
+                                      padding: const EdgeInsets.fromLTRB(
+                                          40.0, 8.0, 8.0, 8.0),
                                       child: Text(
                                         productsController
                                             .productsListDynamic[index].name!,
@@ -204,7 +205,8 @@ class Products extends GetView<ProductsController> {
                                   ),
                                   Center(
                                     child: Padding(
-                                      padding: const EdgeInsets.fromLTRB(40.0,8.0,8.0,8.0),
+                                      padding: const EdgeInsets.fromLTRB(
+                                          40.0, 8.0, 8.0, 8.0),
                                       child: Text(
                                         '₹ ${productsController.productsListDynamic[index].price} /${productsController.productsListDynamic[index].unit!}',
                                         style: const TextStyle(
