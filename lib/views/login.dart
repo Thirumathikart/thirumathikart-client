@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:thirumathikart_app/constants/navigation_routes.dart';
+import 'package:thirumathikart_app/controllers/auth_controller.dart';
 import 'package:thirumathikart_app/widgets/app_bar.dart';
 import 'package:thirumathikart_app/widgets/button/login_button.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends GetView<AuthController> {
   const LoginPage({super.key});
 
   @override
@@ -66,6 +67,8 @@ class LoginPage extends StatelessWidget {
                                             elevation: 2,
                                             child: Center(
                                               child: TextFormField(
+                                                controller: controller
+                                                    .userNameTextController,
                                                 decoration:
                                                     const InputDecoration(
                                                   hintText: 'Enter Number',
@@ -104,6 +107,8 @@ class LoginPage extends StatelessWidget {
                                               child: Center(
                                                 child: TextFormField(
                                                   obscureText: true,
+                                                  controller: controller
+                                                      .passwordTextController,
                                                   decoration:
                                                       const InputDecoration(
                                                     hintText: 'Enter Password',
