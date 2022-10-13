@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:thirumathikart_app/config/themes.dart';
 import 'package:thirumathikart_app/controllers/products_controller.dart';
@@ -6,10 +7,10 @@ import 'package:thirumathikart_app/widgets/app_bar.dart';
 
 class Products extends GetView<ProductsController> {
   const Products({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final productsController = Get.find<ProductsController>();
+    productsController.getProducts();
     final productsListMain = Get.arguments;
     final FocusNode focusNode = FocusNode();
     if (productsController.flag.value) {
@@ -153,9 +154,9 @@ class Products extends GetView<ProductsController> {
                 ),
               ),
             ),
-            SingleChildScrollView(
-              child: Obx(
-                () => SizedBox(
+            controller.obx(
+              (state) => SingleChildScrollView(
+                child: SizedBox(
                   height: MediaQuery.of(context).size.height,
                   child: ListView.builder(
                     itemBuilder: (ctx, index) => Column(children: [
@@ -181,22 +182,23 @@ class Products extends GetView<ProductsController> {
                                 alignment: Alignment.center,
                                 height: 100,
                                 child: ListTile(
-                                  leading: Image(
-                                    alignment: Alignment.center,
-                                    width: 100,
-                                    height: 100,
-                                    image: AssetImage(productsController
-                                        .productsListDynamic[index].image!),
-                                    fit: BoxFit.fill,
+                                  leading: CachedNetworkImage(
+                                    imageUrl: state![index].productPhoto!,
+                                    progressIndicatorBuilder: (context, url,
+                                            downloadProgress) =>
+                                        CircularProgressIndicator(
+                                            value: downloadProgress.progress),
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
                                   ),
+
                                   title: Column(
                                     mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       SizedBox(
                                         child: Text(
-                                          productsController
-                                              .productsListDynamic[index].name!,
+                                          state[index].productTitle!,
                                           style: const TextStyle(
                                             fontSize: 20,
                                             fontWeight: FontWeight.w600,
@@ -212,7 +214,7 @@ class Products extends GetView<ProductsController> {
                                     children: [
                                       SizedBox(
                                         child: Text(
-                                          '₹ ${productsController.productsListDynamic[index].price} /${productsController.productsListDynamic[index].unit!}',
+                                          '₹ ${state[index].productPrice} /${productsController.productsListDynamic[index].unit!}',
                                           style: const TextStyle(
                                             fontSize: 18,
                                           ),
@@ -233,7 +235,7 @@ class Products extends GetView<ProductsController> {
                   ),
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),
