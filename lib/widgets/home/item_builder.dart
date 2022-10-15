@@ -37,7 +37,8 @@ class ItemListBuild extends StatelessWidget {
                         unit: 'kg',
                         details: 'This is a Tomato.',
                         sellerDetails: 'This is sold by Thirumathikart.',
-                        color: products[index].color));
+                        // color: products[index].color 
+                        ));
                   }
                   //Get.toNamed('/products', arguments: productList);
                   Get.offAndToNamed('/products', arguments: productList);

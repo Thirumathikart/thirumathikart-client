@@ -15,4 +15,5 @@ class NavigationRoutes {
   static String registerRoute = '/register';
   static String productsRoute = '/products';
   static String productDetailRoute = '/productDetail';
+  static String cartRoute = '/cart';
 }
