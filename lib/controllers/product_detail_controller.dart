@@ -32,17 +32,19 @@ class ProductDetailsController extends GetxController {
   void updatingSession() {
     box.listenKey('itemscart', (updatedValue) {
       List itemval = jsonDecode(updatedValue);
-        cart.clear();
-        cart.addAll(itemval.map((e) => Product.fromMap(e)).toList());
+      cart.clear();
+      // ignore: unnecessary_lambdas
+      cart.addAll(itemval.map((e) => Product.fromMap(e)).toList());
     });
   }
 
   void getUpdatedSessionCartData() {
     if (box.hasData('itemscart')) {
       String value = GetStorage().read('itemscart');
-     List itemval = jsonDecode(value);
-        cart.clear();
-        cart.addAll(itemval.map((e) => Product.fromMap(e)).toList());
+      List itemval = jsonDecode(value);
+      cart.clear();
+      // ignore: unnecessary_lambdas
+      cart.addAll(itemval.map((e) => Product.fromMap(e)).toList());
     }
 
     updatingSession();

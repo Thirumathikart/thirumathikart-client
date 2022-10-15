@@ -53,6 +53,7 @@ class CartController extends GetxController {
     box.listenKey('itemscart', (updatedValue) {
       List itemval = jsonDecode(updatedValue);
       cart.clear();
+      // ignore: unnecessary_lambdas
       cart.addAll(itemval.map((e) => Product.fromMap(e)).toList());
       calculateGrandTotal();
     });
@@ -63,6 +64,7 @@ class CartController extends GetxController {
       String value = GetStorage().read('itemscart');
       List itemval = jsonDecode(value);
       cart.clear();
+      // ignore: unnecessary_lambdas
       cart.addAll(itemval.map((e) => Product.fromMap(e)).toList());
       calculateGrandTotal();
     }

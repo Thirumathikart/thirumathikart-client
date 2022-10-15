@@ -225,7 +225,7 @@ class ProductDetail extends GetView<ProductDetailsController> {
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                       onPressed: () {
-                          var cartItem = Product(
+                        var cartItem = Product(
                           id: product.id!,
                           name: product.name!,
                           image: product.image!,
