@@ -429,7 +429,7 @@ class ProfilePage extends GetView<HomeController> {
             ),
             Obx(
               () => SizedBox(
-                height: 600,
+                height: 300,
                 child: ListView.builder(
                   itemBuilder: (ctx, index) => GestureDetector(
                     onTap: () {},
@@ -609,13 +609,9 @@ class ProfilePage extends GetView<HomeController> {
   }
 
   bool validateEmailId(String emailId, TextEditingController controller) {
-    emailId = emailId.trim();
-    controller.text = emailId;
-    int indexAT =
-        emailId.length - emailId.split('').reversed.join().indexOf('@') - 1;
-    int indexDot =
-        emailId.length - emailId.split('').reversed.join().indexOf('.') - 1;
-    if (indexAT != -1 && indexDot != -1 && indexDot > indexAT) {
+    if (RegExp(
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(emailId)) {
       return true;
     } else {
       controller.text = '';
