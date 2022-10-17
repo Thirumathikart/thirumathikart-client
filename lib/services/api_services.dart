@@ -21,17 +21,18 @@ class ApiManager extends GetConnect {
   Future<List<ProductResponse>> getProductsByCategory(
       StorageServices storageServices, String category) async {
     try {
-      final cache = storageServices.retriveEvents();
+      final cache = storageServices.retriveProducts();
       final response = await get(
           '${ApiConstants.baseUrl}${ApiConstants.products}/$category',
           headers: headers);
       if (response.statusCode == 200 && response.bodyString != null) {
-        storageServices.storeEvents(response.bodyString!);
+        storageServices
+            .storeProdcuts({category: response.bodyString!}, category);
         final products = productResponseFromJson(response.bodyString!);
         return products;
       } else {
-        if (cache != null) {
-          final productsFromCache = productResponseFromJson(cache);
+        if (cache![category] != null) {
+          final productsFromCache = productResponseFromJson(cache[category]!);
           return productsFromCache;
         } else {
           Future.error('Failed to load products');

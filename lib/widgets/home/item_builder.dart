@@ -42,7 +42,9 @@ class ItemListBuild extends GetView<ProductsController> {
                     ));
                   }
                   //Get.toNamed('/products', arguments: productList);
-                  Get.offAndToNamed('/products', arguments: productList);
+                  String route = products[index].route!;
+                  Get.offAndToNamed('/products',
+                      arguments: [productList, route]);
                 },
                 child: ItemCard(
                   product: products[index],

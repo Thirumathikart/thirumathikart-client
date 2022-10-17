@@ -11,7 +11,20 @@ class StorageServices extends GetxService {
     return this;
   }
 
-  Future<void> storeEvents(String res) async =>
-      storage.write(StorageConstants.products, res);
-  String? retriveEvents() => storage.read(StorageConstants.products);
+  Future<void> storeProdcuts(Map<String, String> res, String category) async {
+    Map<String, dynamic> products = retriveProducts() ?? {};
+    if (products != {}) {
+      if (products[category] != null) {
+        products[category] = res[category]!;
+      } else {
+        products.addAll(res);
+      }
+    } else {
+      products = res;
+    }
+    storage.write(StorageConstants.products, products);
+  }
+
+  Map<String, dynamic>? retriveProducts() =>
+      storage.read(StorageConstants.products);
 }
