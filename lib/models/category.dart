@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Category {
-  final String? image, title;
+  final String? image, title, route;
   final int? id;
   final Color? color;
   Category({
@@ -9,5 +9,6 @@ class Category {
     this.image,
     this.title,
     this.color,
+    this.route,
   });
 }

@@ -10,8 +10,9 @@ class Products extends GetView<ProductsController> {
   @override
   Widget build(BuildContext context) {
     final productsController = Get.find<ProductsController>();
-    final productsListMain = Get.arguments;
-    controller.getProductsByCategory('Food', true);
+    final productsListMain = Get.arguments[0];
+    final title = Get.arguments[1];
+    controller.getProductsByCategory(title, true);
     final FocusNode focusNode = FocusNode();
     if (productsController.flag.value) {
       productsController.copy(productsListMain);
@@ -103,13 +104,13 @@ class Products extends GetView<ProductsController> {
                           borderWidth: 2,
                           selectedBorderColor: AppTheme.selected,
                           selectedColor: AppTheme.textSecondary,
-                          borderRadius: BorderRadius.circular(0),
+                          borderRadius: BorderRadius.circular(50),
                           onPressed: (int index) {
                             if (index == 0) {
-                              controller.getProductsByCategory('Food', true);
+                              controller.getProductsByCategory(title, true);
                               controller.set(0, true);
                             } else {
-                              controller.getProductsByCategory('Food', false);
+                              controller.getProductsByCategory(title, false);
                               controller.set(1, false);
                             }
                             for (int i = 0;

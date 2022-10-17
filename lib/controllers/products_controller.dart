@@ -14,20 +14,6 @@ class ProductsController extends GetxController
   final flag = true
       .obs; //It is true only when the page is opened for the first time, becomes false henceforth
   final isSelected = [true, false].obs;
-  // @override
-  // void onReady() {
-  //   get();
-  //   super.onReady();
-  // }
-
-  // Future<void> getProducts() async {
-  //   api.getProducts(storageService).then((response) {
-  //     change(response, status: RxStatus.success());
-  //   }, onError: (err) {
-  //     change(null, status: RxStatus.error(err.toString()));
-  //     Get.snackbar('Failed To Get Products', 'Check Your Internet Connection');
-  //   });
-  // }
 
   Future<void> getProductsByCategory(String category, bool isSorted) async {
     api.getProductsByCategory(storageService, category).then((response) {
