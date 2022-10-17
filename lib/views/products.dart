@@ -10,8 +10,8 @@ class Products extends GetView<ProductsController> {
   @override
   Widget build(BuildContext context) {
     final productsController = Get.find<ProductsController>();
-    productsController.getProducts();
     final productsListMain = Get.arguments;
+    controller.getProductsByCategory('Food', true);
     final FocusNode focusNode = FocusNode();
     if (productsController.flag.value) {
       productsController.copy(productsListMain);
@@ -19,146 +19,136 @@ class Products extends GetView<ProductsController> {
     }
     return Scaffold(
       appBar: appBar(productsListMain[0].parentName!),
-      body: SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                    color: AppTheme.searchBar,
-                    borderRadius: BorderRadius.circular(15)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Search : ',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                  color: AppTheme.searchBar,
+                  borderRadius: BorderRadius.circular(15)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Search : ',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
                     ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width - 175,
-                      child: TextField(
-                        controller: productsController.textController,
-                        showCursor: true,
-                        cursorHeight: 25,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                        ),
-                        style: const TextStyle(
-                          fontSize: 20,
-                        ),
-                        focusNode: focusNode,
-                        onChanged: (_) {
-                          productsController.empty();
-                          for (int i = 0; i < productsListMain.length; i++) {
-                            if (productsListMain[i]
-                                .name!
-                                .toLowerCase()
-                                .contains(
-                                    productsController.textController.text)) {
-                              productsController.add(
-                                  productsController.productsListDynamic
-                                      .toList(),
-                                  productsListMain[i]);
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width - 175,
+                    child: TextField(
+                      controller: productsController.textController,
+                      showCursor: true,
+                      cursorHeight: 25,
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                      ),
+                      style: const TextStyle(
+                        fontSize: 20,
+                      ),
+                      focusNode: focusNode,
+                      onChanged: (_) {
+                        productsController.empty();
+                        for (int i = 0; i < productsListMain.length; i++) {
+                          if (productsListMain[i].name!.toLowerCase().contains(
+                              productsController.textController.text)) {
+                            productsController.add(
+                                productsController.productsListDynamic.toList(),
+                                productsListMain[i]);
+                          }
+                        }
+                        if (productsController.isSelected[0] == false &&
+                            productsController.isSelected[1] == true) {
+                          productsController.reverse();
+                        }
+                      },
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(
+                      left: 4,
+                    ),
+                    child: IconButton(
+                      onPressed: focusNode.requestFocus,
+                      icon: const Icon(Icons.search),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Sort by Price : ',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Obx(
+                        () => ToggleButtons(
+                          borderColor: AppTheme.selected,
+                          fillColor: AppTheme.unSelected,
+                          borderWidth: 2,
+                          selectedBorderColor: AppTheme.selected,
+                          selectedColor: AppTheme.textSecondary,
+                          borderRadius: BorderRadius.circular(0),
+                          onPressed: (int index) {
+                            if (index == 0) {
+                              controller.getProductsByCategory('Food', true);
+                              controller.set(0, true);
+                            } else {
+                              controller.getProductsByCategory('Food', false);
+                              controller.set(1, false);
                             }
-                          }
-                          if (productsController.isSelected[0] == false &&
-                              productsController.isSelected[1] == true) {
-                            productsController.reverse();
-                          }
-                        },
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(
-                        left: 4,
-                      ),
-                      child: IconButton(
-                        onPressed: focusNode.requestFocus,
-                        icon: const Icon(Icons.search),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Sort by Price : ',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Obx(
-                          () => ToggleButtons(
-                            borderColor: AppTheme.selected,
-                            fillColor: AppTheme.unSelected,
-                            borderWidth: 2,
-                            selectedBorderColor: AppTheme.selected,
-                            selectedColor: AppTheme.textSecondary,
-                            borderRadius: BorderRadius.circular(0),
-                            onPressed: (int index) {
-                              for (int i = 0;
-                                  i < productsController.isSelected.length;
-                                  i++) {
-                                productsController.set(i, i == index);
-                              }
-                              if (productsController.isSelected[0] == false &&
-                                  productsController.isSelected[1] == true) {
-                                productsController.reverse();
-                              }
-                              if (productsController.isSelected[1] == false &&
-                                  productsController.isSelected[0] == true) {
-                                productsController.reverse();
-                              }
-                            },
-                            isSelected: productsController.isSelected,
-                            children: const <Widget>[
-                              Padding(
-                                padding: EdgeInsets.all(5.0),
-                                child: Text(
-                                  'Low - High',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  ),
+                            for (int i = 0;
+                                i < controller.isSelected.length;
+                                i++) {
+                              controller.set(i, i == index);
+                            }
+                          },
+                          isSelected: controller.isSelected,
+                          children: const <Widget>[
+                            Padding(
+                              padding: EdgeInsets.all(5.0),
+                              child: Text(
+                                'Low - High',
+                                style: TextStyle(
+                                  fontSize: 14,
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsets.all(5.0),
-                                child: Text(
-                                  'High - Low',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(5.0),
+                              child: Text(
+                                'High - Low',
+                                style: TextStyle(
+                                  fontSize: 14,
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
-            controller.obx(
-              (state) => SingleChildScrollView(
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height,
-                  child: ListView.builder(
+          ),
+          Expanded(
+              child: controller.obx((state) => ListView.builder(
                     itemBuilder: (ctx, index) => Column(children: [
                       Card(
                         elevation: 0.2,
@@ -192,36 +182,25 @@ class Products extends GetView<ProductsController> {
                                         const Icon(Icons.error),
                                   ),
 
-                                  title: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                        child: Text(
-                                          state[index].productTitle!,
-                                          style: const TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
+                                  title: SizedBox(
+                                    child: Text(
+                                      state[index].productTitle!,
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w600,
                                       ),
-                                    ],
+                                    ),
                                   ),
+
                                   //subtitle: ,
-                                  trailing: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                        child: Text(
-                                          '₹ ${state[index].productPrice} /${productsController.productsListDynamic[index].unit!}',
-                                          style: const TextStyle(
-                                            fontSize: 18,
-                                          ),
-                                          maxLines: 100,
-                                        ),
+                                  trailing: SizedBox(
+                                    child: Text(
+                                      '₹ ${state[index].productPrice}/kg',
+                                      style: const TextStyle(
+                                        fontSize: 18,
                                       ),
-                                    ],
+                                      maxLines: 100,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -231,13 +210,10 @@ class Products extends GetView<ProductsController> {
                       ),
                       const Divider(),
                     ]),
-                    itemCount: productsController.length(),
-                  ),
-                ),
-              ),
-            )
-          ],
-        ),
+                    shrinkWrap: true,
+                    itemCount: state!.length,
+                  ))),
+        ],
       ),
     );
   }
