@@ -24,7 +24,9 @@ PreferredSizeWidget appBar(String label) => AppBar(
               icon: const Icon(Icons.search),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed('/cart');
+              },
               icon: const Icon(Icons.shopping_cart),
             ),
             const SizedBox(width: 15.0)

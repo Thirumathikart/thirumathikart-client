@@ -224,7 +224,22 @@ class ProductDetail extends GetView<ProductDetailsController> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        var cartItem = Product(
+                          id: product.id!,
+                          name: product.name!,
+                          image: product.image!,
+                          parentId: product.parentId!,
+                          parentName: product.parentName!,
+                          price: product.price,
+                          unit: product.unit,
+                          details: product.details!,
+                          sellerDetails: product.sellerDetails!,
+                          quantity:
+                              productDetailsController.productDynamic.value,
+                        );
+                        productDetailsController.addItemToCart(cartItem);
+                      },
                       style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all<Color>(AppTheme.bg),
