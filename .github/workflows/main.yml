@@ -8,7 +8,7 @@ on:
       - main
 
 env:
-  flutter_version: "3.0.x"
+  flutter_version: "3.x"
   java_version: "12.x"
 
 jobs:
