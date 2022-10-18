@@ -141,8 +141,7 @@ class Seller {
         password: json['password'],
         token: json['token'],
         isVerified: json['is_verified'],
-        firebaseToken:
-            json['firebase_token'],
+        firebaseToken: json['firebase_token'],
         ifscCode: json['ifsc_code'],
         branch: json['branch'],
         memberCode: json['member_code'],
