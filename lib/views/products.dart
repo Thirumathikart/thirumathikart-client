@@ -4,6 +4,7 @@ import 'package:thirumathikart_app/config/themes.dart';
 import 'package:thirumathikart_app/constants/navigation_routes.dart';
 import 'package:thirumathikart_app/controllers/products_controller.dart';
 import 'package:get/get.dart';
+import 'package:thirumathikart_app/models/product.dart';
 import 'package:thirumathikart_app/widgets/app_bar.dart';
 
 class Products extends GetView<ProductsController> {
@@ -157,10 +158,20 @@ class Products extends GetView<ProductsController> {
                   crossAxisCount: 2),
               itemBuilder: (ctx, index) => GestureDetector(
                 onTap: () {
-                  Get.toNamed(NavigationRoutes.productDetailRoute, arguments: [
-                    productsController.productsListDynamic[index],
-                    productsListMain
-                  ]);
+                  var item = Product(
+                    id: state[index].productId,
+                    name: state[index].productTitle,
+                    details: state[index].productDescription,
+                    price: double.parse(state[index].productPrice!),
+                    image: state[index].productPhoto,
+                    unit: 'kg',
+                    parentName: state[index].productTitle,
+                    sellerDetails: state[index].seller!.sellerName,
+                    parentId: state[index].productId,
+                  );
+
+                  Get.toNamed(NavigationRoutes.productDetailRoute,
+                      arguments: [item, productsListMain]);
                 },
                 child: Container(
                     height: 300,
@@ -205,7 +216,7 @@ class Products extends GetView<ProductsController> {
                               ),
                             ),
                             Text(
-                              '₹ ${state[index].productPrice}/kg',
+                              '₹ ${state[index].productPrice}',
                               style: const TextStyle(
                                 fontSize: 8,
                               ),
