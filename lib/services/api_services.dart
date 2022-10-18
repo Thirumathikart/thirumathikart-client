@@ -3,6 +3,8 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 import 'package:thirumathikart_app/constants/api_constants.dart';
 import 'package:thirumathikart_app/models/login_request.dart';
 import 'package:thirumathikart_app/models/login_response.dart';
+import 'package:thirumathikart_app/models/register_request.dart';
+import 'package:thirumathikart_app/models/register_response.dart';
 import 'package:thirumathikart_app/services/storage_services.dart';
 
 class ApiServices extends GetxService {
@@ -37,6 +39,29 @@ class ApiManager extends GetConnect {
           }
         }
         return Future.error('Unable To Login User');
+      }
+    } catch (e) {
+      return Future.error(e);
+    }
+  }
+
+  Future<RegistrationResponse> registerCutomer(
+      RegistrationRequest request) async {
+    try {
+      final response =
+          await post(ApiConstants.register, request.toJson(), headers: headers);
+
+      if (response.status.hasError) {
+        return Future.error(response.statusText!);
+      } else {
+        if (response.statusCode == 200 && response.bodyString != null) {
+          var registerResponse =
+              registrationResponseFromJson(response.bodyString!);
+          if (registerResponse.code == 200) {
+            return registerResponse;
+          }
+        }
+        return Future.error('Unable To Register User');
       }
     } catch (e) {
       return Future.error(e);

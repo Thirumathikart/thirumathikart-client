@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:thirumathikart_app/constants/navigation_routes.dart';
 import 'package:thirumathikart_app/models/login_request.dart';
+import 'package:thirumathikart_app/models/register_request.dart';
 import 'package:thirumathikart_app/services/api_services.dart';
 import 'package:thirumathikart_app/services/storage_services.dart';
 
@@ -13,6 +14,13 @@ class AuthController extends GetxController {
   final isLoading = false.obs;
   final userNameTextController = TextEditingController();
   final passwordTextController = TextEditingController();
+
+  final firstNameTextController = TextEditingController();
+  final lastNameTextController = TextEditingController();
+  final emailNameTextController = TextEditingController();
+  final passwordRegTextController = TextEditingController();
+  final reEnterTextController = TextEditingController();
+  final contacTextController = TextEditingController();
 
   void login() async {
     final userName = userNameTextController.text;
@@ -34,9 +42,49 @@ class AuthController extends GetxController {
     });
   }
 
+  void register() async {
+    final firstName = firstNameTextController.text;
+    final lastName = lastNameTextController.text;
+    final email = emailNameTextController.text;
+    final password = passwordRegTextController.text;
+    final reEnterPassword = reEnterTextController.text;
+    final contact = contacTextController.text;
+    if (firstName.isEmpty ||
+        lastName.isEmpty ||
+        email.isEmpty ||
+        password.isEmpty ||
+        reEnterPassword.isEmpty ||
+        contact.isEmpty ||
+        reEnterPassword != password) {
+      Get.snackbar('Invalid Credentials', 'Unable To Register');
+      return;
+    }
+    isLoading.value = true;
+    api
+        .registerCutomer(RegistrationRequest(
+            customerFirstName: firstName,
+            customerLastName: lastName,
+            customerEmail: email,
+            customerContact: contact,
+            hashedPassword: password))
+        .then((response) {
+      isLoading.value = false;
+      navigateToLogin();
+    }, onError: (err) {
+      isLoading.value = false;
+      Get.snackbar('Failed To Register', err.toString());
+    });
+  }
+
   void navigateToHome() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Get.offAndToNamed(NavigationRoutes.main);
+    });
+  }
+
+  void navigateToLogin() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Get.offAndToNamed(NavigationRoutes.loginRoute);
     });
   }
 }
