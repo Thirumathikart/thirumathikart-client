@@ -13,7 +13,7 @@ Widget signIn() => Padding(
           signInButton(FontAwesomeIcons.google, 'Login', AppTheme.google,
               NavigationRoutes.loginRoute),
           Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(10),
               child: Text('----- OR -----',
                   style: TextStyle(fontSize: 18, color: AppTheme.chakra))),
           signInButton(FontAwesomeIcons.facebook, 'Register', AppTheme.facebook,
@@ -28,7 +28,7 @@ Widget signInButton(IconData icon, String label, Color color, String route) =>
         Get.toNamed(route);
       },
       child: Padding(
-          padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+          padding: const EdgeInsets.all(10),
           child: Material(
               elevation: 20,
               color: Colors.transparent,

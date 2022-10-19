@@ -158,71 +158,77 @@ class Products extends GetView<ProductsController> {
                 () => SizedBox(
                   height: MediaQuery.of(context).size.height,
                   child: ListView.builder(
-                    itemBuilder: (ctx, index) => GestureDetector(
-                      onTap: () {
-                        Get.toNamed('/productDetail', arguments: [
-                          productsController.productsListDynamic[index],
-                          productsListMain
-                        ]);
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          left: 8,
-                          right: 8,
-                          top: 3,
-                          bottom: 3,
-                        ),
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                              color: AppTheme.card,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Container(
-                            alignment: Alignment.center,
-                            height: 100,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Image(
+                    itemBuilder: (ctx, index) => Column(children: [
+                      Card(
+                        elevation: 0.2,
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed('/productDetail', arguments: [
+                              productsController.productsListDynamic[index],
+                              productsListMain
+                            ]);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              left: 8,
+                              right: 8,
+                            ),
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                  color: AppTheme.card,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: 100,
+                                child: ListTile(
+                                  leading: Image(
+                                    alignment: Alignment.center,
+                                    width: 100,
+                                    height: 100,
                                     image: AssetImage(productsController
                                         .productsListDynamic[index].image!),
-                                    fit: BoxFit.cover,
+                                    fit: BoxFit.fill,
                                   ),
-                                  Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          40.0, 8.0, 8.0, 8.0),
-                                      child: Text(
-                                        productsController
-                                            .productsListDynamic[index].name!,
-                                        style: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w600,
+                                  title: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        child: Text(
+                                          productsController
+                                              .productsListDynamic[index].name!,
+                                          style: const TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w600,
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                  Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          40.0, 8.0, 8.0, 8.0),
-                                      child: Text(
-                                        '₹ ${productsController.productsListDynamic[index].price} /${productsController.productsListDynamic[index].unit!}',
-                                        style: const TextStyle(
-                                          fontSize: 18,
+                                  //subtitle: ,
+                                  trailing: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        child: Text(
+                                          '₹ ${productsController.productsListDynamic[index].price} /${productsController.productsListDynamic[index].unit!}',
+                                          style: const TextStyle(
+                                            fontSize: 18,
+                                          ),
+                                          maxLines: 100,
                                         ),
-                                        maxLines: 100,
                                       ),
-                                    ),
-                                  )
-                                ],
+                                    ],
+                                  ),
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ),
+                      const Divider(),
+                    ]),
                     itemCount: productsController.length(),
                   ),
                 ),

@@ -9,9 +9,7 @@ class BuildAppBar extends StatelessWidget with PreferredSizeWidget {
         backgroundColor: const Color.fromARGB(255, 73, 225, 31),
         elevation: 0,
         leading: IconButton(
-          onPressed: () {
-            Scaffold.of(context).openDrawer();
-          },
+          onPressed: () {},
           icon: const Icon(Icons.menu),
         ),
         actions: [
