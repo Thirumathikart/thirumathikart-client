@@ -1,10 +1,11 @@
+import 'package:thirumathikart_app/controllers/products_controller.dart';
 import 'package:thirumathikart_app/models/product.dart';
 import 'package:thirumathikart_app/widgets/home/item_card.dart';
 import 'package:thirumathikart_app/constants/homeproduct_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ItemListBuild extends StatelessWidget {
+class ItemListBuild extends GetView<ProductsController> {
   const ItemListBuild({super.key});
 
   @override
@@ -41,7 +42,9 @@ class ItemListBuild extends StatelessWidget {
                     ));
                   }
                   //Get.toNamed('/products', arguments: productList);
-                  Get.offAndToNamed('/products', arguments: productList);
+                  String route = products[index].route!;
+                  Get.offAndToNamed('/products',
+                      arguments: [productList, route]);
                 },
                 child: ItemCard(
                   product: products[index],

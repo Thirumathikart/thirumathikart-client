@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FLUTTER_RUN="flutter run"
+FLUTTER_RUN="flutter run -d web-server --web-port=4000"
 
 if [ ! -z "$1" ]
 then

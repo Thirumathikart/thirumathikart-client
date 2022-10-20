@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:thirumathikart_app/controllers/cart_controller.dart';
 import 'package:thirumathikart_app/models/product.dart';
@@ -31,16 +32,23 @@ class RowCart extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: 110.0,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5.0),
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage(product.image!),
-              ),
-            ),
-          ),
+          SizedBox(
+              width: 100,
+              child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(10.0),
+                      topRight: Radius.circular(10.0)),
+                  child: CachedNetworkImage(
+                    width: double.infinity,
+                    fit: BoxFit.fill,
+                    imageUrl: product.image!,
+                    progressIndicatorBuilder:
+                        (context, url, downloadProgress) =>
+                            CircularProgressIndicator(
+                                value: downloadProgress.progress),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                  ))),
           const SizedBox(width: 10.0),
           Expanded(
             child: Column(

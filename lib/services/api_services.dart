@@ -1,5 +1,8 @@
 import 'package:get/get_connect/connect.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
+import 'package:thirumathikart_app/constants/api_constants.dart';
+import 'package:thirumathikart_app/models/prodcut_response.dart';
+import 'package:thirumathikart_app/services/storage_services.dart';
 
 class ApiServices extends GetxService {
   late ApiManager api;
@@ -15,4 +18,29 @@ class ApiManager extends GetConnect {
     'Accept': 'application/json',
     'Access-Control-Allow-Origin': '*',
   };
+  Future<List<ProductResponse>> getProductsByCategory(
+      StorageServices storageServices, String category) async {
+    try {
+      final cache = storageServices.retriveProducts();
+      final response = await get(
+          '${ApiConstants.baseUrl}${ApiConstants.products}/$category',
+          headers: headers);
+      if (response.statusCode == 200 && response.bodyString != null) {
+        storageServices
+            .storeProdcuts({category: response.bodyString!}, category);
+        final products = productResponseFromJson(response.bodyString!);
+        return products;
+      } else {
+        if (cache![category] != null) {
+          final productsFromCache = productResponseFromJson(cache[category]!);
+          return productsFromCache;
+        } else {
+          Future.error('Failed to load products');
+        }
+      }
+      return Future.error('Failed to load products');
+    } catch (e) {
+      return Future.error('Error occurred while fetching products');
+    }
+  }
 }

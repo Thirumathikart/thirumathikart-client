@@ -37,6 +37,7 @@ class ItemCard extends StatelessWidget {
           child: Center(
             child: Text(
               product.title!,
+              textAlign: TextAlign.center,
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),

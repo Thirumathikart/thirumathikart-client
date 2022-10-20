@@ -1,6 +1,7 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:thirumathikart_app/bindings/auth_binding.dart';
 import 'package:thirumathikart_app/bindings/home_bindings.dart';
+import 'package:thirumathikart_app/bindings/main_binding.dart';
 import 'package:thirumathikart_app/bindings/product_detail_bindings.dart';
 import 'package:thirumathikart_app/bindings/products_binding.dart';
 import 'package:thirumathikart_app/bindings/profile_page_binding.dart';
@@ -11,6 +12,7 @@ import 'package:thirumathikart_app/bindings/cart_binding.dart';
 import 'package:thirumathikart_app/models/product.dart';
 import 'package:thirumathikart_app/views/auth.dart';
 import 'package:thirumathikart_app/views/home.dart';
+import 'package:thirumathikart_app/views/main_page.dart';
 import 'package:thirumathikart_app/views/product_detail.dart';
 import 'package:thirumathikart_app/views/products.dart';
 import 'package:thirumathikart_app/views/profile.dart';
@@ -24,8 +26,8 @@ class NavigationPages {
   static List<GetPage<dynamic>> getPages() => [
         GetPage(
           name: NavigationRoutes.main,
-          page: () => const HomePage(),
-          binding: HomeBindings(),
+          page: () => const Main(),
+          binding: MainBindings(),
         ),
         GetPage(
           name: NavigationRoutes.authRoute,

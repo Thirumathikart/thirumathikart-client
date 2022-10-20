@@ -1,5 +1,5 @@
 name: thirumathikart_app
-description: A Flutter App for thirumathikartE+.
+description: A Flutter App for thirumathikart.
 
 publish_to: 'none' 
 
@@ -22,6 +22,7 @@ dependencies:
   carousel_slider: ^4.1.1
   intl: ^0.17.0
   convert: ^3.0.2
+  cached_network_image: ^3.2.2
   
 dev_dependencies:
   flutter_test:

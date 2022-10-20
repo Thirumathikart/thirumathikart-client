@@ -4,18 +4,13 @@ import 'package:thirumathikart_app/constants/navigation_routes.dart';
 var navList = [
   {
     'title': 'Home',
-    'icon': const Icon(Icons.home),
+    'icon': const Icon(Icons.home_outlined),
     'toRoute': NavigationRoutes.main,
   },
   {
-    'title': 'Profile',
-    'icon': const Icon(Icons.person_outline),
-    'toRoute': NavigationRoutes.profileRoute,
-  },
-  {
-    'title': 'Wishlist',
-    'icon': const Icon(Icons.favorite_border_outlined),
-    'toRoute': NavigationRoutes.wishlistRoute,
+    'title': 'Cart',
+    'icon': const Icon(Icons.shopping_cart_outlined),
+    'toRoute': NavigationRoutes.cartRoute,
   },
   {
     'title': 'My Orders',
@@ -23,10 +18,18 @@ var navList = [
     'toRoute': NavigationRoutes.ordersRoute,
   },
   {
-    'title': 'Login',
-    'icon': const Icon(Icons.login_outlined),
+    'title': 'Profile',
+    'icon': const Icon(Icons.person_outline),
+    'toRoute': NavigationRoutes.profileRoute,
+  },
+  {
+    'title': 'More',
+    'icon': const Icon(Icons.more_horiz),
     'toRoute': NavigationRoutes.authRoute,
   },
+];
+
+var moreList = [
   {
     'title': 'Offers',
     'icon': const Icon(Icons.local_offer_outlined),
