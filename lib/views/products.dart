@@ -25,7 +25,7 @@ class Products extends GetView<ProductsController> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.all(8.0),
             child: DecoratedBox(
               decoration: BoxDecoration(
                   color: AppTheme.searchBar,

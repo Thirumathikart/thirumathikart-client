@@ -2,21 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:thirumathikart_app/controllers/cart_controller.dart';
 import 'package:get/get.dart';
 import 'package:thirumathikart_app/config/themes.dart';
-import 'package:thirumathikart_app/widgets/app_bar.dart';
 import 'package:thirumathikart_app/widgets/cart/row_cart.dart';
 import 'package:intl/intl.dart';
 
-class CartPage extends GetView<CartController> {
+class CartPage extends StatelessWidget {
   const CartPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<CartController>();
-
-    return Scaffold(
-      backgroundColor: AppTheme.bg,
-      appBar: appBar('My Cart'),
-      body: Container(
+    final controller = Get.put(CartController());
+    return Container(
         margin:
             const EdgeInsets.only(top: 20.0, bottom: 20.0, left: 10, right: 10),
         color: AppTheme.card,
@@ -86,8 +81,6 @@ class CartPage extends GetView<CartController> {
                     ),
                   ],
                 ),
-              )),
-      ),
-    );
+              )));
   }
 }
