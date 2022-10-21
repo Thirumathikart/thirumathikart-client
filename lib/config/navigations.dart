@@ -100,13 +100,13 @@ class NavigationPages {
         GetPage(
           name: NavigationRoutes.productsRoute,
           page: () => const Products(),
-          arguments: List<Product>,
+          arguments: String,
           binding: ProductsBindings(),
         ),
         GetPage(
           name: NavigationRoutes.productDetailRoute,
           page: () => const ProductDetail(),
-          arguments: const [Product, List<Product>],
+          arguments: Product,
           binding: ProductDetialBindings(),
         ),
         GetPage(
