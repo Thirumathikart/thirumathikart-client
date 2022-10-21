@@ -24,210 +24,242 @@ class Products extends GetView<ProductsController> {
       appBar: appBar(productsListMain[0].parentName!),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                  color: AppTheme.searchBar,
-                  borderRadius: BorderRadius.circular(15)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Search : ',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width - 175,
-                    child: TextField(
-                      controller: productsController.textController,
-                      showCursor: true,
-                      cursorHeight: 25,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                      ),
-                      style: const TextStyle(
+          Container(
+            margin: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            decoration: BoxDecoration(
+                border: Border.all(color: AppTheme.textPrimary, width: 0.5),
+                color: AppTheme.searchBar,
+                borderRadius: BorderRadius.circular(10)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Flexible(
+                    flex: 1,
+                    child: Text(
+                      'Search : ',
+                      style: TextStyle(
                         fontSize: 20,
+                        fontWeight: FontWeight.w500,
                       ),
-                      focusNode: focusNode,
-                      onChanged: (_) {
-                        productsController.empty();
-                        for (int i = 0; i < productsListMain.length; i++) {
-                          if (productsListMain[i].name!.toLowerCase().contains(
-                              productsController.textController.text)) {
-                            productsController.add(
-                                productsController.productsListDynamic.toList(),
-                                productsListMain[i]);
-                          }
-                        }
-                        if (productsController.isSelected[0] == false &&
-                            productsController.isSelected[1] == true) {
-                          productsController.reverse();
-                        }
-                      },
+                    )),
+                Expanded(
+                  flex: 2,
+                  child: TextField(
+                    controller: productsController.textController,
+                    showCursor: true,
+                    cursorHeight: 25,
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
                     ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(
-                      left: 4,
-                    ),
-                    child: IconButton(
-                      onPressed: focusNode.requestFocus,
-                      icon: const Icon(Icons.search),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Sort by Price : ',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 20,
-                      fontWeight: FontWeight.w500,
                     ),
+                    focusNode: focusNode,
+                    onChanged: (_) {
+                      productsController.empty();
+                      for (int i = 0; i < productsListMain.length; i++) {
+                        if (productsListMain[i]
+                            .name!
+                            .toLowerCase()
+                            .contains(productsController.textController.text)) {
+                          productsController.add(
+                              productsController.productsListDynamic.toList(),
+                              productsListMain[i]);
+                        }
+                      }
+                      if (productsController.isSelected[0] == false &&
+                          productsController.isSelected[1] == true) {
+                        productsController.reverse();
+                      }
+                    },
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Obx(
-                        () => ToggleButtons(
-                          borderColor: AppTheme.selected,
-                          fillColor: AppTheme.unSelected,
-                          borderWidth: 2,
-                          selectedBorderColor: AppTheme.selected,
-                          selectedColor: AppTheme.textSecondary,
-                          borderRadius: BorderRadius.circular(50),
-                          onPressed: (int index) {
-                            if (index == 0) {
-                              controller.getProductsByCategory(title, true);
-                              controller.set(0, true);
-                            } else {
-                              controller.getProductsByCategory(title, false);
-                              controller.set(1, false);
-                            }
-                            for (int i = 0;
-                                i < controller.isSelected.length;
-                                i++) {
-                              controller.set(i, i == index);
-                            }
-                          },
-                          isSelected: controller.isSelected,
-                          children: const <Widget>[
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 5.0),
-                              child: Text(
-                                'Low - High',
-                                style: TextStyle(
-                                  fontSize: 10,
-                                ),
-                              ),
+                ),
+                Flexible(
+                    flex: 1,
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(
+                              left: 4,
                             ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 5.0),
-                              child: Text(
-                                'High - Low',
-                                style: TextStyle(
-                                  fontSize: 10,
-                                ),
-                              ),
+                            child: IconButton(
+                              onPressed: focusNode.requestFocus,
+                              icon: const Icon(Icons.search),
                             ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(
+                              left: 4,
+                            ),
+                            child: IconButton(
+                              onPressed: focusNode.requestFocus,
+                              icon: const Icon(Icons.filter_alt),
+                            ),
+                          ),
+                        ]))
+              ],
             ),
           ),
           Expanded(
               child: controller.obx(
-            (state) => GridView.builder(
-              itemCount: state!.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2),
-              itemBuilder: (ctx, index) => GestureDetector(
-                onTap: () {
-                  var item = Product(
-                    id: state[index].productId,
-                    name: state[index].productTitle,
-                    details: state[index].productDescription,
-                    price: double.parse(state[index].productPrice!),
-                    image: state[index].productPhoto,
-                    unit: 'kg',
-                    parentName: state[index].productTitle,
-                    sellerDetails: state[index].seller!.sellerName,
-                    parentId: state[index].productId,
-                  );
+            (state) => Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                child: GridView.builder(
+                  itemCount: state!.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2),
+                  itemBuilder: (ctx, index) => GestureDetector(
+                    onTap: () {
+                      var item = Product(
+                        id: state[index].productId,
+                        name: state[index].productTitle,
+                        details: state[index].productDescription,
+                        price: double.parse(state[index].productPrice!),
+                        image: state[index].productPhoto,
+                        unit: 'kg',
+                        parentName: state[index].productTitle,
+                        sellerDetails: state[index].seller!.sellerName,
+                        parentId: state[index].productId,
+                      );
 
-                  Get.toNamed(NavigationRoutes.productDetailRoute,
-                      arguments: [item, productsListMain]);
-                },
-                child: Container(
-                    height: 300,
-                    margin: const EdgeInsets.all(8),
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          offset: Offset(0.0, 1.0), //(x,y)
-                          blurRadius: 6.0,
-                        ),
-                      ],
-                    ),
-                    child: Column(children: [
-                      Expanded(
-                          flex: 1,
-                          child: ClipRRect(
-                              borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(10.0),
-                                  topRight: Radius.circular(10.0)),
-                              child: CachedNetworkImage(
-                                width: double.infinity,
-                                fit: BoxFit.fill,
-                                imageUrl: state[index].productPhoto!,
-                                progressIndicatorBuilder:
-                                    (context, url, downloadProgress) =>
-                                        CircularProgressIndicator(
-                                            value: downloadProgress.progress),
-                                errorWidget: (context, url, error) =>
-                                    const Icon(Icons.error),
-                              ))),
-                      Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Column(children: [
-                            Text(
-                              state[index].productTitle!,
-                              style: const TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                              ),
+                      Get.toNamed(NavigationRoutes.productDetailRoute,
+                          arguments: [item, productsListMain]);
+                    },
+                    child: Container(
+                        margin: const EdgeInsets.all(5),
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              offset: Offset(0.0, 1.0), //(x,y)
+                              blurRadius: 6.0,
                             ),
-                            Text(
-                              '₹ ${state[index].productPrice}',
-                              style: const TextStyle(
-                                fontSize: 8,
-                              ),
-                            )
-                          ])),
-                    ])),
-              ),
-            ),
+                          ],
+                        ),
+                        child: Column(children: [
+                          Expanded(
+                              child: ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(5.0),
+                                      topRight: Radius.circular(5.0)),
+                                  child: CachedNetworkImage(
+                                    width: double.infinity,
+                                    height: double.infinity,
+                                    fit: BoxFit.fill,
+                                    imageUrl: state[index].productPhoto!,
+                                    progressIndicatorBuilder: (context, url,
+                                            downloadProgress) =>
+                                        LinearProgressIndicator(
+                                            color: AppTheme.deSelected,
+                                            backgroundColor: AppTheme.searchBar,
+                                            value: downloadProgress.progress),
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
+                                  ))),
+                          Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 8),
+                              child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const SizedBox(height: 5),
+                                    Text(
+                                      state[index].productTitle!,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Text(
+                                      '₹ ${state[index].productPrice}',
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                      ),
+                                    )
+                                  ])),
+                        ])),
+                  ),
+                )),
           )),
         ],
       ),
     );
   }
 }
+// Padding(
+//   padding: const EdgeInsets.all(8.0),
+//   child: Center(
+//     child: Row(
+//       mainAxisAlignment: MainAxisAlignment.center,
+//       children: [
+//         const Text(
+//           'Sort by Price : ',
+//           style: TextStyle(
+//             fontSize: 20,
+//             fontWeight: FontWeight.w500,
+//           ),
+//         ),
+//         Column(
+//           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//           children: <Widget>[
+//             Obx(
+//               () => ToggleButtons(
+//                 borderColor: AppTheme.selected,
+//                 fillColor: AppTheme.unSelected,
+//                 borderWidth: 2,
+//                 selectedBorderColor: AppTheme.selected,
+//                 selectedColor: AppTheme.textSecondary,
+//                 borderRadius: BorderRadius.circular(50),
+//                 onPressed: (int index) {
+//                   if (index == 0) {
+//                     controller.getProductsByCategory(title, true);
+//                     controller.set(0, true);
+//                   } else {
+//                     controller.getProductsByCategory(title, false);
+//                     controller.set(1, false);
+//                   }
+//                   for (int i = 0;
+//                       i < controller.isSelected.length;
+//                       i++) {
+//                     controller.set(i, i == index);
+//                   }
+//                 },
+//                 isSelected: controller.isSelected,
+//                 children: const <Widget>[
+//                   Padding(
+//                     padding: EdgeInsets.symmetric(horizontal: 5.0),
+//                     child: Text(
+//                       'Low - High',
+//                       style: TextStyle(
+//                         fontSize: 10,
+//                       ),
+//                     ),
+//                   ),
+//                   Padding(
+//                     padding: EdgeInsets.symmetric(horizontal: 5.0),
+//                     child: Text(
+//                       'High - Low',
+//                       style: TextStyle(
+//                         fontSize: 10,
+//                       ),
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ),
+//       ],
+//     ),
+//   ),
+// ),

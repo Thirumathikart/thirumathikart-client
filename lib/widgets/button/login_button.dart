@@ -8,7 +8,7 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        margin: const EdgeInsets.only(top: 30),
+        margin: const EdgeInsets.only(top: 30, left: 10, right: 10),
         width: MediaQuery.of(context).size.width,
         child: MaterialButton(
           onPressed: () {
@@ -20,7 +20,7 @@ class LoginButton extends StatelessWidget {
               Radius.circular(50),
             ),
           ),
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(20),
           child: const Text(
             'Login',
             style: TextStyle(

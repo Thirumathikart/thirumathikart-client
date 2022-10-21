@@ -17,15 +17,15 @@ class ProductDetail extends GetView<ProductDetailsController> {
       backgroundColor: AppTheme.bg,
       appBar: appBar(product.name!),
       body: SingleChildScrollView(
-        child: Column(children: [
+        child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Expanded(
                 flex: 1,
                 child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(10.0),
-                        topRight: Radius.circular(10.0)),
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(10.0),
+                    ),
                     child: CachedNetworkImage(
                       width: double.infinity,
                       fit: BoxFit.fill,
@@ -39,7 +39,7 @@ class ProductDetail extends GetView<ProductDetailsController> {
                     ))),
           ),
           Text(
-            '${product.name!})',
+            product.name!,
             style: const TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
@@ -230,6 +230,7 @@ class ProductDetail extends GetView<ProductDetailsController> {
             ],
           ),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               SizedBox(
                 width: MediaQuery.of(context).size.width / 2,

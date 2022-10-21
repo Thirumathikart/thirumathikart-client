@@ -14,7 +14,7 @@ class Main extends GetView<MainController> {
   @override
   Widget build(BuildContext context) => SafeArea(
       child: Scaffold(
-          appBar: appBar('Thirumathikart'),
+          appBar: appBar('Thirumathikart', isMain: true),
           backgroundColor: Colors.transparent,
           body: Stack(children: [
             PageView(
@@ -33,21 +33,27 @@ class Main extends GetView<MainController> {
                 } else {
                   showModalBottomSheet(
                       context: context,
-                      builder: (context) => Wrap(
-                          children: moreList
-                              .map(
-                                (e) => ListTile(
-                                  leading: e['icon'] as Widget,
-                                  title: Text(e['title'] as String),
-                                ),
-                              )
-                              .toList()));
+                      builder: (context) => Container(
+                          padding: const EdgeInsets.only(top: 10),
+                          decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(50),
+                                  topRight: Radius.circular(50))),
+                          child: Wrap(
+                              children: moreList
+                                  .map((e) => Padding(
+                                        padding: const EdgeInsets.all(5),
+                                        child: ListTile(
+                                          leading: e['icon'] as Widget,
+                                          title: Text(e['title'] as String),
+                                        ),
+                                      ))
+                                  .toList())));
                 }
               },
               type: BottomNavigationBarType.fixed,
               selectedItemColor: AppTheme.navColor,
               unselectedItemColor: AppTheme.deSelected,
-              selectedLabelStyle: TextStyle(color: AppTheme.textPrimary),
               showUnselectedLabels: false,
               selectedFontSize: 10,
               items: navList

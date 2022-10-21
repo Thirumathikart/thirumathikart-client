@@ -6,11 +6,11 @@ class AppTheme {
   static Color textSecondary = Colors.white;
   static Color unSelected = const Color.fromARGB(255, 40, 153, 61);
   static Color selected = const Color(0xFF0F1113);
-  static Color deSelected = const Color.fromARGB(255, 106, 106, 107);
+  static Color deSelected = const Color.fromARGB(255, 156, 156, 156);
   static Color google = const Color(0xFFFF7722);
   static Color facebook = const Color(0xFF138808);
   static Color chakra = const Color.fromARGB(255, 13, 13, 173);
-  static Color navColor = const Color.fromARGB(255, 51, 193, 65);
+  static Color navColor = const Color.fromARGB(255, 49, 165, 61);
   static Color navHighlight = const Color.fromARGB(255, 203, 250, 193);
   static Color subtle = const Color.fromRGBO(251, 242, 207, 1);
   static Color card = const Color(0xFFFFFFFF);
