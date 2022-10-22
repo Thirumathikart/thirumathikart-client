@@ -16,4 +16,5 @@ class NavigationRoutes {
   static String productsRoute = '/products';
   static String productDetailRoute = '/productDetail';
   static String cartRoute = '/cart';
+  static String tcroute = '/termsandconditions';
 }
