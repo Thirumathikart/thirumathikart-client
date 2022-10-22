@@ -112,6 +112,5 @@ class NavigationPages {
           page: () => const CartPage(),
           binding: CartBindings(),
         ),
-        GetPage(name: NavigationRoutes.tcroute, page: () => const HomePage()),
       ];
 }
