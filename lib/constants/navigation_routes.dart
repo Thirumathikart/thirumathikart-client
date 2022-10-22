@@ -17,4 +17,5 @@ class NavigationRoutes {
   static String productDetailRoute = '/productDetail';
   static String cartRoute = '/cart';
   static String tcroute = '/termsandconditions';
+  static String privpolicyroute = '/privacypolicy';
 }

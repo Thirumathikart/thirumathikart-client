@@ -113,5 +113,8 @@ class NavigationPages {
           binding: CartBindings(),
         ),
         GetPage(name: NavigationRoutes.tcroute, page: () => const HomePage()),
+        GetPage(
+            name: NavigationRoutes.privpolicyroute,
+            page: () => const HomePage())
       ];
 }
