@@ -12,11 +12,11 @@ var navList = [
     'icon': const Icon(Icons.shopping_cart_outlined),
     'toRoute': NavigationRoutes.cartRoute,
   },
-  {
-    'title': 'My Orders',
-    'icon': const Icon(Icons.fire_truck_outlined),
-    'toRoute': NavigationRoutes.ordersRoute,
-  },
+  // {
+  //   'title': 'My Orders',
+  //   'icon': const Icon(Icons.fire_truck_outlined),
+  //   'toRoute': NavigationRoutes.ordersRoute,
+  // },
   {
     'title': 'Profile',
     'icon': const Icon(Icons.person_outline),
@@ -30,34 +30,44 @@ var navList = [
 ];
 
 var moreList = [
+  // {
+  //   'title': 'Offers',
+  //   'icon': const Icon(Icons.local_offer_outlined),
+  //   'toRoute': NavigationRoutes.offersRoute,
+  // },
+  // {
+  //   'title': 'About App',
+  //   'icon': const Icon(Icons.info_outline),
+  //   'toRoute': NavigationRoutes.aboutRoute,
+  // },
+  // {
+  //   'title': 'Feedback',
+  //   'icon': const Icon(Icons.feedback_outlined),
+  //   'toRoute': NavigationRoutes.feedbackRoute,
+  // },
+  // {
+  //   'title': 'Help Center',
+  //   'icon': const Icon(Icons.login_outlined),
+  //   'toRoute': NavigationRoutes.helpRoute,
+  // },
+  // {
+  //   'title': 'App Tour',
+  //   'icon': const Icon(Icons.local_offer_outlined),
+  //   'toRoute': NavigationRoutes.tourRoute,
+  // },
+  // {
+  //   'title': 'Explore',
+  //   'icon': const Icon(Icons.info_outline),
+  //   'toRoute': NavigationRoutes.exploreRoute,
+  // },
   {
-    'title': 'Offers',
-    'icon': const Icon(Icons.local_offer_outlined),
-    'toRoute': NavigationRoutes.offersRoute,
-  },
-  {
-    'title': 'About App',
+    'title': 'Terms and Conditions',
     'icon': const Icon(Icons.info_outline),
-    'toRoute': NavigationRoutes.aboutRoute,
+    'toRoute': NavigationRoutes.tcroute,
   },
   {
-    'title': 'Feedback',
-    'icon': const Icon(Icons.feedback_outlined),
-    'toRoute': NavigationRoutes.feedbackRoute,
-  },
-  {
-    'title': 'Help Center',
-    'icon': const Icon(Icons.login_outlined),
-    'toRoute': NavigationRoutes.helpRoute,
-  },
-  {
-    'title': 'App Tour',
-    'icon': const Icon(Icons.local_offer_outlined),
-    'toRoute': NavigationRoutes.tourRoute,
-  },
-  {
-    'title': 'Explore',
+    'title': 'Privacy and Policy',
     'icon': const Icon(Icons.info_outline),
-    'toRoute': NavigationRoutes.exploreRoute,
+    'toRoute': NavigationRoutes.privpolicyroute,
   },
 ];

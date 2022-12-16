@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thirumathikart_app/config/themes.dart';
 import 'package:thirumathikart_app/controllers/profile_page_controller.dart';
-import 'package:thirumathikart_app/widgets/app_bar.dart';
 import 'package:get/get.dart';
 import 'package:thirumathikart_app/controllers/home_controller.dart';
 import 'package:thirumathikart_app/widgets/NavBar/nav_drawer.dart';
@@ -32,7 +31,6 @@ class ProfilePage extends GetView<HomeController> {
     }
 
     return Scaffold(
-      appBar: appBar('Profile'),
       drawer: const NavWidget(),
       body: SingleChildScrollView(
         child: Column(
