@@ -9,6 +9,7 @@ import 'package:thirumathikart_app/bindings/splash_binding.dart';
 import 'package:thirumathikart_app/bindings/login_binding.dart';
 import 'package:thirumathikart_app/bindings/register_binding.dart';
 import 'package:thirumathikart_app/bindings/cart_binding.dart';
+import 'package:thirumathikart_app/models/orders.dart';
 import 'package:thirumathikart_app/models/product.dart';
 import 'package:thirumathikart_app/views/auth.dart';
 import 'package:thirumathikart_app/views/home.dart';
@@ -23,6 +24,8 @@ import 'package:thirumathikart_app/views/register.dart';
 import 'package:thirumathikart_app/views/cart.dart';
 import 'package:thirumathikart_app/constants/navigation_routes.dart';
 import 'package:thirumathikart_app/views/term_condition.dart';
+import 'package:thirumathikart_app/bindings/orders_binding.dart';
+import 'package:thirumathikart_app/views/orders_page.dart';
 
 class NavigationPages {
   static List<GetPage<dynamic>> getPages() => [
@@ -117,6 +120,12 @@ class NavigationPages {
         GetPage(name: NavigationRoutes.tcroute, page: () => const Termspage()),
         GetPage(
             name: NavigationRoutes.privpolicyroute,
-            page: () => const Privacypage())
+            page: () => const Privacypage()),
+        GetPage(
+          name: NavigationRoutes.myOrdersRoute,
+          page: () => const OrdersPage(),
+          arguments: List<Orders>,
+          binding: OrdersBindings(),
+        ),
       ];
 }
