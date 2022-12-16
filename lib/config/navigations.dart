@@ -13,6 +13,7 @@ import 'package:thirumathikart_app/models/product.dart';
 import 'package:thirumathikart_app/views/auth.dart';
 import 'package:thirumathikart_app/views/home.dart';
 import 'package:thirumathikart_app/views/main_page.dart';
+import 'package:thirumathikart_app/views/privacy_policy.dart';
 import 'package:thirumathikart_app/views/product_detail.dart';
 import 'package:thirumathikart_app/views/products.dart';
 import 'package:thirumathikart_app/views/profile.dart';
@@ -21,6 +22,7 @@ import 'package:thirumathikart_app/views/login.dart';
 import 'package:thirumathikart_app/views/register.dart';
 import 'package:thirumathikart_app/views/cart.dart';
 import 'package:thirumathikart_app/constants/navigation_routes.dart';
+import 'package:thirumathikart_app/views/term_condition.dart';
 
 class NavigationPages {
   static List<GetPage<dynamic>> getPages() => [
@@ -112,9 +114,9 @@ class NavigationPages {
           page: () => const CartPage(),
           binding: CartBindings(),
         ),
-        GetPage(name: NavigationRoutes.tcroute, page: () => const HomePage()),
+        GetPage(name: NavigationRoutes.tcroute, page: () => const Termspage()),
         GetPage(
             name: NavigationRoutes.privpolicyroute,
-            page: () => const HomePage())
+            page: () => const Privacypage())
       ];
 }

@@ -19,6 +19,6 @@ class MainController extends GetxController {
 
   void onPageChanged() {
     pageController.animateToPage(selectedIndex.value,
-        duration: const Duration(milliseconds: 300), curve: Curves.bounceIn);
+        duration: const Duration(milliseconds: 100), curve: Curves.bounceIn);
   }
 }

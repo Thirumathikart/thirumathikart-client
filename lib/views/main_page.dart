@@ -39,6 +39,10 @@ class Main extends GetView<MainController> {
                                 (e) => ListTile(
                                   leading: e['icon'] as Widget,
                                   title: Text(e['title'] as String),
+                                  onTap: () {
+                                      Navigator.of(context)
+                                          .pushNamed(e['toRoute'].toString());
+                                    }
                                 ),
                               )
                               .toList()));

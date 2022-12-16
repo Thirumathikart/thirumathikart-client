@@ -60,4 +60,14 @@ var moreList = [
     'icon': const Icon(Icons.info_outline),
     'toRoute': NavigationRoutes.exploreRoute,
   },
+  {
+    'title': 'Terms and Conditions',
+    'icon': const Icon(Icons.info_outline),
+    'toRoute': NavigationRoutes.tcroute,
+  },
+  {
+    'title': 'Privacy and Policy',
+    'icon': const Icon(Icons.info_outline),
+    'toRoute': NavigationRoutes.privpolicyroute,
+  },
 ];
