@@ -10,7 +10,6 @@ import 'package:thirumathikart_app/widgets/app_bar.dart';
 
 class Main extends GetView<MainController> {
   const Main({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) => SafeArea(
       child: Scaffold(
@@ -37,13 +36,12 @@ class Main extends GetView<MainController> {
                           children: moreList
                               .map(
                                 (e) => ListTile(
-                                  leading: e['icon'] as Widget,
-                                  title: Text(e['title'] as String),
-                                  onTap: () {
+                                    leading: e['icon'] as Widget,
+                                    title: Text(e['title'] as String),
+                                    onTap: () {
                                       Navigator.of(context)
                                           .pushNamed(e['toRoute'].toString());
-                                    }
-                                ),
+                                    }),
                               )
                               .toList()));
                 }
