@@ -10,6 +10,7 @@ class ProfilePage extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut(ProfilePageController.new);
     final profilePageController = Get.find<ProfilePageController>();
     final FocusNode focusNodefirstName = FocusNode();
     final FocusNode focusNodelastName = FocusNode();
@@ -31,6 +32,7 @@ class ProfilePage extends GetView<HomeController> {
     }
 
     return Scaffold(
+      //appBar: appBar('Profile'),
       drawer: const NavWidget(),
       body: SingleChildScrollView(
         child: Column(
@@ -426,134 +428,124 @@ class ProfilePage extends GetView<HomeController> {
               ),
             ),
             Obx(
-              () => SizedBox(
-                height: 300,
-                child: ListView.builder(
-                  itemBuilder: (ctx, index) => GestureDetector(
-                    onTap: () {},
-                    child: Obx(
-                      () => Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 25.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              () => ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (ctx, index) => Obx(
+                  () => Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Address - ${index + 1}',
+                              style: const TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            Row(
                               children: [
-                                Text(
-                                  'Address - ${index + 1}',
-                                  style: const TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                                Obx(
+                                  () => !profilePageController
+                                          .enableAddress[index]
+                                      ? IconButton(
+                                          onPressed: () {
+                                            profilePageController
+                                                .switchFlagAddress(index);
+                                            Future.delayed(
+                                                const Duration(
+                                                    milliseconds: 100),
+                                                focusNodeAddresses[index]
+                                                    .requestFocus);
+                                          },
+                                          icon: const Icon(Icons.edit),
+                                          color: AppTheme.chakra,
+                                          iconSize: 20,
+                                        )
+                                      : IconButton(
+                                          onPressed: () {
+                                            profilePageController
+                                                .switchFlagAddress(index);
+                                            profilePageController.updateAddress(
+                                                profilePageController
+                                                    .addressControllers[index]
+                                                    .text,
+                                                index);
+                                          },
+                                          icon: const Icon(Icons.check_rounded),
+                                          color: AppTheme.facebook,
+                                          iconSize: 25,
+                                        ),
                                 ),
-                                Row(
-                                  children: [
-                                    Obx(
-                                      () => !profilePageController
-                                              .enableAddress[index]
-                                          ? IconButton(
-                                              onPressed: () {
-                                                profilePageController
-                                                    .switchFlagAddress(index);
-                                                Future.delayed(
-                                                    const Duration(
-                                                        milliseconds: 100),
-                                                    focusNodeAddresses[index]
-                                                        .requestFocus);
-                                              },
-                                              icon: const Icon(Icons.edit),
-                                              color: AppTheme.chakra,
-                                              iconSize: 20,
-                                            )
-                                          : IconButton(
-                                              onPressed: () {
-                                                profilePageController
-                                                    .switchFlagAddress(index);
-                                                profilePageController
-                                                    .updateAddress(
-                                                        profilePageController
-                                                            .addressControllers[
-                                                                index]
-                                                            .text,
-                                                        index);
-                                              },
-                                              icon: const Icon(
-                                                  Icons.check_rounded),
-                                              color: AppTheme.facebook,
-                                              iconSize: 25,
-                                            ),
-                                    ),
-                                    IconButton(
-                                      onPressed: () => {
-                                        profilePageController
-                                            .deleteAddress(index),
-                                        focusNodeAddresses.removeAt(index),
-                                      },
-                                      icon: const Icon(Icons.delete),
-                                      color: AppTheme.bin,
-                                      iconSize: 20,
-                                    ),
-                                  ],
+                                IconButton(
+                                  onPressed: () => {
+                                    profilePageController.deleteAddress(index),
+                                    focusNodeAddresses.removeAt(index),
+                                  },
+                                  icon: const Icon(Icons.delete),
+                                  color: AppTheme.bin,
+                                  iconSize: 20,
                                 ),
                               ],
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 25.0, vertical: 5),
-                            child: DecoratedBox(
-                              decoration: BoxDecoration(
-                                color: AppTheme.searchBar,
-                                border: validateAddress(
-                                        profilePageController
-                                            .addressControllers[index].text,
-                                        profilePageController
-                                            .addressControllers[index])
-                                    ? Border.all(
-                                        color: AppTheme.searchBar,
-                                        width: 2,
-                                      )
-                                    : Border.all(
-                                        color: AppTheme.bin,
-                                        width: 2,
-                                      ),
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 15.0),
-                                child: TextField(
-                                  keyboardType: TextInputType.streetAddress,
-                                  controller: profilePageController
-                                      .addressControllers[index],
-                                  focusNode: focusNodeAddresses[index],
-                                  enabled: profilePageController
-                                      .enableAddress[index],
-                                  decoration: const InputDecoration(
-                                    hintText: 'Enter valid Address',
-                                    border: InputBorder.none,
-                                  ),
-                                  maxLines: null,
-                                  onSubmitted: (string) {
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 25.0, vertical: 5),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: AppTheme.searchBar,
+                            border: validateAddress(
                                     profilePageController
-                                        .switchFlagAddress(index);
-                                    profilePageController.updateAddress(
-                                        profilePageController
-                                            .addressControllers[index].text,
-                                        index);
-                                  },
-                                ),
+                                        .addressControllers[index].text,
+                                    profilePageController
+                                        .addressControllers[index])
+                                ? Border.all(
+                                    color: AppTheme.searchBar,
+                                    width: 2,
+                                  )
+                                : Border.all(
+                                    color: AppTheme.bin,
+                                    width: 2,
+                                  ),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 15.0),
+                            child: TextField(
+                              keyboardType: TextInputType.multiline,
+                              controller: profilePageController
+                                  .addressControllers[index],
+                              focusNode: focusNodeAddresses[index],
+                              enabled:
+                                  profilePageController.enableAddress[index],
+                              decoration: const InputDecoration(
+                                hintText: 'Enter valid Address',
+                                border: InputBorder.none,
                               ),
+                              maxLines: null,
+                              onSubmitted: (string) {
+                                profilePageController.switchFlagAddress(index);
+                                profilePageController.updateAddress(
+                                    profilePageController
+                                        .addressControllers[index].text,
+                                    index);
+                              },
                             ),
                           ),
-                        ],
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                  itemCount: profilePageController.addressControllers.length,
                 ),
+                itemCount: profilePageController.addressControllers.length,
               ),
             ),
           ],
