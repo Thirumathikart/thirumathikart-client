@@ -9,7 +9,6 @@ import 'package:thirumathikart_app/bindings/splash_binding.dart';
 import 'package:thirumathikart_app/bindings/login_binding.dart';
 import 'package:thirumathikart_app/bindings/register_binding.dart';
 import 'package:thirumathikart_app/bindings/cart_binding.dart';
-import 'package:thirumathikart_app/models/orders.dart';
 import 'package:thirumathikart_app/models/product.dart';
 import 'package:thirumathikart_app/views/auth.dart';
 import 'package:thirumathikart_app/views/home.dart';
@@ -124,7 +123,7 @@ class NavigationPages {
         GetPage(
           name: NavigationRoutes.myOrdersRoute,
           page: () => const OrdersPage(),
-          arguments: List<Orders>,
+          arguments: List<Product>,
           binding: OrdersBindings(),
         ),
       ];
