@@ -12,14 +12,16 @@ class NavItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Ink(
-      color: Get.routing.current == toRoute
-          ? AppTheme.navHighlight
-          : Colors.transparent,
-      child: ListTile(
+        color: Get.routing.current == toRoute
+            ? AppTheme.navHighlight
+            : Colors.transparent,
+        child: ListTile(
           leading: icon,
           title: Text(
             title,
             style: const TextStyle(fontSize: 16),
           ),
-          onTap: () => Get.offAllNamed(toRoute ?? NavigationRoutes.main)));
+          onTap: () => Get.offAllNamed(toRoute ?? NavigationRoutes.main),
+        ),
+      );
 }

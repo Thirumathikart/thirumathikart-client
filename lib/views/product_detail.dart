@@ -12,7 +12,7 @@ class ProductDetail extends GetView<ProductDetailsController> {
   @override
   Widget build(BuildContext context) {
     final productDetailsController = Get.find<ProductDetailsController>();
-    final Product product = Get.arguments[0];
+    final Product product = Get.arguments;
     return Scaffold(
       backgroundColor: AppTheme.bg,
       appBar: appBar(product.name!),
@@ -39,7 +39,7 @@ class ProductDetail extends GetView<ProductDetailsController> {
                     ))),
           ),
           Text(
-            '${product.name!})',
+            product.name!,
             style: const TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,

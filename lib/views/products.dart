@@ -11,17 +11,17 @@ class Products extends GetView<ProductsController> {
   const Products({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final productsController = Get.find<ProductsController>();
-    final productsListMain = Get.arguments[0];
-    final title = Get.arguments[1];
-    controller.getProductsByCategory(title, true);
-    final FocusNode focusNode = FocusNode();
-    if (productsController.flag.value) {
-      productsController.copy(productsListMain);
-      productsController.switchFlag();
+    final title = Get.arguments;
+    if (controller.isSelected[0] == false && controller.isSelected[1] == true) {
+      controller.getProductsByCategory(
+          title, false, controller.textController.text);
+    } else {
+      controller.getProductsByCategory(
+          title, true, controller.textController.text);
     }
+    final FocusNode focusNode = FocusNode();
     return Scaffold(
-      appBar: appBar(productsListMain[0].parentName!),
+      appBar: appBar(title.toString().replaceAll('-', ' ')),
       body: Column(
         children: [
           Padding(
@@ -43,7 +43,7 @@ class Products extends GetView<ProductsController> {
                   SizedBox(
                     width: MediaQuery.of(context).size.width - 175,
                     child: TextField(
-                      controller: productsController.textController,
+                      controller: controller.textController,
                       showCursor: true,
                       cursorHeight: 25,
                       decoration: const InputDecoration(
@@ -54,18 +54,13 @@ class Products extends GetView<ProductsController> {
                       ),
                       focusNode: focusNode,
                       onChanged: (_) {
-                        productsController.empty();
-                        for (int i = 0; i < productsListMain.length; i++) {
-                          if (productsListMain[i].name!.toLowerCase().contains(
-                              productsController.textController.text)) {
-                            productsController.add(
-                                productsController.productsListDynamic.toList(),
-                                productsListMain[i]);
-                          }
-                        }
-                        if (productsController.isSelected[0] == false &&
-                            productsController.isSelected[1] == true) {
-                          productsController.reverse();
+                        if (controller.isSelected[0] == false &&
+                            controller.isSelected[1] == true) {
+                          controller.getProductsByCategory(
+                              title, false, controller.textController.text);
+                        } else {
+                          controller.getProductsByCategory(
+                              title, true, controller.textController.text);
                         }
                       },
                     ),
@@ -109,10 +104,12 @@ class Products extends GetView<ProductsController> {
                           borderRadius: BorderRadius.circular(50),
                           onPressed: (int index) {
                             if (index == 0) {
-                              controller.getProductsByCategory(title, true);
+                              controller.getProductsByCategory(
+                                  title, true, controller.textController.text);
                               controller.set(0, true);
                             } else {
-                              controller.getProductsByCategory(title, false);
+                              controller.getProductsByCategory(
+                                  title, false, controller.textController.text);
                               controller.set(1, false);
                             }
                             for (int i = 0;
@@ -171,7 +168,7 @@ class Products extends GetView<ProductsController> {
                   );
 
                   Get.toNamed(NavigationRoutes.productDetailRoute,
-                      arguments: [item, productsListMain]);
+                      arguments: item);
                 },
                 child: Container(
                     height: 300,
