@@ -17,6 +17,7 @@ import 'package:thirumathikart_app/views/privacy_policy.dart';
 import 'package:thirumathikart_app/views/product_detail.dart';
 import 'package:thirumathikart_app/views/products.dart';
 import 'package:thirumathikart_app/views/profile.dart';
+import 'package:thirumathikart_app/views/register_safe.dart';
 import 'package:thirumathikart_app/views/splash.dart';
 import 'package:thirumathikart_app/views/login.dart';
 import 'package:thirumathikart_app/views/register.dart';
@@ -96,7 +97,7 @@ class NavigationPages {
         ),
         GetPage(
           name: NavigationRoutes.registerRoute,
-          page: () => const RegisterPage(),
+          page: () => const RegisterSafePage(),
           binding: RegisterBindings(),
         ),
         GetPage(

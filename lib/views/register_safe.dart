@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:thirumathikart_app/widgets/button/register_button.dart';
+import 'package:thirumathikart_app/controllers/auth_controller.dart';
 
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+class RegisterSafePage extends GetView<AuthController> {
+  const RegisterSafePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +73,7 @@ class RegisterPage extends StatelessWidget {
                                         ),
                                       ),
                                       keyboardType: TextInputType.name,
+                                      controller: controller.firstNameTextController,
                                     ),
                                   ),
                                 ),
@@ -99,6 +102,7 @@ class RegisterPage extends StatelessWidget {
                                         ),
                                       ),
                                       keyboardType: TextInputType.name,
+                                      controller: controller.lastNameTextController,
                                     ),
                                   ),
                                 ),
@@ -127,6 +131,7 @@ class RegisterPage extends StatelessWidget {
                                         ),
                                       ),
                                       keyboardType: TextInputType.emailAddress,
+                                      controller: controller.emailNameTextController,
                                     ),
                                   ),
                                 ),
@@ -157,6 +162,7 @@ class RegisterPage extends StatelessWidget {
                                       ),
                                       keyboardType:
                                           TextInputType.visiblePassword,
+                                      controller: controller.passwordRegTextController,
                                     ),
                                   ),
                                 ),
@@ -189,6 +195,7 @@ class RegisterPage extends StatelessWidget {
                                         ),
                                         keyboardType:
                                             TextInputType.visiblePassword,
+                                        controller: controller.reEnterTextController,
                                       ),
                                     ),
                                   ),

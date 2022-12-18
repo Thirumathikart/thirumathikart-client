@@ -23,20 +23,20 @@ PreferredSizeWidget appBar(String label) => AppBar(
             fontSize: 22),
       )
     ]),
-    actions: [
-      Visibility(
-        visible: Get.routing.current == NavigationRoutes.main,
-        child: Row(
-          children: [
-            IconButton(
-              onPressed: () {
-                Get.toNamed('/cart');
-              },
-              icon: const Icon(Icons.notifications),
-            ),
-            const SizedBox(width: 15.0)
-          ],
-        ),
-      )
-    ],
+    // actions: [
+    //   Visibility(
+    //     visible: Get.routing.current == NavigationRoutes.main,
+    //     child: Row(
+    //       children: [
+    //         IconButton(
+    //           onPressed: () {
+    //             Get.toNamed('/cart');
+    //           },
+    //           icon: const Icon(Icons.notifications),
+    //         ),
+    //         const SizedBox(width: 15.0)
+    //       ],
+    //     ),
+    //   )
+    // ],
     centerTitle: false);

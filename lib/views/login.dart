@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:thirumathikart_app/constants/navigation_routes.dart';
 import 'package:thirumathikart_app/widgets/button/login_button.dart';
+import 'package:thirumathikart_app/controllers/auth_controller.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends GetView<AuthController> {
   const LoginPage({super.key});
 
   @override
@@ -12,7 +13,7 @@ class LoginPage extends StatelessWidget {
     return SingleChildScrollView(
         child: ConstrainedBox(
             constraints: BoxConstraints(
-              minHeight: deviceHeight * 0.85,
+              minHeight: deviceHeight,
             ),
             child: Container(
                 padding: const EdgeInsets.all(20),
@@ -68,7 +69,8 @@ class LoginPage extends StatelessWidget {
                                               contentPadding: EdgeInsets.only(
                                                   left: 20.0, right: 20),
                                             ),
-                                            keyboardType: TextInputType.number,
+                                            keyboardType: TextInputType.emailAddress,
+                                            controller: controller.userNameTextController,
                                           ),
                                         ),
                                       ),
@@ -100,6 +102,7 @@ class LoginPage extends StatelessWidget {
                                                 contentPadding: EdgeInsets.only(
                                                     left: 20.0, right: 20),
                                               ),
+                                              controller: controller.passwordTextController,
                                             ),
                                           ),
                                         ),

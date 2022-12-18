@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:thirumathikart_app/config/themes.dart';
+import 'package:thirumathikart_app/controllers/auth_controller.dart';
 
-class RegisterButton extends StatelessWidget {
+class RegisterButton extends GetView<AuthController> {
   const RegisterButton({super.key});
-
   @override
   Widget build(BuildContext context) => Container(
         margin: const EdgeInsets.only(top: 30),
@@ -11,6 +12,8 @@ class RegisterButton extends StatelessWidget {
         child: MaterialButton(
           onPressed: () {
             // Validation
+            print(controller.firstNameTextController.text);
+            controller.register();
           },
           color: AppTheme.facebook,
           shape: const RoundedRectangleBorder(
