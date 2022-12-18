@@ -73,7 +73,8 @@ class RegisterSafePage extends GetView<AuthController> {
                                         ),
                                       ),
                                       keyboardType: TextInputType.name,
-                                      controller: controller.firstNameTextController,
+                                      controller:
+                                          controller.firstNameTextController,
                                     ),
                                   ),
                                 ),
@@ -102,7 +103,8 @@ class RegisterSafePage extends GetView<AuthController> {
                                         ),
                                       ),
                                       keyboardType: TextInputType.name,
-                                      controller: controller.lastNameTextController,
+                                      controller:
+                                          controller.lastNameTextController,
                                     ),
                                   ),
                                 ),
@@ -131,7 +133,8 @@ class RegisterSafePage extends GetView<AuthController> {
                                         ),
                                       ),
                                       keyboardType: TextInputType.emailAddress,
-                                      controller: controller.emailNameTextController,
+                                      controller:
+                                          controller.emailNameTextController,
                                     ),
                                   ),
                                 ),
@@ -162,7 +165,8 @@ class RegisterSafePage extends GetView<AuthController> {
                                       ),
                                       keyboardType:
                                           TextInputType.visiblePassword,
-                                      controller: controller.passwordRegTextController,
+                                      controller:
+                                          controller.passwordRegTextController,
                                     ),
                                   ),
                                 ),
@@ -195,7 +199,8 @@ class RegisterSafePage extends GetView<AuthController> {
                                         ),
                                         keyboardType:
                                             TextInputType.visiblePassword,
-                                        controller: controller.reEnterTextController,
+                                        controller:
+                                            controller.reEnterTextController,
                                       ),
                                     ),
                                   ),

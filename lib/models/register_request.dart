@@ -24,7 +24,7 @@ class RegistrationRequest {
   factory RegistrationRequest.fromJson(Map<String, dynamic> json) =>
       RegistrationRequest(
         customerFirstName: json['firstname'] as String,
-        customerLastName: json['lastname'] as String ,
+        customerLastName: json['lastname'] as String,
         customerEmail: json['email'] as String,
         customerPassword: json['password'] as String,
         isSeller: json['is_seller'] as bool,
@@ -38,18 +38,3 @@ class RegistrationRequest {
         'is_seller': isSeller,
       };
 }
-
-// factory UserCollection.fromJson(Map<String, dynamic> json) {
-//  return UserCollection(
-//     statusCode: json['statusCode'] as int,
-//     data: User.fromJson(json['data']) ,
-//     version: json['version'] as String );
-// }
-
-// factory UserCollection.fromJson(Map<String, dynamic> json) {
-//  return UserCollection(
-//     statusCode: json['statusCode'] as int,
-//     data: User.fromJson(json.decode(json['data'])),
-//     version: json['version'] as String );
-// }
-

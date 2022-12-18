@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:thirumathikart_app/models/prodcut_response.dart';
@@ -25,11 +27,11 @@ class ProductsController extends GetxController
   List<ProductResponse> sort(
       List<ProductResponse> response, bool isSorted, String key) {
     if (isSorted) {
-      response.sort((a, b) => (double.parse(a.productPrice!))
-          .compareTo(double.parse(b.productPrice!)));
+      response.sort((a, b) => (double.parse(a.product!.price.toString()))
+          .compareTo(double.parse(b.product!.price.toString())));
     } else {
-      response.sort((a, b) => double.parse(b.productPrice!)
-          .compareTo(double.parse(a.productPrice!)));
+      response.sort((a, b) => double.parse(b.product!.price.toString())
+          .compareTo(double.parse(a.product!.price.toString())));
     }
     return filter(response, key);
   }
@@ -38,7 +40,7 @@ class ProductsController extends GetxController
       List<ProductResponse> sortedRespone, String key) {
     List<ProductResponse> filteredResponse = [];
     for (int i = 0; i < sortedRespone.length; i++) {
-      if (sortedRespone[i].productTitle!.toLowerCase().contains(key)) {
+      if (sortedRespone[i].product!.title!.toLowerCase().contains(key)) {
         filteredResponse.add(sortedRespone[i]);
       }
     }

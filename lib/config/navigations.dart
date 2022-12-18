@@ -9,7 +9,7 @@ import 'package:thirumathikart_app/bindings/splash_binding.dart';
 import 'package:thirumathikart_app/bindings/login_binding.dart';
 import 'package:thirumathikart_app/bindings/register_binding.dart';
 import 'package:thirumathikart_app/bindings/cart_binding.dart';
-import 'package:thirumathikart_app/models/product.dart';
+import 'package:thirumathikart_app/models/prodcut_response.dart';
 import 'package:thirumathikart_app/views/auth.dart';
 import 'package:thirumathikart_app/views/home.dart';
 import 'package:thirumathikart_app/views/main_page.dart';
@@ -20,7 +20,6 @@ import 'package:thirumathikart_app/views/profile.dart';
 import 'package:thirumathikart_app/views/register_safe.dart';
 import 'package:thirumathikart_app/views/splash.dart';
 import 'package:thirumathikart_app/views/login.dart';
-import 'package:thirumathikart_app/views/register.dart';
 import 'package:thirumathikart_app/views/cart.dart';
 import 'package:thirumathikart_app/constants/navigation_routes.dart';
 import 'package:thirumathikart_app/views/term_condition.dart';
@@ -109,7 +108,7 @@ class NavigationPages {
         GetPage(
           name: NavigationRoutes.productDetailRoute,
           page: () => const ProductDetail(),
-          arguments: Product,
+          arguments: ProductResponse,
           binding: ProductDetialBindings(),
         ),
         GetPage(

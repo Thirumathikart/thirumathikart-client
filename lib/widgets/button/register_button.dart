@@ -12,7 +12,6 @@ class RegisterButton extends GetView<AuthController> {
         child: MaterialButton(
           onPressed: () {
             // Validation
-            print(controller.firstNameTextController.text);
             controller.register();
           },
           color: AppTheme.facebook,

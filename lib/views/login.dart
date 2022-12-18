@@ -69,8 +69,10 @@ class LoginPage extends GetView<AuthController> {
                                               contentPadding: EdgeInsets.only(
                                                   left: 20.0, right: 20),
                                             ),
-                                            keyboardType: TextInputType.emailAddress,
-                                            controller: controller.userNameTextController,
+                                            keyboardType:
+                                                TextInputType.emailAddress,
+                                            controller: controller
+                                                .userNameTextController,
                                           ),
                                         ),
                                       ),
@@ -92,7 +94,7 @@ class LoginPage extends GetView<AuthController> {
                                           Radius.circular(10),
                                         ),
                                         elevation: 2,
-                                        child: Expanded(
+                                        child: SizedBox(
                                           child: Center(
                                             child: TextFormField(
                                               obscureText: true,
@@ -102,7 +104,8 @@ class LoginPage extends GetView<AuthController> {
                                                 contentPadding: EdgeInsets.only(
                                                     left: 20.0, right: 20),
                                               ),
-                                              controller: controller.passwordTextController,
+                                              controller: controller
+                                                  .passwordTextController,
                                             ),
                                           ),
                                         ),
