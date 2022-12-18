@@ -18,7 +18,7 @@ class RegisterSafePage extends GetView<AuthController> {
             child: Container(
               padding: const EdgeInsets.all(20),
               decoration: const BoxDecoration(
-                color: Color.fromRGBO(251, 242, 207, 1),
+                color: Colors.white,
               ),
               child: Center(
                 child: Card(
