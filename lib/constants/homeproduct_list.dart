@@ -43,14 +43,14 @@ List<Category> products = [
     id: 7,
     title: 'Office Code',
     route: 'Kitchen-supplies',
-    image: 'assets/images/bag_7.png',
+    image: 'assets/images/bag_8.png',
     color: const Color.fromARGB(255, 40, 153, 61),
   ),
   Category(
     id: 8,
     title: 'Organic Fruits & Vegetables',
     route: 'Organic',
-    image: 'assets/images/bag_8.png',
+    image: 'assets/images/bag_7.png',
     color: const Color.fromARGB(255, 98, 46, 130),
   ),
   Category(

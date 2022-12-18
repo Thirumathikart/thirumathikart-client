@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:thirumathikart_app/config/themes.dart';
 import 'package:thirumathikart_app/controllers/auth_controller.dart';
 
-
 class LoginButton extends GetView<AuthController> {
   const LoginButton({super.key});
 
@@ -23,16 +22,16 @@ class LoginButton extends GetView<AuthController> {
           ),
           padding: const EdgeInsets.all(16),
           child: Obx(
-              () => !controller.isLoading.value
-                  ? const Text(
-                      'Login',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 16),
-                    )
-                  : const CircularProgressIndicator(color: Colors.white),
-            ),
+            () => !controller.isLoading.value
+                ? const Text(
+                    'Login',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16),
+                  )
+                : const CircularProgressIndicator(color: Colors.white),
           ),
+        ),
       );
 }

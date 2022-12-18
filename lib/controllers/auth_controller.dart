@@ -44,12 +44,10 @@ class AuthController extends GetxController {
 
   void register() async {
     final firstName = firstNameTextController.text;
-    print(firstName);
     final lastName = lastNameTextController.text;
     final email = emailNameTextController.text;
     final password = passwordRegTextController.text;
     final reEnterPassword = reEnterTextController.text;
-    final contact = contactTextController.text;
     if (firstName.isEmpty ||
         lastName.isEmpty ||
         email.isEmpty ||
@@ -63,19 +61,18 @@ class AuthController extends GetxController {
     isLoading.value = true;
     api
         .registerCutomer(RegistrationRequest(
-            customerFirstName: firstName,
-            customerLastName: lastName,
-            customerEmail: email,
-            customerPassword: password,
-            isSeller: false,
-            ))
+      customerFirstName: firstName,
+      customerLastName: lastName,
+      customerEmail: email,
+      customerPassword: password,
+      isSeller: false,
+    ))
         .then((response) {
       isLoading.value = false;
       navigateToLogin();
     }, onError: (err) {
       isLoading.value = false;
       Get.snackbar('Failed To Register', err.toString());
-      print(err.toString());
     });
   }
 

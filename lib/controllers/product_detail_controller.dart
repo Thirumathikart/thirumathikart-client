@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:thirumathikart_app/models/product.dart';
+import 'package:thirumathikart_app/models/prodcut_response.dart';
 import 'package:thirumathikart_app/config/themes.dart';
 import 'dart:convert';
 
 class ProductDetailsController extends GetxController {
   final productDynamic = 0.obs;
-  RxList<Product> cart = <Product>[].obs;
+  RxList<ProductResponse> cart = <ProductResponse>[].obs;
   GetStorage box = GetStorage();
 
-  void addItemToCart(Product product) {
+  void addItemToCart(ProductResponse product) {
     cart.add(product);
 
     List<Map<String, dynamic>> itemscart =
-        cart.map((Product e) => e.toJson()).toList();
+        cart.map((ProductResponse e) => e.toJson()).toList();
     String jsonString = jsonEncode(itemscart);
     box.write('itemscart', jsonString).then((value) => {
           Get.snackbar('Message', 'Added to Cart.',
@@ -31,20 +31,20 @@ class ProductDetailsController extends GetxController {
 
   void updatingSession() {
     box.listenKey('itemscart', (updatedValue) {
-      List itemval = jsonDecode(updatedValue);
+      //List itemval = jsonDecode(updatedValue);
       cart.clear();
       // ignore: unnecessary_lambdas
-      cart.addAll(itemval.map((e) => Product.fromMap(e)).toList());
+      //cart.addAll(itemval.map((e) => ProductResponse.fromMap(e)).toList());
     });
   }
 
   void getUpdatedSessionCartData() {
     if (box.hasData('itemscart')) {
-      String value = GetStorage().read('itemscart');
-      List itemval = jsonDecode(value);
+      //String value = GetStorage().read('itemscart');
+      //List itemval = jsonDecode(value);
       cart.clear();
       // ignore: unnecessary_lambdas
-      cart.addAll(itemval.map((e) => Product.fromMap(e)).toList());
+      //cart.addAll(itemval.map((e) => ProductResponse.fromMap(e)).toList());
     }
 
     updatingSession();

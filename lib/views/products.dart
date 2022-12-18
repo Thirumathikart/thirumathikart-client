@@ -1,10 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:thirumathikart_app/config/themes.dart';
+import 'package:thirumathikart_app/constants/api_constants.dart';
 import 'package:thirumathikart_app/constants/navigation_routes.dart';
 import 'package:thirumathikart_app/controllers/products_controller.dart';
 import 'package:get/get.dart';
-import 'package:thirumathikart_app/models/product.dart';
+import 'package:thirumathikart_app/models/prodcut_response.dart';
 import 'package:thirumathikart_app/widgets/app_bar.dart';
 
 class Products extends GetView<ProductsController> {
@@ -156,19 +157,20 @@ class Products extends GetView<ProductsController> {
               itemBuilder: (ctx, index) => GestureDetector(
                 onTap: () {
                   var item = Product(
-                    id: state[index].productId,
-                    name: state[index].productTitle,
-                    details: state[index].productDescription,
-                    price: double.parse(state[index].productPrice!),
-                    image: state[index].productPhoto,
-                    unit: 'kg',
-                    parentName: state[index].productTitle,
-                    sellerDetails: state[index].seller!.sellerName,
-                    parentId: state[index].productId,
+                      title: state[index].product!.title,
+                      categoryId: state[index].product!.categoryId,
+                      sellerId: state[index].product!.sellerId,
+                      price: state[index].product!.price,
+                      description: state[index].product!.description,
+                      stock: state[index].product!.stock);
+                  var itemResponse = ProductResponse(
+                    id: state[index].id,
+                    productId: state[index].productId,
+                    imageUrl: state[index].imageUrl,
+                    product: item,
                   );
-
                   Get.toNamed(NavigationRoutes.productDetailRoute,
-                      arguments: item);
+                      arguments: itemResponse);
                 },
                 child: Container(
                     height: 300,
@@ -194,7 +196,8 @@ class Products extends GetView<ProductsController> {
                               child: CachedNetworkImage(
                                 width: double.infinity,
                                 fit: BoxFit.fill,
-                                imageUrl: state[index].productPhoto!,
+                                imageUrl:
+                                    '${ApiConstants.productBaseUrl}/${state[index].imageUrl!}',
                                 progressIndicatorBuilder:
                                     (context, url, downloadProgress) =>
                                         CircularProgressIndicator(
@@ -206,14 +209,14 @@ class Products extends GetView<ProductsController> {
                           padding: const EdgeInsets.all(8),
                           child: Column(children: [
                             Text(
-                              state[index].productTitle!,
+                              state[index].product!.title!,
                               style: const TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
                             Text(
-                              '₹ ${state[index].productPrice}',
+                              '₹ ${state[index].product!.price}',
                               style: const TextStyle(
                                 fontSize: 8,
                               ),

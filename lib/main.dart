@@ -22,18 +22,17 @@ Future<void> initServices() async {
 class Thirumathikart extends GetView<MainController> {
   const Thirumathikart({Key? key}) : super(key: key);
 
-
   @override
-  Widget build(BuildContext context)=> GetMaterialApp(
+  Widget build(BuildContext context) => GetMaterialApp(
         themeMode: ThemeMode.light,
         theme: ThemeData(
             textTheme:
                 GoogleFonts.brawlerTextTheme(Theme.of(context).textTheme)),
         debugShowCheckedModeBanner: false,
         // initialRoute: NavigationRoutes.main,
-        initialRoute: controller.userTokenFetch() ? NavigationRoutes.main : NavigationRoutes.loginRoute,
+        initialRoute: controller.userTokenFetch()
+            ? NavigationRoutes.main
+            : NavigationRoutes.loginRoute,
         getPages: NavigationPages.getPages(),
       );
 }
-
-

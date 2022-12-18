@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:thirumathikart_app/constants/api_constants.dart';
 import 'package:thirumathikart_app/controllers/product_detail_controller.dart';
-import 'package:thirumathikart_app/models/product.dart';
 import 'package:thirumathikart_app/config/themes.dart';
+import 'package:thirumathikart_app/models/prodcut_response.dart';
 import 'package:thirumathikart_app/widgets/app_bar.dart';
 
 class ProductDetail extends GetView<ProductDetailsController> {
@@ -12,10 +13,10 @@ class ProductDetail extends GetView<ProductDetailsController> {
   @override
   Widget build(BuildContext context) {
     final productDetailsController = Get.find<ProductDetailsController>();
-    final Product product = Get.arguments;
+    final ProductResponse product = Get.arguments;
     return Scaffold(
       backgroundColor: AppTheme.bg,
-      appBar: appBar(product.name!),
+      appBar: appBar(product.product!.title!),
       body: SingleChildScrollView(
         child: Column(children: [
           Padding(
@@ -29,7 +30,8 @@ class ProductDetail extends GetView<ProductDetailsController> {
                     child: CachedNetworkImage(
                       width: double.infinity,
                       fit: BoxFit.fill,
-                      imageUrl: product.image!,
+                      imageUrl:
+                          '${ApiConstants.productBaseUrl}/${product.imageUrl!}',
                       progressIndicatorBuilder:
                           (context, url, downloadProgress) =>
                               CircularProgressIndicator(
@@ -39,14 +41,14 @@ class ProductDetail extends GetView<ProductDetailsController> {
                     ))),
           ),
           Text(
-            product.name!,
+            product.product!.title!,
             style: const TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
-            '₹ ${product.price}',
+            '₹ ${product.product!.price}',
             style: const TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,
@@ -151,7 +153,7 @@ class ProductDetail extends GetView<ProductDetailsController> {
                 padding: const EdgeInsets.all(8.0),
                 child: Obx(
                   () => Text(
-                    '₹ ${productDetailsController.productDynamic.value * product.price!}',
+                    '₹ ${productDetailsController.productDynamic.value * product.product!.price!}',
                     style: const TextStyle(
                       fontSize: 20,
                     ),
@@ -184,7 +186,7 @@ class ProductDetail extends GetView<ProductDetailsController> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            product.details!,
+                            product.product!.description!,
                             style: const TextStyle(
                               fontSize: 15,
                             ),
@@ -216,7 +218,7 @@ class ProductDetail extends GetView<ProductDetailsController> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            product.sellerDetails!,
+                            product.product!.sellerDetails!,
                             style: const TextStyle(
                               fontSize: 15,
                             ),
@@ -238,19 +240,18 @@ class ProductDetail extends GetView<ProductDetailsController> {
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                       onPressed: () {
-                        var cartItem = Product(
-                          id: product.id!,
-                          name: product.name!,
-                          image: product.image!,
-                          parentId: product.parentId!,
-                          parentName: product.parentName!,
-                          price: product.price,
-                          unit: product.unit,
-                          details: product.details!,
-                          sellerDetails: product.sellerDetails!,
-                          quantity:
-                              productDetailsController.productDynamic.value,
-                        );
+                        var cartItem = ProductResponse(
+                            id: product.id,
+                            productId: product.productId,
+                            imageUrl: product.imageUrl,
+                            product: Product(
+                              title: product.product!.title,
+                              categoryId: product.product!.categoryId,
+                              sellerId: product.product!.sellerId,
+                              price: product.product!.price,
+                              description: product.product!.description,
+                              stock: product.product!.stock,
+                            ));
                         productDetailsController.addItemToCart(cartItem);
                       },
                       style: ButtonStyle(

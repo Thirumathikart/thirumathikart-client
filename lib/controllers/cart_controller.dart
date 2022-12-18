@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
-import 'package:thirumathikart_app/models/product.dart';
+import 'package:thirumathikart_app/models/prodcut_response.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
 class CartController extends GetxController {
-  RxList<Product> cart = <Product>[].obs;
+  RxList<ProductResponse> cart = <ProductResponse>[].obs;
   GetStorage box = GetStorage();
   RxDouble grandTotal = 0.0.obs;
 
@@ -13,29 +13,29 @@ class CartController extends GetxController {
     cart.removeAt(index);
 
     List<Map<String, dynamic>> itemscart =
-        cart.map((Product e) => e.toJson()).toList();
+        cart.map((ProductResponse e) => e.toJson()).toList();
     String jsonString = jsonEncode(itemscart);
     box.write('itemscart', jsonString);
   }
 
   void increaseQtyOfSelectedItemInCart(int index) {
-    cart[index].quantity = cart[index].quantity! + 1;
+    cart[index].product!.quantity = cart[index].product!.quantity! + 1;
 
     List<Map<String, dynamic>> itemscart =
-        cart.map((Product e) => e.toJson()).toList();
+        cart.map((ProductResponse e) => e.toJson()).toList();
     String jsonString = jsonEncode(itemscart);
 
     box.write('itemscart', jsonString);
   }
 
-  void decreaseQtyOfSelectedItemInCart(int index, Product product) {
-    if (product.quantity == 1) {
+  void decreaseQtyOfSelectedItemInCart(int index, ProductResponse product) {
+    if (product.product!.quantity == 1) {
       cart.removeAt(index);
     } else {
-      cart[index].quantity = cart[index].quantity! - 1;
+      cart[index].product!.quantity = cart[index].product!.quantity! - 1;
     }
     List<Map<String, dynamic>> itemscart =
-        cart.map((Product e) => e.toJson()).toList();
+        cart.map((ProductResponse e) => e.toJson()).toList();
     String jsonString = jsonEncode(itemscart);
 
     box.write('itemscart', jsonString);
@@ -44,28 +44,31 @@ class CartController extends GetxController {
   void calculateGrandTotal() {
     grandTotal.value = 0;
     for (int i = 0; i < cart.length; i++) {
-      double sum = cart[i].quantity!.toDouble() * cart[i].price!;
+      double sum =
+          cart[i].product!.quantity!.toDouble() * cart[i].product!.price!;
       grandTotal.value = grandTotal.value + sum;
     }
   }
 
   void updatingSession() {
     box.listenKey('itemscart', (updatedValue) {
-      List itemval = jsonDecode(updatedValue);
+      //List itemval = jsonDecode(updatedValue);
       cart.clear();
       // ignore: unnecessary_lambdas
-      cart.addAll(itemval.map((e) => Product.fromMap(e)).toList());
+
+      //cart.addAll(itemval.map((e) => ProductResponse.fromMap(e)).toList());
       calculateGrandTotal();
     });
   }
 
   void getUpdatedSessionCartData() {
     if (box.hasData('itemscart')) {
-      String value = GetStorage().read('itemscart');
-      List itemval = jsonDecode(value);
+      //String value = GetStorage().read('itemscart');
+      //List itemval = jsonDecode(value);
       cart.clear();
       // ignore: unnecessary_lambdas
-      cart.addAll(itemval.map((e) => Product.fromMap(e)).toList());
+
+      //cart.addAll(itemval.map((e) => ProductResponse.fromMap(e)).toList());
       calculateGrandTotal();
     }
     updatingSession();

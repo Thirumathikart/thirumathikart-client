@@ -14,7 +14,7 @@ class Main extends GetView<MainController> {
   Widget build(BuildContext context) => SafeArea(
       child: Scaffold(
           appBar: appBar('Thirumathikart'),
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.white,
           body: Stack(children: [
             PageView(
               controller: controller.pageController,

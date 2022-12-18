@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:thirumathikart_app/controllers/cart_controller.dart';
-import 'package:thirumathikart_app/models/product.dart';
+import 'package:thirumathikart_app/models/prodcut_response.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -9,7 +9,7 @@ class RowCart extends StatelessWidget {
   static late CartController controller;
   final int index;
 
-  final Product product;
+  final ProductResponse product;
   const RowCart({
     Key? key,
     required this.index,
@@ -41,7 +41,7 @@ class RowCart extends StatelessWidget {
                   child: CachedNetworkImage(
                     width: double.infinity,
                     fit: BoxFit.fill,
-                    imageUrl: product.image!,
+                    imageUrl: product.imageUrl!,
                     progressIndicatorBuilder:
                         (context, url, downloadProgress) =>
                             CircularProgressIndicator(
@@ -56,17 +56,17 @@ class RowCart extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  '${product.name}',
+                  '${product.product!.title}',
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 16.0),
                 ),
                 const SizedBox(height: 10.0),
                 Text(
-                  "₹ ${NumberFormat.currency(decimalDigits: 0, symbol: '').format(product.price)}",
+                  "₹ ${NumberFormat.currency(decimalDigits: 0, symbol: '').format(product.product!.price)}",
                 ),
                 const SizedBox(height: 10.0),
                 Text(
-                  "Total - ₹ ${NumberFormat.currency(decimalDigits: 0, symbol: '').format(product.price! * product.quantity!)}",
+                  "Total - ₹ ${NumberFormat.currency(decimalDigits: 0, symbol: '').format(product.product!.price! * product.product!.quantity!)}",
                 ),
                 Expanded(child: _buildQty()),
               ],
@@ -103,7 +103,7 @@ class RowCart extends StatelessWidget {
                   size: 12,
                 ),
               ),
-              Text(product.quantity.toString()),
+              Text(product.product!.quantity.toString()),
               IconButton(
                 onPressed: () =>
                     controller.increaseQtyOfSelectedItemInCart(index),

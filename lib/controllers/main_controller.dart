@@ -27,16 +27,14 @@ class MainController extends GetxController {
   }
 
   bool userTokenFetch() {
-    if (storage.getUser() == null){
+    if (storage.getUser() == null) {
       userToken = '';
-    }
-    else {
+    } else {
       userToken = storage.getUser()!;
     }
-    if (userToken == ''){
+    if (userToken == '') {
       return false;
-    }
-    else {
+    } else {
       return true;
     }
   }
