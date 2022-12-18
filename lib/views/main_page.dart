@@ -19,12 +19,7 @@ class Main extends GetView<MainController> {
             PageView(
               controller: controller.pageController,
               physics: const NeverScrollableScrollPhysics(),
-              children: const [
-                HomePage(),
-                CartPage(),
-                HomePage(),
-                ProfilePage()
-              ],
+              children: const [HomePage(), CartPage(), ProfilePage()],
             ),
           ]),
           bottomNavigationBar: Obx(() => BottomNavigationBar(
