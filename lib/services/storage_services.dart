@@ -1,6 +1,7 @@
 import 'package:get_storage/get_storage.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 import 'package:thirumathikart_app/constants/storage_constants.dart';
+import 'package:thirumathikart_app/models/login_response.dart';
 
 class StorageServices extends GetxService {
   late GetStorage storage;
@@ -27,4 +28,15 @@ class StorageServices extends GetxService {
 
   Map<String, dynamic>? retriveProducts() =>
       storage.read(StorageConstants.products);
+
+  Future<void> storeUser(String user) async {
+    await storage.write(StorageConstants.user, user);
+  }
+
+  String? getUser() {
+      if (storage.read(StorageConstants.user) == null){
+        return null;
+      }
+      return storage.read(StorageConstants.user);
+  }
 }

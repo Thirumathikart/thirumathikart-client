@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:thirumathikart_app/config/themes.dart';
-import 'package:thirumathikart_app/constants/navigation_routes.dart';
+import 'package:thirumathikart_app/controllers/auth_controller.dart';
 
-class LoginButton extends StatelessWidget {
+
+class LoginButton extends GetView<AuthController> {
   const LoginButton({super.key});
 
   @override
@@ -12,7 +13,7 @@ class LoginButton extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         child: MaterialButton(
           onPressed: () {
-            Get.toNamed(NavigationRoutes.main);
+            controller.login();
           },
           color: AppTheme.facebook,
           shape: const RoundedRectangleBorder(
@@ -21,11 +22,17 @@ class LoginButton extends StatelessWidget {
             ),
           ),
           padding: const EdgeInsets.all(16),
-          child: const Text(
-            'Login',
-            style: TextStyle(
-                color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16),
+          child: Obx(
+              () => !controller.isLoading.value
+                  ? const Text(
+                      'Login',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16),
+                    )
+                  : const CircularProgressIndicator(color: Colors.white),
+            ),
           ),
-        ),
       );
 }

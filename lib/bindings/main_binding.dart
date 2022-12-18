@@ -6,6 +6,5 @@ class MainBindings extends Bindings {
   @override
   void dependencies() {
     Get.put(MainController());
-    Get.put(ProfilePageController());
   }
 }
