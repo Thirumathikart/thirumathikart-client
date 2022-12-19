@@ -8,4 +8,6 @@ class ApiConstants {
   static String login = '$baseUrl/api/user/loginCustomer';
   static String productsByCatergory =
       '$productBaseUrl/list_products_by_category';
+  static String updateAddress = '$baseUrl/api/user/updateAddress';
+  static String addAddress = '$baseUrl/api/user/addAddress';
 }
