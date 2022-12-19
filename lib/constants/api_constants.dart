@@ -1,6 +1,8 @@
 class ApiConstants {
   static String baseUrl = 'https://thirumathikart.nitt.edu/api/auth';
   static String productBaseUrl = 'https://thirumathikart.nitt.edu/api/product';
+  static String orderUrl =
+      'https://thirumathikart.nitt.edu/api/order/create_order';
 
   static String register = '$baseUrl/api/user/signup';
   static String login = '$baseUrl/api/user/loginCustomer';

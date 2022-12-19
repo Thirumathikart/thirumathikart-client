@@ -2,6 +2,8 @@ import 'package:get/get_connect/connect.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 import 'package:thirumathikart_app/constants/api_constants.dart';
 import 'package:thirumathikart_app/constants/product_constants.dart';
+import 'package:thirumathikart_app/models/order_request.dart';
+import 'package:thirumathikart_app/models/order_response.dart';
 import 'package:thirumathikart_app/models/prodcut_response.dart';
 import 'package:thirumathikart_app/services/storage_services.dart';
 import 'package:thirumathikart_app/models/login_request.dart';
@@ -91,6 +93,33 @@ class ApiManager extends GetConnect {
           return registerResponse;
         }
         return Future.error('Unable To Register User');
+      }
+    } catch (e) {
+      return Future.error(e);
+    }
+  }
+
+  Future<OrderResponse> createOrder(
+      OrderRequest request, StorageServices storageServices) async {
+    try {
+      var jwt = storageServices.getUser();
+      var headers = {
+        'Accept': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': jwt!
+      };
+      final response =
+          await post(ApiConstants.orderUrl, request.toJson(), headers: headers);
+      if (response.status.hasError) {
+        return Future.error(response.statusText!);
+      } else {
+        if (response.statusCode == 200 && response.bodyString != null) {
+          var orderResponse = orderResponseFromJson(response.bodyString!);
+          if (orderResponse.message == 'Order Placed Successfully') {
+            return orderResponse;
+          }
+        }
+        return Future.error('Unable To Login User');
       }
     } catch (e) {
       return Future.error(e);

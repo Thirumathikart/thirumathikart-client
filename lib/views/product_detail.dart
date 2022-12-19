@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:thirumathikart_app/constants/api_constants.dart';
 import 'package:thirumathikart_app/controllers/product_detail_controller.dart';
 import 'package:thirumathikart_app/config/themes.dart';
+import 'package:thirumathikart_app/models/order_request.dart';
 import 'package:thirumathikart_app/models/prodcut_response.dart';
 import 'package:thirumathikart_app/widgets/app_bar.dart';
 
@@ -284,7 +285,22 @@ class ProductDetail extends GetView<ProductDetailsController> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      var orderItem = OrderItem(
+                        productId: product.productId,
+                        productQuantity: controller.productDynamic.value,
+                      );
+                      List<OrderItem> orderItems = [];
+                      for (int i = 0;
+                          i < controller.productDynamic.value;
+                          i++) {
+                        orderItems.add(orderItem);
+                      }
+                      controller.createOrder(OrderRequest(
+                        orderItems: orderItems,
+                        sellerContact: '9876543210',
+                      ));
+                    },
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(AppTheme.facebook),
