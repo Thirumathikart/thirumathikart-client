@@ -24,6 +24,8 @@ import 'package:thirumathikart_app/views/login.dart';
 import 'package:thirumathikart_app/views/cart.dart';
 import 'package:thirumathikart_app/constants/navigation_routes.dart';
 import 'package:thirumathikart_app/views/term_condition.dart';
+import 'package:thirumathikart_app/bindings/orders_binding.dart';
+import 'package:thirumathikart_app/views/orders_page.dart';
 
 class NavigationPages {
   static List<GetPage<dynamic>> getPages() => [
@@ -122,6 +124,12 @@ class NavigationPages {
         GetPage(
           name: NavigationRoutes.qrcode,
           page: () => const Qrtrypage(),
-        )
+        ),
+        GetPage(
+          name: NavigationRoutes.myOrdersRoute,
+          page: () => const OrdersPage(),
+          arguments: List<Product>,
+          binding: OrdersBindings(),
+        ),
       ];
 }
