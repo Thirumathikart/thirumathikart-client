@@ -5,6 +5,7 @@ import 'package:thirumathikart_app/bindings/main_binding.dart';
 import 'package:thirumathikart_app/bindings/product_detail_bindings.dart';
 import 'package:thirumathikart_app/bindings/products_binding.dart';
 import 'package:thirumathikart_app/bindings/profile_page_binding.dart';
+import 'package:thirumathikart_app/bindings/qr_binding.dart';
 import 'package:thirumathikart_app/bindings/splash_binding.dart';
 import 'package:thirumathikart_app/bindings/login_binding.dart';
 import 'package:thirumathikart_app/bindings/register_binding.dart';
@@ -17,6 +18,8 @@ import 'package:thirumathikart_app/views/privacy_policy.dart';
 import 'package:thirumathikart_app/views/product_detail.dart';
 import 'package:thirumathikart_app/views/products.dart';
 import 'package:thirumathikart_app/views/profile.dart';
+import 'package:thirumathikart_app/views/qrcode.dart';
+import 'package:thirumathikart_app/views/qrtry.dart';
 import 'package:thirumathikart_app/views/register_safe.dart';
 import 'package:thirumathikart_app/views/splash.dart';
 import 'package:thirumathikart_app/views/login.dart';
@@ -117,6 +120,10 @@ class NavigationPages {
         GetPage(name: NavigationRoutes.tcroute, page: () => const Termspage()),
         GetPage(
             name: NavigationRoutes.privpolicyroute,
-            page: () => const Privacypage())
+            page: () => const Privacypage()),
+        GetPage(
+          name: NavigationRoutes.qrcode,
+          page: () => const Qrtrypage(),
+        )
       ];
 }

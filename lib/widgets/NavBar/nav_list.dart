@@ -70,4 +70,9 @@ var moreList = [
     'icon': const Icon(Icons.info_outline),
     'toRoute': NavigationRoutes.privpolicyroute,
   },
+  {
+    'title': 'Scan QR Code',
+    'icon': const Icon(Icons.info_outline),
+    'toRoute': NavigationRoutes.qrcode,
+  }
 ];
