@@ -10,4 +10,5 @@ class ApiConstants {
       '$productBaseUrl/list_products_by_category';
   static String updateAddress = '$baseUrl/api/user/updateAddress';
   static String addAddress = '$baseUrl/api/user/addAddress';
+  static String fetchAddress = '$baseUrl/api/user/address';
 }

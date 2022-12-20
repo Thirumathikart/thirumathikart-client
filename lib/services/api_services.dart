@@ -2,9 +2,14 @@ import 'package:get/get_connect/connect.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 import 'package:thirumathikart_app/constants/api_constants.dart';
 import 'package:thirumathikart_app/constants/product_constants.dart';
+import 'package:thirumathikart_app/models/add_address_request.dart';
+import 'package:thirumathikart_app/models/add_address_response.dart';
+import 'package:thirumathikart_app/models/fetch_address_response.dart';
 import 'package:thirumathikart_app/models/order_request.dart';
 import 'package:thirumathikart_app/models/order_response.dart';
 import 'package:thirumathikart_app/models/prodcut_response.dart';
+import 'package:thirumathikart_app/models/update_address_request.dart';
+import 'package:thirumathikart_app/models/update_address_response.dart';
 import 'package:thirumathikart_app/services/storage_services.dart';
 import 'package:thirumathikart_app/models/login_request.dart';
 import 'package:thirumathikart_app/models/login_response.dart';
@@ -87,9 +92,6 @@ class ApiManager extends GetConnect {
         if (response.statusCode == 200 && response.bodyString != null) {
           var registerResponse =
               registrationResponseFromJson(response.bodyString!);
-          // if (registerResponse.code == 200) {
-          //   return registerResponse;
-          // }
           return registerResponse;
         }
         return Future.error('Unable To Register User');
@@ -119,7 +121,94 @@ class ApiManager extends GetConnect {
             return orderResponse;
           }
         }
-        return Future.error('Unable To Login User');
+        return Future.error('Unable To Place Order');
+      }
+    } catch (e) {
+      return Future.error(e);
+    }
+  }
+
+  Future<FetchAddressResponse> fetchAddress(
+      StorageServices storageServices) async {
+    try {
+      var jwt = storageServices.getUser();
+      var headers = {
+        'Accept': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': jwt!
+      };
+      final response = await get(ApiConstants.fetchAddress, headers: headers);
+      if (response.status.hasError) {
+        return Future.error(response.statusText!);
+      } else {
+        if (response.statusCode == 200 && response.bodyString != null) {
+          var fetchAddressResponse =
+              fetchAddressResponseFromJson(response.bodyString!);
+          if (fetchAddressResponse.message == 'success') {
+            return fetchAddressResponse;
+          }
+        }
+        return Future.error('Unable To Fetch Address');
+      }
+    } catch (e) {
+      print(e);
+      return Future.error(e);
+    }
+  }
+
+  Future<AddAddressResponse> addAddress(
+      AddAddressRequest request, StorageServices storageServices) async {
+    try {
+      var jwt = storageServices.getUser();
+      var headers = {
+        'Accept': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': jwt!
+      };
+      final response = await post(ApiConstants.addAddress, request.toJson(),
+          headers: headers);
+      if (response.status.hasError) {
+        return Future.error(response.statusText!);
+      } else {
+        if (response.statusCode == 200 && response.bodyString != null) {
+          var addAddressResponse =
+              addAddressResponseFromJson(response.bodyString!);
+          if (addAddressResponse.message == 'success') {
+            return addAddressResponse;
+          }
+        }
+        return Future.error('Unable To Add Address');
+      }
+    } catch (e) {
+      return Future.error(e);
+    }
+  }
+
+  Future<UpdateAddressResponse> updateAddress(
+      UpdateAddressRequest request, StorageServices storageServices) async {
+    try {
+      var jwt = storageServices.getUser();
+      var headers = {
+        'Accept': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': jwt!
+      };
+      final response = await post(ApiConstants.updateAddress, request.toJson(),
+          headers: headers);
+      // print(response.statusCode);
+      // print(response.statusText);
+      // print(response.bodyString);
+      if (response.status.hasError) {
+        return Future.error(response.statusText!);
+      } else {
+        if (response.statusCode == 200 && response.bodyString != null) {
+          var updateAddressResponse =
+              updateAddressResponseFromJson(response.bodyString!);
+          if (updateAddressResponse.message == 'success') {
+            return updateAddressResponse;
+          }
+        }
+        return Future.error('Unable To Update Address');
       }
     } catch (e) {
       return Future.error(e);
