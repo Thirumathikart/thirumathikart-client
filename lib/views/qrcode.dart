@@ -13,8 +13,8 @@ class Qrpage extends GetView<QrController> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-              ElevatedButton(
-                  onPressed: qrcontroller.scanQR, child: const Text('Scan QR')),
+            ElevatedButton(
+                onPressed: qrcontroller.scanQR, child: const Text('Scan QR')),
           ],
         ));
   }
