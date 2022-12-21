@@ -6,11 +6,12 @@ import 'package:thirumathikart_app/controllers/product_detail_controller.dart';
 import 'package:thirumathikart_app/config/themes.dart';
 import 'package:thirumathikart_app/models/order_request.dart';
 import 'package:thirumathikart_app/models/prodcut_response.dart';
+import 'package:thirumathikart_app/services/storage_services.dart';
 import 'package:thirumathikart_app/widgets/app_bar.dart';
 
 class ProductDetail extends GetView<ProductDetailsController> {
-  const ProductDetail({Key? key}) : super(key: key);
-
+   ProductDetail({Key? key}) : super(key: key);
+  final storage = Get.find<StorageServices>();
   @override
   Widget build(BuildContext context) {
     final productDetailsController = Get.find<ProductDetailsController>();
@@ -299,7 +300,7 @@ class ProductDetail extends GetView<ProductDetailsController> {
                       controller.createOrder(OrderRequest(
                         orderItems: orderItems,
                         sellerContact: '9876543210',
-                        addressId: 1,
+                        addressId: storage.getAddressId() ,
                       ));
                     },
                     style: ButtonStyle(

@@ -62,6 +62,7 @@ class ProductDetailsController extends GetxController {
   }
 
   void createOrder(OrderRequest orderRequest) async {
+    print(orderRequest.addressId);
     if (productDynamic.value == 0) {
       Get.snackbar('Invalid Order', 'Quantity cannot be zero.');
       return;

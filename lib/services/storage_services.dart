@@ -38,4 +38,15 @@ class StorageServices extends GetxService {
     }
     return storage.read(StorageConstants.user);
   }
+
+  Future<void> storeAddressId(int? addressId) async {
+    await storage.write(StorageConstants.addressId, addressId);
+  }
+  
+  int? getAddressId() {
+    if (storage.read(StorageConstants.addressId) == null) {
+      return null;
+    }
+    return storage.read(StorageConstants.addressId);
+  }
 }

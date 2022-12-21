@@ -111,7 +111,7 @@ class NavigationPages {
         ),
         GetPage(
           name: NavigationRoutes.productDetailRoute,
-          page: () => const ProductDetail(),
+          page: ProductDetail.new,
           arguments: ProductResponse,
           binding: ProductDetialBindings(),
         ),

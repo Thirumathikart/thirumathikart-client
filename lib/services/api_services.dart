@@ -145,6 +145,7 @@ class ApiManager extends GetConnect {
         if (response.statusCode == 200 && response.bodyString != null) {
           var fetchAddressResponse =
               fetchAddressResponseFromJson(response.bodyString!);
+              storageServices.storeAddressId(fetchAddressResponse.address![0].id);
           if (fetchAddressResponse.message == 'success') {
             return fetchAddressResponse;
           }
