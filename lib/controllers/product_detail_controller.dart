@@ -73,17 +73,4 @@ class ProductDetailsController extends GetxController {
       Get.snackbar('Failed To Place Order', err.toString());
     });
   }
-
-  void fetchOrder() async {
-    if (productDynamic.value == 0) {
-      Get.snackbar('Invalid Order', 'Quantity cannot be zero.');
-      return;
-    }
-    api.fetchProduct(storage).then((response) {
-      Get.snackbar('Order Fetched', 'Order Fetched Successfully.');
-      updateQuantity(0);
-    }, onError: (err) {
-      Get.snackbar('Failed To Fetch Order', err.toString());
-    });
-  }
 }
