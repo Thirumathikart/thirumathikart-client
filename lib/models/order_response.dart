@@ -7,16 +7,16 @@ String orderResponseToJson(OrderResponse data) => json.encode(data.toJson());
 
 class OrderResponse {
   OrderResponse({
-    required this.message,
+    required this.response,
   });
 
-  final String message;
+  final String response;
 
   factory OrderResponse.fromJson(Map<String, dynamic> json) => OrderResponse(
-        message: json['message'],
+        response: json['response'],
       );
 
   Map<String, dynamic> toJson() => {
-        'message': message,
+        'response': response,
       };
 }

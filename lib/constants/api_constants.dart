@@ -11,4 +11,6 @@ class ApiConstants {
   static String updateAddress = '$baseUrl/api/user/updateAddress';
   static String addAddress = '$baseUrl/api/user/addAddress';
   static String fetchAddress = '$baseUrl/api/user/address';
+  static String fetchProduct =
+      'https://thirumathikart.nitt.edu/api/order/fetch_by_customer';
 }

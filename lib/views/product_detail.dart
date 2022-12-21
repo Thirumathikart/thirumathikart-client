@@ -299,6 +299,7 @@ class ProductDetail extends GetView<ProductDetailsController> {
                       controller.createOrder(OrderRequest(
                         orderItems: orderItems,
                         sellerContact: '9876543210',
+                        addressId: 1,
                       ));
                     },
                     style: ButtonStyle(
