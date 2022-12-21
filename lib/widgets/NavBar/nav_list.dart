@@ -74,5 +74,10 @@ var moreList = [
     'title': 'Scan QR Code',
     'icon': const Icon(Icons.info_outline),
     'toRoute': NavigationRoutes.qrcode,
-  }
+  },
+  {
+    'title': 'My Orders',
+    'icon': const Icon(Icons.info_outline),
+    'toRoute': NavigationRoutes.myOrdersRoute,
+  },
 ];
