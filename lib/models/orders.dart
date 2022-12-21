@@ -1,6 +1,7 @@
 class OrderDisplay {
   String? status;
-  int? id, totalAmount, customerAddress, sellerAddress;
+  int? id, totalAmount;
+  String? customerAddress, sellerAddress, sellerName;
   List<OrderItemDisplay>? orderItemsList;
 
   OrderDisplay({
@@ -9,6 +10,7 @@ class OrderDisplay {
     this.totalAmount,
     this.orderItemsList,
     this.customerAddress,
+    this.sellerName,
     this.sellerAddress,
   });
 }

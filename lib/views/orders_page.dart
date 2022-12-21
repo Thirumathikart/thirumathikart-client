@@ -83,6 +83,18 @@ class OrdersPage extends GetView<OrdersController> {
                             left: 10, top: 2, bottom: 5, right: 5),
                         alignment: Alignment.center,
                         child: Text(
+                          'Seller Name : ${controller.order[index].sellerName}',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: AppTheme.textPrimary,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(
+                            left: 10, top: 2, bottom: 5, right: 5),
+                        alignment: Alignment.center,
+                        child: Text(
                           'Customer Address : ${controller.order[index].customerAddress}',
                           style: TextStyle(
                             fontSize: 14,
