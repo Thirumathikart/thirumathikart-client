@@ -5,6 +5,7 @@ import 'package:thirumathikart_app/constants/product_constants.dart';
 import 'package:thirumathikart_app/models/add_address_request.dart';
 import 'package:thirumathikart_app/models/add_address_response.dart';
 import 'package:thirumathikart_app/models/fetch_address_response.dart';
+import 'package:thirumathikart_app/models/fetch_order_response.dart';
 import 'package:thirumathikart_app/models/order_request.dart';
 import 'package:thirumathikart_app/models/order_response.dart';
 import 'package:thirumathikart_app/models/prodcut_response.dart';
@@ -117,7 +118,7 @@ class ApiManager extends GetConnect {
       } else {
         if (response.statusCode == 200 && response.bodyString != null) {
           var orderResponse = orderResponseFromJson(response.bodyString!);
-          if (orderResponse.message == 'Order Placed Successfully') {
+          if (orderResponse.response == 'Order Placed Successfully') {
             return orderResponse;
           }
         }
@@ -149,6 +150,33 @@ class ApiManager extends GetConnect {
           }
         }
         return Future.error('Unable To Fetch Address');
+      }
+    } catch (e) {
+      return Future.error(e);
+    }
+  }
+
+  Future<FetchOrderResponse> fetchProduct(
+      StorageServices storageServices) async {
+    try {
+      var jwt = storageServices.getUser();
+      var headers = {
+        'Accept': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': jwt!
+      };
+      final response = await get(ApiConstants.fetchProduct, headers: headers);
+      if (response.status.hasError) {
+        return Future.error(response.statusText!);
+      } else {
+        if (response.statusCode == 200 && response.bodyString != null) {
+          var fetchOrderResponse =
+              fetchorderResponseFromJson(response.bodyString!);
+          if (fetchOrderResponse.message == 'success') {
+            return fetchOrderResponse;
+          }
+        }
+        return Future.error('Unable To Fetch Product');
       }
     } catch (e) {
       return Future.error(e);

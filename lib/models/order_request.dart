@@ -14,20 +14,24 @@ class OrderRequest {
   OrderRequest({
     this.orderItems,
     this.sellerContact,
+    this.addressId,
   });
 
   List<OrderItem>? orderItems;
   String? sellerContact;
+  int? addressId;
 
   factory OrderRequest.fromJson(Map<String, dynamic> json) => OrderRequest(
         orderItems:
             List<OrderItem>.from(json['order_items'].map(OrderItem.fromJson)),
         sellerContact: json['seller_contact'],
+        addressId: json['address_id'],
       );
 
   Map<String, dynamic> toJson() => {
         'order_items': List<dynamic>.from(orderItems!.map((x) => x.toJson())),
         'seller_contact': sellerContact,
+        'address_id': addressId,
       };
 }
 
