@@ -152,24 +152,6 @@ class ProfilePageController extends GetxController {
     }, onError: (err) {
       Get.snackbar('Failed to Add Address', err);
     });
-    user.value.addresses!.add(address);
-    addressesControllers.add({
-      'Line 1': TextEditingController(),
-      'Line 2': TextEditingController(),
-      'District': TextEditingController(),
-      'State': TextEditingController(),
-      'Landmark': TextEditingController(),
-      'Pincode': TextEditingController()
-    });
-    enableAddress.add({
-      'Line 1': false,
-      'Line 2': false,
-      'District': false,
-      'State': false,
-      'Landmark': false,
-      'Pincode': false,
-    });
-    addressesValid.add(false);
   }
 
   Future<void> updateAddressRequest(Address address) async {
@@ -235,11 +217,12 @@ class ProfilePageController extends GetxController {
     addressesControllers[index]['Landmark']!.text = address.landmark!;
     addressesControllers[index]['Pincode']!.text = address.pincode!.toString();
 
-    user.value.addresses![index] = address;
-
     if (addressesNew[index] == true) {
+      user.value.addresses![index] = address;
       addAddressRequest(address);
     } else {
+      address.id = user.value.addresses![index].id;
+      user.value.addresses![index] = address;
       updateAddressRequest(address);
     }
   }
