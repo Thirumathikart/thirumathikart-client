@@ -19,5 +19,6 @@ class NavigationRoutes {
   static String tcroute = '/termsandconditions';
   static String privpolicyroute = '/privacypolicy';
   static String qrcode = '/qrcode';
+  static String myOrdersDetailsRoute = '/myOrdersDetailsRoute';
   static String myOrdersRoute = '/myOrdersRoute';
 }
