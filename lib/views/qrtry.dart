@@ -22,7 +22,6 @@ class Qrtrypage extends StatelessWidget {
                       snackPosition: SnackPosition.BOTTOM,
                       backgroundColor: Colors.red,
                       colorText: Colors.white);
-                  debugPrint('Failed to scan Barcode');
                 } else {
                   final String code = barcode.rawValue!;
                   Get.snackbar('Result', 'Scanned Successfully',
@@ -30,7 +29,6 @@ class Qrtrypage extends StatelessWidget {
                       backgroundColor: Colors.green,
                       colorText: Colors.white);
                   debugPrint('Barcode found! $code');
-                  Text(code);
                 }
               }),
         ));
