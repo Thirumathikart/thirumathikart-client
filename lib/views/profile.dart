@@ -234,6 +234,8 @@ class ProfilePage extends GetView<ProfilePageController> {
                                           : IconButton(
                                               onPressed: () {
                                                 final address = Address(
+                                                  id: controller.user.value
+                                                      .addresses![index].id,
                                                   line_1: controller
                                                       .addressesControllers[
                                                           index]['Line 1']!

@@ -22,7 +22,8 @@ class FetchAddressResponse {
   factory FetchAddressResponse.fromJson(Map<String, dynamic> json) =>
       FetchAddressResponse(
         address: List<AddressResponse>.from(
-            json['address'].map(AddressResponse.fromJson)),
+            // ignore: unnecessary_lambdas
+            json['address'].map((i) => AddressResponse.fromJson(i))),
         message: json['message'],
       );
 

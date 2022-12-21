@@ -151,7 +151,6 @@ class ApiManager extends GetConnect {
         return Future.error('Unable To Fetch Address');
       }
     } catch (e) {
-      print(e);
       return Future.error(e);
     }
   }
@@ -195,9 +194,6 @@ class ApiManager extends GetConnect {
       };
       final response = await post(ApiConstants.updateAddress, request.toJson(),
           headers: headers);
-      // print(response.statusCode);
-      // print(response.statusText);
-      // print(response.bodyString);
       if (response.status.hasError) {
         return Future.error(response.statusText!);
       } else {
