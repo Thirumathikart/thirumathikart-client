@@ -7,7 +7,7 @@ class Termspage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: appBar(TermsConditions.termstitle),
+        appBar: appBar(TermsConditions.termstitle, context),
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,

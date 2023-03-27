@@ -40,11 +40,11 @@ var moreList = [
   //   'icon': const Icon(Icons.info_outline),
   //   'toRoute': NavigationRoutes.aboutRoute,
   // },
-  // {
-  //   'title': 'Feedback',
-  //   'icon': const Icon(Icons.feedback_outlined),
-  //   'toRoute': NavigationRoutes.feedbackRoute,
-  // },
+  {
+    'title': 'Feedback',
+    'icon': const Icon(Icons.feedback_outlined),
+    'toRoute': NavigationRoutes.feedbackRoute,
+  },
   // {
   //   'title': 'Help Center',
   //   'icon': const Icon(Icons.login_outlined),

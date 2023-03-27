@@ -2,8 +2,9 @@ import 'package:get/get.dart';
 import 'package:thirumathikart_app/config/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:thirumathikart_app/constants/navigation_routes.dart';
+import 'package:thirumathikart_app/views/login.dart';
 
-PreferredSizeWidget appBar(String label) => AppBar(
+PreferredSizeWidget appBar(String label, BuildContext context) => AppBar(
     backgroundColor: AppTheme.bg,
     elevation: 1,
     iconTheme: IconThemeData(color: AppTheme.textPrimary),
@@ -12,15 +13,15 @@ PreferredSizeWidget appBar(String label) => AppBar(
           margin: const EdgeInsets.only(left: 0, top: 5, bottom: 5, right: 10),
           child: Image.asset(
             'assets/tk.png',
-            width: 35,
-            height: 35,
+            width: 30,
+            height: 30,
           )),
       Text(
         label,
         style: TextStyle(
             fontWeight: FontWeight.bold,
             color: AppTheme.textPrimary,
-            fontSize: 22),
+            fontSize: 20),
       )
     ]),
     actions: [
@@ -33,6 +34,14 @@ PreferredSizeWidget appBar(String label) => AppBar(
                 Get.toNamed('/cart');
               },
               icon: const Icon(Icons.notifications),
+            ),
+            IconButton(
+              onPressed: () {
+                // BuildContext? context;
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => LoginPage()));
+              },
+              icon: const Icon(Icons.logout),
             ),
             const SizedBox(width: 15.0)
           ],

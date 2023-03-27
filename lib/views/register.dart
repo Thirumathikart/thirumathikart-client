@@ -10,7 +10,7 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-        appBar: appBar('Register'),
+        appBar: appBar('Register', context),
         body: SingleChildScrollView(
             child: ConstrainedBox(
                 constraints: BoxConstraints(
