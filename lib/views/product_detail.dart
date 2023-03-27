@@ -15,7 +15,7 @@ class ProductDetail extends GetView<ProductDetailsController> {
     final Product product = Get.arguments;
     return Scaffold(
       backgroundColor: AppTheme.bg,
-      appBar: appBar(product.name!),
+      appBar: appBar(product.name!, context),
       body: SingleChildScrollView(
         child: Column(children: [
           Padding(

@@ -23,6 +23,7 @@ import 'package:thirumathikart_app/views/register.dart';
 import 'package:thirumathikart_app/views/cart.dart';
 import 'package:thirumathikart_app/constants/navigation_routes.dart';
 import 'package:thirumathikart_app/views/term_condition.dart';
+import 'package:thirumathikart_app/views/feedback.dart';
 
 class NavigationPages {
   static List<GetPage<dynamic>> getPages() => [
@@ -69,7 +70,7 @@ class NavigationPages {
         ),
         GetPage(
           name: NavigationRoutes.feedbackRoute,
-          page: () => const HomePage(),
+          page: FeedbackFormPage.new,
           binding: HomeBindings(),
         ),
         GetPage(

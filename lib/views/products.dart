@@ -21,7 +21,7 @@ class Products extends GetView<ProductsController> {
     }
     final FocusNode focusNode = FocusNode();
     return Scaffold(
-      appBar: appBar(title.toString().replaceAll('-', ' ')),
+      appBar: appBar(title.toString().replaceAll('-', ' '), context),
       body: Column(
         children: [
           Padding(

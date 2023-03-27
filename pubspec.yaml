@@ -27,8 +27,14 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.12.0"
 
   flutter_lints: ^2.0.1
+
+flutter_icons:
+  image_path: "assets/tklogo.png"
+  android: true 
+  ios : true 
 
 flutter:
 

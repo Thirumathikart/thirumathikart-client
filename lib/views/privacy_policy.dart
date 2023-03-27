@@ -7,7 +7,7 @@ class Privacypage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: appBar(Privacypolicy.privacy),
+        appBar: appBar(Privacypolicy.privacy, context),
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,

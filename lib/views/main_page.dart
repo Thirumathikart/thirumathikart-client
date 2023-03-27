@@ -13,7 +13,7 @@ class Main extends GetView<MainController> {
   @override
   Widget build(BuildContext context) => SafeArea(
       child: Scaffold(
-          appBar: appBar('Thirumathikart'),
+          appBar: appBar('Thirumathikart', context),
           backgroundColor: Colors.transparent,
           body: Stack(children: [
             PageView(
@@ -22,7 +22,7 @@ class Main extends GetView<MainController> {
               children: const [
                 HomePage(),
                 CartPage(),
-                HomePage(),
+                // HomePage(),
                 ProfilePage()
               ],
             ),
