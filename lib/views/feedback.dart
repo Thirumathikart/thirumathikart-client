@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class FeedbackFormPage extends StatefulWidget {
+  const FeedbackFormPage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _FeedbackFormPageState createState() => _FeedbackFormPageState();
 }
 
 class _FeedbackFormPageState extends State<FeedbackFormPage> {
   final _formKey = GlobalKey<FormState>();
-  String _name = '';
-  String _email = '';
-  String _feedback = '';
 
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text('Feedback Form'),
+          title: const Text('Feedback Form'),
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -36,12 +35,10 @@ class _FeedbackFormPageState extends State<FeedbackFormPage> {
                     return null;
                   },
                   onChanged: (value) {
-                    setState(() {
-                      _name = value;
-                    });
+                    setState(() {});
                   },
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 const Text(
                   'Email',
                   style: TextStyle(fontSize: 16),
@@ -54,12 +51,10 @@ class _FeedbackFormPageState extends State<FeedbackFormPage> {
                     return null;
                   },
                   onChanged: (value) {
-                    setState(() {
-                      _email = value;
-                    });
+                    setState(() {});
                   },
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 const Text(
                   'Feedback',
                   style: TextStyle(fontSize: 16),
@@ -73,12 +68,10 @@ class _FeedbackFormPageState extends State<FeedbackFormPage> {
                     return null;
                   },
                   onChanged: (value) {
-                    setState(() {
-                      _feedback = value;
-                    });
+                    setState(() {});
                   },
                 ),
-                SizedBox(height: 32),
+                const SizedBox(height: 32),
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
@@ -90,7 +83,7 @@ class _FeedbackFormPageState extends State<FeedbackFormPage> {
                       );
                     }
                   },
-                  child: Text('Submit'),
+                  child: const Text('Submit'),
                 ),
               ],
             ),

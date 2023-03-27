@@ -70,7 +70,7 @@ class NavigationPages {
         ),
         GetPage(
           name: NavigationRoutes.feedbackRoute,
-          page: () => FeedbackFormPage(),
+          page: FeedbackFormPage.new,
           binding: HomeBindings(),
         ),
         GetPage(

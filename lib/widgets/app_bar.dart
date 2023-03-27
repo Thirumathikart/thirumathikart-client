@@ -39,7 +39,7 @@ PreferredSizeWidget appBar(String label, BuildContext context) => AppBar(
               onPressed: () {
                 // BuildContext? context;
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => LoginPage()));
+                    MaterialPageRoute(builder: (context) => const LoginPage()));
               },
               icon: const Icon(Icons.logout),
             ),
