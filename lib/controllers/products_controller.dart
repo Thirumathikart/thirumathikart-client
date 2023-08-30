@@ -2,9 +2,12 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:thirumathikart_app/main.dart';
 import 'package:thirumathikart_app/models/prodcut_response.dart';
 import 'package:thirumathikart_app/services/api_services.dart';
 import 'package:thirumathikart_app/services/storage_services.dart';
+import 'package:thirumathikart_app/views/product_detail.dart';
+import 'package:thirumathikart_app/views/products.dart';
 
 class ProductsController extends GetxController
     with StateMixin<List<ProductResponse>> {
@@ -57,4 +60,11 @@ class ProductsController extends GetxController
   void set(int index, bool boolean) {
     isSelected[index] = boolean;
   }
+
+ 
+
+//    void navigateToProductsPage() {
+//   Get.to(() => main());
+// }
+  
 }

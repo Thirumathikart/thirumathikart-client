@@ -1,5 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:thirumathikart_app/bindings/auth_binding.dart';
+import 'package:thirumathikart_app/bindings/forgotpassword.dart';
 import 'package:thirumathikart_app/bindings/home_bindings.dart';
 import 'package:thirumathikart_app/bindings/main_binding.dart';
 import 'package:thirumathikart_app/bindings/orders_details_bindings.dart';
@@ -13,6 +14,7 @@ import 'package:thirumathikart_app/bindings/cart_binding.dart';
 import 'package:thirumathikart_app/models/orders.dart';
 import 'package:thirumathikart_app/models/prodcut_response.dart';
 import 'package:thirumathikart_app/views/auth.dart';
+import 'package:thirumathikart_app/views/forgotpassword.dart';
 import 'package:thirumathikart_app/views/home.dart';
 import 'package:thirumathikart_app/views/main_page.dart';
 import 'package:thirumathikart_app/views/orders_details_page.dart';
@@ -98,6 +100,11 @@ class NavigationPages {
           page: () => const LoginPage(),
           binding: LoginBindings(),
         ),
+        //   GetPage(
+        //   name: NavigationRoutes.forgotPassword,
+        //   page: () => ForgotPasswordPage(),
+        //   binding: forgotPasswordBindings(),
+        // ),
         GetPage(
           name: NavigationRoutes.registerRoute,
           page: () => const RegisterSafePage(),
@@ -117,7 +124,7 @@ class NavigationPages {
         ),
         GetPage(
           name: NavigationRoutes.cartRoute,
-          page: () => const CartPage(),
+          page: () =>  CartPage(),
           binding: CartBindings(),
         ),
         GetPage(name: NavigationRoutes.tcroute, page: () => const Termspage()),

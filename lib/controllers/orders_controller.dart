@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
+import 'package:thirumathikart_app/constants/orders_constants.dart';
 import 'package:thirumathikart_app/constants/product_constants.dart';
+import 'package:thirumathikart_app/models/order_request.dart';
 import 'package:thirumathikart_app/models/orders.dart';
 import 'package:thirumathikart_app/services/api_services.dart';
 import 'package:thirumathikart_app/services/storage_services.dart';
@@ -40,65 +42,10 @@ class OrdersController extends GetxController {
           sellerAddress: response.response![i].seller!.address!.line1,
         ));
       }
+      print('$order');
     }, onError: (err) {
       Get.snackbar('Failure','No orders made yet' );
-    });
-    // final response;
-    // order.value = [
-    //   OrderDisplay(
-    //       id: 1,
-    //       status: 'Delivered',
-    //       totalAmount: 1000,
-    //       customerAddress: 2,
-    //       sellerAddress: 3,
-    //       orderItemsList: [
-    //         OrderItemDisplay(
-    //             name: 'Order1',
-    //             category: 'Food',
-    //             description: 'jkghkjgdkgjdklgjdlgjdkgjdlkgj;dgjg',
-    //             price: 10,
-    //             quantity: 20,
-    //             totalPrice: 200),
-    //         OrderItemDisplay(
-    //             name: 'Order1',
-    //             category: 'Food',
-    //             description: 'jkghkjgdkgjdklgjdlgjdkgjdlkgj;dgjg',
-    //             price: 10,
-    //             quantity: 20,
-    //             totalPrice: 200),
-    //         OrderItemDisplay(
-    //             name: 'Order1',
-    //             category: 'Food',
-    //             description: 'jkghkjgdkgjdklgjdlgjdkgjdlkgj;dgjg',
-    //             price: 10,
-    //             quantity: 20,
-    //             totalPrice: 200)
-    //       ]),
-    //   OrderDisplay(
-    //       id: 2,
-    //       status: 'Shipped',
-    //       totalAmount: 100,
-    //       customerAddress: 5,
-    //       sellerAddress: 7,
-    //       orderItemsList: [
-    //         OrderItemDisplay(
-    //             name: 'Order1',
-    //             category: 'Food',
-    //             description: 'jkghkjgdkgjdklgjdlgjdkgjdlkgj;dgjg',
-    //             price: 10,
-    //             quantity: 20,
-    //             totalPrice: 200),
-    //         OrderItemDisplay(
-    //             name: 'Order1',
-    //             category: 'Food',
-    //             description: 'jkghkjgdkgjdklgjdlgjdkgjdlkgj;dgjg',
-    //             price: 10,
-    //             quantity: 20,
-    //             totalPrice: 200)
-    //       ]),
-    // ];
-    //order = response;
+    }
+    );
   }
 }
-
-void fetchOrder() async {}

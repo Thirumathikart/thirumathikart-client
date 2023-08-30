@@ -15,10 +15,14 @@ class NavigationRoutes {
   static String registerRoute = '/register';
   static String productsRoute = '/products';
   static String productDetailRoute = '/productDetail';
-  static String cartRoute = '/cart';
+  static String cartRoute = '/Cartpage';
   static String tcroute = '/termsandconditions';
   static String privpolicyroute = '/privacypolicy';
   static String qrcode = '/qrcode';
   static String myOrdersDetailsRoute = '/myOrdersDetailsRoute';
   static String myOrdersRoute = '/myOrdersRoute';
+  // static String forgotPassword='/forgotPassword';
+  
+
+  // static String goToCartPage='/CartPage';
 }

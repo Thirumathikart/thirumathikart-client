@@ -16,7 +16,7 @@ import 'package:thirumathikart_app/models/login_request.dart';
 import 'package:thirumathikart_app/models/login_response.dart';
 import 'package:thirumathikart_app/models/register_request.dart';
 import 'package:thirumathikart_app/models/register_response.dart';
-
+// import 'package:thirumathikart_app/models/logout'
 class ApiServices extends GetxService {
   late ApiManager api;
 
@@ -148,10 +148,15 @@ class ApiManager extends GetConnect {
               storageServices.storeAddressId(fetchAddressResponse.address![0].id);
           if (fetchAddressResponse.message == 'success') {
             return fetchAddressResponse;
+            // print('$response.statusCode');
           }
+          
         }
         return Future.error('Unable To Fetch Address');
+        // print('Unable to fetch product');
       }
+      
+      
     } catch (e) {
       return Future.error(e);
     }
@@ -181,6 +186,24 @@ class ApiManager extends GetConnect {
     }
   }
 
+
+//  Future<void> forgotPassword(String email) async {
+//     try {
+//       final response = await post(ApiConstants.forgotPassword, {'email': email}, headers: headers);
+
+//       if (response.status.hasError) {
+//         return Future.error(response.statusText!);
+//       } else {
+//         if (response.statusCode == 200) {
+//           // Success
+//           return;
+//         }
+//         return Future.error('Failed to initiate password reset');
+//       }
+//     } catch (e) {
+//       return Future.error(e);
+//     }
+//   }
   Future<AddAddressResponse> addAddress(
       AddAddressRequest request, StorageServices storageServices) async {
     try {

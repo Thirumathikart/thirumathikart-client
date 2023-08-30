@@ -14,6 +14,8 @@ class AuthController extends GetxController {
   final isLoading = false.obs;
   final userNameTextController = TextEditingController();
   final passwordTextController = TextEditingController();
+   final forgotPasswordEmailController=TextEditingController();
+
 
   var firstNameTextController = TextEditingController();
   final lastNameTextController = TextEditingController();
@@ -41,6 +43,8 @@ class AuthController extends GetxController {
       Get.snackbar('Failed To Login', err.toString());
     });
   }
+
+
 
   void register() async {
     final firstName = firstNameTextController.text;
@@ -76,6 +80,21 @@ class AuthController extends GetxController {
     });
   }
 
+// void forgotPassword() async {
+//   final email = forgotPasswordEmailController.text;
+//   if (email.isEmpty) {
+//     Get.snackbar('Invalid Email', 'Please enter your email address');
+//     return;
+//   }
+//   isLoading.value = true;
+//   api.forgotPassword(email).then((_) {
+//     isLoading.value = true;
+//     Get.snackbar('Forgot Password', 'Password reset instructions sent to $email');
+//   }, onError: (err) {
+//     isLoading.value = false;
+//     Get.snackbar('Forgot Password Failed', err.toString());
+//   });
+// }
   void navigateToHome() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Get.offAndToNamed(NavigationRoutes.main);

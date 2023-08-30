@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 
 class CartController extends GetxController {
-  RxList<ProductResponse> cart = <ProductResponse>[].obs;
+ RxList<ProductResponse> cart = <ProductResponse>[].obs;
   GetStorage box = GetStorage();
   RxDouble grandTotal = 0.0.obs;
 
@@ -61,19 +61,25 @@ class CartController extends GetxController {
     });
   }
 
-  void getUpdatedSessionCartData() {
-    if (box.hasData('itemscart')) {
-      //String value = GetStorage().read('itemscart');
-      //List itemval = jsonDecode(value);
-      cart.clear();
-      // ignore: unnecessary_lambdas
 
-      //cart.addAll(itemval.map((e) => ProductResponse.fromMap(e)).toList());
-      calculateGrandTotal();
+
+void getUpdatedSessionCartData() {
+  if (box.hasData('itemscart')) {
+    String? jsonString = box.read('itemscart');
+
+    if (jsonString != null && jsonString.isNotEmpty) {
+      List<dynamic> decodedList = jsonDecode(jsonString);
+      List<ProductResponse> cartItems = decodedList
+          .map((e) => ProductResponse.fromJson(Map<String, dynamic>.from(e)))
+          .toList();
+
+      cart.clear();
+      cart.addAll(cartItems);
     }
-    updatingSession();
   }
 
+  updatingSession();
+}
   @override
   void onReady() {
     getUpdatedSessionCartData();

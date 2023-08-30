@@ -28,12 +28,18 @@ class ProductResponse {
         imageUrl: json['ImageURL'],
       );
 
+  // get title => null;
+
+  // get title => null;
+
   Map<String, dynamic> toJson() => {
         'ID': id,
         'ProductID': productId,
         'Product': product!.toJson(),
         'ImageURL': imageUrl,
       };
+
+  static fromMap(e) {}
 }
 
 class Product {
@@ -45,6 +51,7 @@ class Product {
     this.price,
     this.description,
     this.stock,
+    this.quantity
   });
 
   int? id;
@@ -54,7 +61,7 @@ class Product {
   int? price;
   String? description;
   int? stock;
-  int? quantity = 0;
+  int? quantity=0;
   String? sellerDetails = 'Seller Details';
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(

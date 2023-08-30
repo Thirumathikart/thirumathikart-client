@@ -2,12 +2,18 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:thirumathikart_app/constants/api_constants.dart';
+import 'package:thirumathikart_app/constants/orders_constants.dart';
+// import 'package:thirumathikart_app/controllers/buynow2_controller.dart';
+import 'package:thirumathikart_app/controllers/buynow_controller.dart';
 import 'package:thirumathikart_app/controllers/product_detail_controller.dart';
 import 'package:thirumathikart_app/config/themes.dart';
 import 'package:thirumathikart_app/models/order_request.dart';
 import 'package:thirumathikart_app/models/prodcut_response.dart';
 import 'package:thirumathikart_app/services/storage_services.dart';
+import 'package:thirumathikart_app/views/buynow.dart';
+// import 'package:thirumathikart_app/views/buynow2.dart';
 import 'package:thirumathikart_app/widgets/app_bar.dart';
+import 'package:thirumathikart_app/controllers/buynow_controller.dart';
 
 class ProductDetail extends GetView<ProductDetailsController> {
    ProductDetail({Key? key}) : super(key: key);
@@ -15,6 +21,9 @@ class ProductDetail extends GetView<ProductDetailsController> {
   @override
   Widget build(BuildContext context) {
     final productDetailsController = Get.find<ProductDetailsController>();
+    //  final buyNowController = Get.find<BuyNowController>();
+    // final buyNowController = Get.find<BuyNowController>();
+    //  final BuyNowController controllers = Get.put(BuyNowController());
     final ProductResponse product = Get.arguments;
     return Scaffold(
       backgroundColor: AppTheme.bg,
@@ -61,6 +70,7 @@ class ProductDetail extends GetView<ProductDetailsController> {
             children: <Widget>[
               const Padding(
                 padding: EdgeInsets.all(8.0),
+                
                 child: Text(
                   'Quantity : ',
                   style: TextStyle(
@@ -69,6 +79,7 @@ class ProductDetail extends GetView<ProductDetailsController> {
                   ),
                 ),
               ),
+  
               SizedBox(
                 width: 50,
                 child: ElevatedButton(
@@ -150,6 +161,7 @@ class ProductDetail extends GetView<ProductDetailsController> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+                
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -164,6 +176,12 @@ class ProductDetail extends GetView<ProductDetailsController> {
               ),
             ],
           ),
+            Text(
+              'Stock Available: ${product.product!.stock}',
+              style: const TextStyle(
+                fontSize: 20,
+              ),
+            ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -253,8 +271,12 @@ class ProductDetail extends GetView<ProductDetailsController> {
                               price: product.product!.price,
                               description: product.product!.description,
                               stock: product.product!.stock,
+                              quantity: product.product!.quantity,
+                              
                             ));
                         productDetailsController.addItemToCart(cartItem);
+                        
+                        // productDetailsController.goToCartPage();
                       },
                       style: ButtonStyle(
                         backgroundColor:
@@ -276,18 +298,36 @@ class ProductDetail extends GetView<ProductDetailsController> {
                           fontSize: 20,
                           color: AppTheme.facebook,
                           fontWeight: FontWeight.bold,
+
                         ),
                       )),
                 ),
               ),
               SizedBox(
-                width: MediaQuery.of(context).size.width / 2,
-                height: 75,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      var orderItem = OrderItem(
+  width: MediaQuery.of(context).size.width / 2,
+  height: 75,
+  child: Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: ElevatedButton(
+      onPressed:(){ 
+         var buynow = ProductResponse(
+                            id: product.id,
+                            productId: product.productId,
+                            imageUrl: product.imageUrl,
+                            product: Product(
+                              title: product.product!.title,
+                              categoryId: product.product!.categoryId,
+                              sellerId: product.product!.sellerId,
+                              price: product.product!.price,
+                              description: product.product!.description,
+                              stock: product.product!.stock,
+                              quantity: product.product!.quantity,
+                              
+                            ));
+                            // controllers.addItembuynow(buynow);
+
+                           
+        var orderItem = OrderItem(
                         productId: product.productId,
                         productQuantity: controller.productDynamic.value,
                       );
@@ -299,37 +339,48 @@ class ProductDetail extends GetView<ProductDetailsController> {
                       }
                       controller.createOrder(OrderRequest(
                         orderItems: orderItems,
-                        sellerContact: '9876543210',
+                        // sellerContact: '9876543210',
                         addressId: storage.getAddressId() ,
                       ));
-                    },
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(AppTheme.facebook),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side: BorderSide(
-                            color: AppTheme.facebook,
-                          ),
-                        ),
-                      ),
-                    ),
-                    child: Text(
-                      'BUY NOW',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: AppTheme.bg,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+  //                       Navigator.push(
+  //   context,
+  //   MaterialPageRoute(builder: (context) => BuyNowPage2()),
+  // );
+
+                      // BuyNowController.adItemToCart(buynow);
+                      },
+                      
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all<Color>(AppTheme.facebook),
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18.0),
+            side: BorderSide(
+              color: AppTheme.facebook,
+            ),
+          ),
+        ),
+      ),
+      child: Text(
+        'BUY NOW',
+        style: TextStyle(
+          fontSize: 20,
+          color: AppTheme.bg,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    ),
+
+  ),
+),
+
+          
             ],
           ),
         ]),
       ),
     );
   }
+
+
 }

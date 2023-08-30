@@ -1,24 +1,28 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:thirumathikart_app/controllers/cart_controller.dart';
+import 'package:thirumathikart_app/controllers/product_detail_controller.dart';
 import 'package:thirumathikart_app/models/prodcut_response.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class RowCart extends StatelessWidget {
-  static late CartController controller;
+  static late CartController controllers;
+  static late ProductDetailsController controller;
   final int index;
 
   final ProductResponse product;
   const RowCart({
     Key? key,
     required this.index,
-    required this.product,
+    required this.product, required ProductDetailsController controllers,
+    // controller =controller,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    controller = Get.find<CartController>();
+    controllers = Get.find<CartController>();
+    controller =Get.find<ProductDetailsController>();
 
     return Container(
       height: 120.0,
@@ -68,6 +72,7 @@ class RowCart extends StatelessWidget {
                 Text(
                   "Total - ₹ ${NumberFormat.currency(decimalDigits: 0, symbol: '').format(product.product!.price! * product.product!.quantity!)}",
                 ),
+                Text(product.product!.quantity.toString()),
                 Expanded(child: _buildQty()),
               ],
             ),
@@ -79,7 +84,9 @@ class RowCart extends StatelessWidget {
                 Icons.close,
                 color: Colors.grey,
               ),
-              onPressed: () => controller.removeSelectedItemFromCart(index),
+              // onPressed:() {
+              // },
+              onPressed: () => controllers.removeSelectedItemFromCart(index),
             ),
           ),
         ],
@@ -97,7 +104,7 @@ class RowCart extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () =>
-                    controller.decreaseQtyOfSelectedItemInCart(index, product),
+                    controllers.decreaseQtyOfSelectedItemInCart(index, product),
                 icon: const Icon(
                   Icons.remove,
                   size: 12,
@@ -106,7 +113,7 @@ class RowCart extends StatelessWidget {
               Text(product.product!.quantity.toString()),
               IconButton(
                 onPressed: () =>
-                    controller.increaseQtyOfSelectedItemInCart(index),
+                    controllers.increaseQtyOfSelectedItemInCart(index),
                 icon: const Icon(
                   Icons.add,
                   size: 12,
@@ -117,3 +124,42 @@ class RowCart extends StatelessWidget {
         ],
       );
 }
+
+
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import 'package:thirumathikart_app/controllers/product_detail_controller.dart';
+// // import 'package:thirumathikart_app/controllers/product_details_controller.dart';
+// import 'package:thirumathikart_app/models/prodcut_response.dart';
+// // import 'package:thirumathikart_app/models/product_response.dart';
+
+// class CartPage extends StatelessWidget {
+//   final ProductDetailsController _controller = Get.find<ProductDetailsController>();
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Cart'),
+//       ),
+//       body: Obx(
+//         () => ListView.builder(
+//           itemCount: _controller.cart.length,
+//           itemBuilder: (context, index) {
+//             ProductResponse product = _controller.cart[index];
+//             return ListTile(
+//               title: Text(product.name),
+//               subtitle: Text('Price: \$${product.price}'),
+//               trailing: IconButton(
+//                 icon: const Icon(Icons.delete),
+//                 onPressed: () {
+//                   _controller.removeSelectedItemFromCart(product);
+//                 },
+//               ),
+//             );
+//           },
+//         ),
+//       ),
+//     );
+//   }
+// }

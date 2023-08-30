@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:thirumathikart_app/constants/navigation_routes.dart';
 import 'package:thirumathikart_app/services/api_services.dart';
 import 'package:thirumathikart_app/services/storage_services.dart';
 
@@ -26,7 +27,10 @@ class MainController extends GetxController {
     pageController.dispose();
     super.onClose();
   }
-
+   void logout()async{
+    Get.offAllNamed(NavigationRoutes.loginRoute);
+    // navigateToLogin();
+  }
   void onPageChanged() {
     pageController.animateToPage(selectedIndex.value,
         duration: const Duration(milliseconds: 100), curve: Curves.bounceIn);
@@ -44,4 +48,6 @@ class MainController extends GetxController {
       return true;
     }
   }
+
+  // void logout() {}
 }

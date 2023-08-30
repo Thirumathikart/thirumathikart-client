@@ -5,7 +5,9 @@ class ApiConstants {
       'https://thirumathikart.nitt.edu/api/order/create_order';
 
   static String register = '$baseUrl/api/user/signup';
+  //  static String forgotPassword= '$baseUrl/api/user/forgotPassword';
   static String login = '$baseUrl/api/user/loginCustomer';
+  static String logout = '$baseUrl/api/user/logoutCustomer';
   static String productsByCatergory =
       '$productBaseUrl/list_products_by_category';
   static String updateAddress = '$baseUrl/api/user/updateAddress';

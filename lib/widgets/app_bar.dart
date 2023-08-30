@@ -9,9 +9,9 @@ PreferredSizeWidget appBar(String label) => AppBar(
       Container(
           margin: const EdgeInsets.only(left: 0, top: 5, bottom: 5, right: 10),
           child: Image.asset(
-            'assets/tk.png',
-            width: 35,
-            height: 35,
+            'assets/tklogo.jpeg',
+            width: 45,
+            height: 45,
           )),
       Text(
         label,
